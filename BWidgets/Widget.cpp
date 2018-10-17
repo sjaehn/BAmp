@@ -517,6 +517,13 @@ cairo_t* Window::getPuglContext ()
 	else return NULL;
 }
 
+int Window::processPuglEvents ()
+{
+	puglProcessEvents(view_);
+	handleEvents();
+	return (quit_ ? 1 : 0) ;
+}
+
 void Window::run ()
 {
 	while (!quit_)
@@ -635,7 +642,6 @@ void Window::handleEvents ()
 
 void Window::translatePuglEvent (PuglView* view, const PuglEvent* event)
 {
-	std::cerr << "BAmp_GUI: Event.\n";
 	Window* w = (Window*) puglGetHandle (view);
 	switch (event->type) {
 	case PUGL_BUTTON_PRESS:
