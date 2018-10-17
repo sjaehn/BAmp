@@ -368,8 +368,6 @@ public:
 	 */
 	void run ();
 
-	int processPuglEvents ();
-
 	/**
 	 * Queues an event until the next call of the handleEvents method.
 	 * @param event Event

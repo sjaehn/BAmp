@@ -58,7 +58,7 @@ void Widget::add (Widget& child)
 	passProperties (&child);
 	children_.push_back (&child);
 
-	if (isVisible ()) postRedisplay ();
+	if (isVisible ()) update ();	//TODO all children need to be redrawn if they also gain visibility following addition
 }
 
 void Widget::release (Widget* child)
@@ -517,19 +517,11 @@ cairo_t* Window::getPuglContext ()
 	else return NULL;
 }
 
-int Window::processPuglEvents ()
-{
-	puglProcessEvents(view_);
-	handleEvents();
-	return (quit_ ? 1 : 0) ;
-}
-
 void Window::run ()
 {
 	while (!quit_)
 	{
 		puglWaitForEvent (view_);
-		puglProcessEvents (view_);
 		handleEvents ();
 	}
 }
@@ -558,8 +550,6 @@ void Window::onExpose (BEvents::ExposeEvent* event)
 		cairo_restore (cr);
 
 		cairo_surface_destroy (storageSurface);
-
-
 	}
 }
 
@@ -581,6 +571,8 @@ Widget* Window::getInput (BEvents::InputDevice device) const
 
 void Window::handleEvents ()
 {
+	puglProcessEvents (view_);
+
 	while (eventQueue.size () > 0)
 	{
 		BEvents::Event* event = eventQueue.front ();
