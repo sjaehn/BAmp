@@ -6,6 +6,7 @@
 <https://www.jahnichen.de/plugins/lv2/BAmp#GUI>
         a ui:X11UI ;
         ui:binary <BAmp_GUI.so> ;
+        lv2:extensionData ui:idleInterface ;
         ui:requiredFeature ui:makeResident .
 
 <https://www.jahnichen.de/plugins/lv2/BAmp> a lv2:Plugin ;

@@ -18,12 +18,10 @@ public:
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
-		write_function (NULL), controller (NULL), BWidgets::Window (100, 100, "BAmp", parentWindow),
-		dial (20, 20, 60, 60, "dial", -90.0, -90.0, 24.0, 0.0)
+		write_function (NULL), controller (NULL), BWidgets::Window (400, 400, "BAmp", parentWindow),
+		dial (160, 160, 80, 80, "dial", -90.0, -90.0, 24.0, 0.0)
 {
-	std::cerr << "BAmp_GUI constructed.\n";
 	add (dial);
-	std::cerr << "Dial added.\n";
 }
 
 void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)
@@ -34,7 +32,6 @@ void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t fo
 		dial.setValue (*pval);
 	}
 }
-
 
 LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin_uri, const char *bundle_path,
 						  LV2UI_Write_Function write_function, LV2UI_Controller controller, LV2UI_Widget *widget,
@@ -71,13 +68,10 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 		ui->write_function = write_function;
 		if (resize)
 		{
-			resize->ui_resize(resize->handle, 100, 100 );
+			resize->ui_resize(resize->handle, 400, 400 );
 		}
 		PuglNativeWindow nativeWindow = puglGetNativeWindow (ui->getPuglView ());
 		*widget = (LV2UI_Widget) nativeWindow;
-		std::cerr << "Widget: " << nativeWindow << std::endl;
-
-		std::cerr << "BAmp_GUI: GUI instantiated.\n";
 	}
 	else std::cerr << "BAmp_GUI: Couldn't instantiate.\n";
 	return (LV2UI_Handle) ui;
@@ -86,7 +80,6 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 void cleanup(LV2UI_Handle ui)
 {
 	BAmp_GUI* pluginGui = (BAmp_GUI*) ui;
-	std::cerr << "BAmp_GUI: cleanup.\n";
 	delete pluginGui;
 }
 
@@ -96,13 +89,28 @@ void portEvent(LV2UI_Handle ui, uint32_t port_index, uint32_t buffer_size, uint3
 	pluginGui->portEvent(port_index, buffer_size, format, buffer);
 }
 
+static int callIdle(LV2UI_Handle ui)
+{
+	BAmp_GUI* pluginGui = (BAmp_GUI*) ui;
+	pluginGui->processPuglEvents ();
+	return 0;
+}
+
+static const LV2UI_Idle_Interface idle = { callIdle };
+
+static const void* extensionData(const char* uri)
+{
+	if (!strcmp(uri, LV2_UI__idleInterface)) return &idle;
+	else return NULL;
+}
+
 
 const LV2UI_Descriptor guiDescriptor = {
 		AMP_GUI_URI,
 		instantiate,
 		cleanup,
 		portEvent,
-		NULL	// Extension data
+		extensionData
 };
 
 // LV2 Symbol Export
