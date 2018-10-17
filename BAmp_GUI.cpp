@@ -14,14 +14,16 @@ public:
 
 	LV2UI_Write_Function write_function;
 	LV2UI_Controller controller;
-	BWidgets::Dial dial;
+	BWidgets::DialWithValueDisplay dial;
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
 		write_function (NULL), controller (NULL), BWidgets::Window (400, 400, "BAmp", parentWindow),
-		dial (160, 160, 80, 80, "dial", -90.0, -90.0, 24.0, 0.0)
+		dial (160, 160, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
 {
 	add (dial);
+	dial.getDial()->update();
+	dial.getValueDisplay()->update();
 }
 
 void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)
@@ -48,28 +50,19 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 
 	for (int i = 0; features[i]; ++i)
 	{
-		if (!strcmp(features[i]->URI, LV2_UI__parent))
-		{
-			parentWindow = (PuglNativeWindow) features[i]->data;
-		}
-		else if (!strcmp(features[i]->URI, LV2_UI__resize))
-		{
-			resize = (LV2UI_Resize*)features[i]->data;
-		}
+		if (!strcmp(features[i]->URI, LV2_UI__parent)) parentWindow = (PuglNativeWindow) features[i]->data;
+		else if (!strcmp(features[i]->URI, LV2_UI__resize)) resize = (LV2UI_Resize*)features[i]->data;
 	}
 	if (parentWindow == 0) std::cerr << "BAmp_GUI: No parent window.\n";
 
-	std::cerr << "parentXwindow: " << parentWindow << std::endl;
 	BAmp_GUI* ui = new BAmp_GUI (parentWindow);
 
 	if (ui)
 	{
 		ui->controller = controller;
 		ui->write_function = write_function;
-		if (resize)
-		{
-			resize->ui_resize(resize->handle, 400, 400 );
-		}
+		if (resize) resize->ui_resize(resize->handle, 400, 400 );
+
 		PuglNativeWindow nativeWindow = puglGetNativeWindow (ui->getPuglView ());
 		*widget = (LV2UI_Widget) nativeWindow;
 	}
@@ -92,7 +85,7 @@ void portEvent(LV2UI_Handle ui, uint32_t port_index, uint32_t buffer_size, uint3
 static int callIdle(LV2UI_Handle ui)
 {
 	BAmp_GUI* pluginGui = (BAmp_GUI*) ui;
-	pluginGui->processPuglEvents ();
+	pluginGui->handleEvents ();
 	return 0;
 }
 
