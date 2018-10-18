@@ -42,7 +42,20 @@ Widget::~Widget()
 void Widget::show ()
 {
 	visible = true;
-	if ((parent_) && parent_->isVisible ()) postRedisplay ();
+
+	if (isVisible ())
+	{
+		// (Re-)draw children as they may become visible too
+		std::vector<Widget*> queue = getChildrenAsQueue ();
+		for (Widget* w : queue)
+		{
+			w->main_ = main_;
+			if (w->isVisible ()) w->draw (0, 0, w->width_, w->height_);
+		}
+
+		// (Re-)draw this widget and post redisplay
+		update ();
+	}
 }
 
 void Widget::hide ()
@@ -55,10 +68,21 @@ void Widget::add (Widget& child)
 {
 	child.main_ = main_;
 	child.parent_ = this;
-	passProperties (&child);
 	children_.push_back (&child);
 
-	if (isVisible ()) update ();	//TODO all children need to be redrawn if they also gain visibility following addition
+	// (Re-)draw children of child as they may become visible too
+	if (child.isVisible ())
+	{
+		std::vector<Widget*> queue = child.getChildrenAsQueue ();
+		for (Widget* w : queue)
+		{
+			w->main_ = main_;
+			if (w->isVisible ()) w->draw (0, 0, w->width_, w->height_);
+		}
+
+		// (Re-)draw child widget and post redisplay
+		child.update ();
+	}
 }
 
 void Widget::release (Widget* child)
@@ -287,13 +311,14 @@ void Widget::onValueChanged (BEvents::ValueChangedEvent* event) {cbfunction[BEve
 
 void Widget::defaultCallback (BEvents::Event* event) {}
 
-void Widget::passProperties (Widget* child)
+std::vector <Widget*> Widget::getChildrenAsQueue (std::vector <Widget*> queue) const
 {
-	for (Widget* w : child->children_)
+	for (Widget* w : children_)
 	{
-		w->main_ = main_;
-		passProperties (w);
+		queue.push_back (w);
+		if (!w->children_.empty()) queue = w->getChildrenAsQueue (queue);
 	}
+	return queue;
 }
 
 void Widget::postRedisplay () {postRedisplay (getOriginX (), getOriginY (), width_, height_);}

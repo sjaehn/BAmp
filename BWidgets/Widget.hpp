@@ -304,12 +304,19 @@ public:
 	virtual void applyTheme (BStyles::Theme& theme, const std::string& name);
 
 
-
 protected:
+
+	/**
+	 * Linearizes the whole children tree.
+	 * @param queue Vector to which all (pointers to) children shall be added.
+	 * 				Default = empty.
+	 * @return Vector of pointers to all children.
+	 */
+	std::vector <Widget*> getChildrenAsQueue (std::vector <Widget*> queue = {}) const;
+
 	bool isPointInWidget (const double x, const double y) const;
 	Widget* getWidgetAt (const double x, const double y, const bool checkVisibility, const bool checkClickability, const bool checkDragability);
 
-	void passProperties (Widget* child);
 	void postRedisplay (const double x, const double y, const double width, const double height);
 	void redisplay (cairo_surface_t* surface, double x, double y, double width, double height);
 
@@ -363,7 +370,7 @@ public:
 	cairo_t* getPuglContext ();
 
 	/**
-	 * Runs the window until the close flag is set and thus it is be closed.
+	 * Runs the window until the close flag is set and thus it will be closed.
 	 * For stand-alone applications.
 	 */
 	void run ();
@@ -407,6 +414,8 @@ public:
 	Widget* getInput (BEvents::InputDevice device) const;
 
 protected:
+
+
 
 	/**
 	 * Communication interface to the host via Pugl. Translates PuglEvents to
