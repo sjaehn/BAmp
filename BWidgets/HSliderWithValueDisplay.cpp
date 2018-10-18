@@ -20,6 +20,36 @@ HSliderWithValueDisplay::HSliderWithValueDisplay (const double x, const double y
 	add (valueDisplay);
 }
 
+void HSliderWithValueDisplay::setValue (const double val)
+{
+	RangeWidget::setValue (val);
+
+	// Pass changed value to dial and display
+	if (value != slider.getValue ()) slider.setValue (value);
+	valueDisplay.setText(BValues::toBString (valFormat, value));
+}
+
+void HSliderWithValueDisplay::setMin (const double min)
+{
+	RangeWidget::setMin (min);
+
+	if (rangeMin != slider.getMin ()) slider.setMin (rangeMin);
+}
+
+void HSliderWithValueDisplay::setMax (const double max)
+{
+	RangeWidget::setMin (max);
+
+	if (rangeMax != slider.getMax ()) slider.setMax (rangeMax);
+}
+
+void HSliderWithValueDisplay::setStep (const double step)
+{
+	RangeWidget::setStep (step);
+
+	if (rangeStep != slider.getStep ()) slider.setStep (rangeStep);
+}
+
 HSliderWithValueDisplay::~HSliderWithValueDisplay () {}
 
 void HSliderWithValueDisplay::setValueFormat (const std::string& valueFormat) {valFormat = valueFormat;}
@@ -51,13 +81,18 @@ void HSliderWithValueDisplay::redirectPostValueChanged (BEvents::Event* event)
 	if (event && (event->getEventType () == BEvents::EventType::VALUE_CHANGED_EVENT) && event->getWidget ())
 	{
 		BEvents::ValueChangedEvent* ev = (BEvents::ValueChangedEvent*) event;
-		Widget* w = (Widget*) ev->getWidget ();
+		RangeWidget* w = (RangeWidget*) ev->getWidget ();
 		if (w->getParent ())
 		{
 			HSliderWithValueDisplay* p = (HSliderWithValueDisplay*) w->getParent ();
-			p->setValue (ev->getValue ());
+
+			// Get value and range from slider
+			if (p->getValue () != w->getValue ()) p->setValue (w->getValue ());
+			if (p->getMin () != w->getMin ()) p->setMin (w->getMin ());
+			if (p->getMax () != w->getMax ()) p->setMax (w->getMax ());
+			if (p->getStep () != w->getStep ()) p->setStep (w->getStep ());
+
 			p->updateChildCoords ();
-			p->getValueDisplay ()->setText(BValues::toBString (p->getValueFormat (), p->getValue ()));
 		}
 	}
 }

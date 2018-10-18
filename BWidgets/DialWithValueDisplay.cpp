@@ -15,12 +15,43 @@ DialWithValueDisplay::DialWithValueDisplay (const double x, const double y, cons
 	valFormat (valueFormat)
 {
 	dial.setCallbackFunction (BEvents::EventType::VALUE_CHANGED_EVENT, DialWithValueDisplay::redirectPostValueChanged);
+	valueDisplay.setText (BValues::toBString (valueFormat, value));
 	update ();
 	add (dial);
 	add (valueDisplay);
 }
 
 DialWithValueDisplay::~DialWithValueDisplay () {}
+
+void DialWithValueDisplay::setValue (const double val)
+{
+	RangeWidget::setValue (val);
+
+	// Pass changed value to dial and display
+	if (value != dial.getValue ()) dial.setValue (value);
+	valueDisplay.setText(BValues::toBString (valFormat, value));
+}
+
+void DialWithValueDisplay::setMin (const double min)
+{
+	RangeWidget::setMin (min);
+
+	if (rangeMin != dial.getMin ()) dial.setMin (rangeMin);
+}
+
+void DialWithValueDisplay::setMax (const double max)
+{
+	RangeWidget::setMin (max);
+
+	if (rangeMax != dial.getMax ()) dial.setMax (rangeMax);
+}
+
+void DialWithValueDisplay::setStep (const double step)
+{
+	RangeWidget::setStep (step);
+
+	if (rangeStep != dial.getStep ()) dial.setStep (rangeStep);
+}
 
 void DialWithValueDisplay::setValueFormat (const std::string& valueFormat)
 {
@@ -71,12 +102,16 @@ void DialWithValueDisplay::redirectPostValueChanged (BEvents::Event* event)
 	if (event && (event->getEventType () == BEvents::EventType::VALUE_CHANGED_EVENT) && event->getWidget ())
 	{
 		BEvents::ValueChangedEvent* ev = (BEvents::ValueChangedEvent*) event;
-		Widget* w = (Widget*) ev->getWidget ();
+		RangeWidget* w = (RangeWidget*) ev->getWidget ();
 		if (w->getParent ())
 		{
 			DialWithValueDisplay* p = (DialWithValueDisplay*) w->getParent ();
-			p->setValue (ev->getValue ());
-			p->getValueDisplay ()->setText(BValues::toBString (p->getValueFormat (), p->getValue ()));
+
+			// Get value and range from dial
+			if (p->getValue () != w->getValue ()) p->setValue (w->getValue ());
+			if (p->getMin () != w->getMin ()) p->setMin (w->getMin ());
+			if (p->getMax () != w->getMax ()) p->setMax (w->getMax ());
+			if (p->getStep () != w->getStep ()) p->setStep (w->getStep ());
 		}
 	}
 }

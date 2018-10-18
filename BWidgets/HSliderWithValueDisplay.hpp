@@ -36,6 +36,37 @@ public:
 	~HSliderWithValueDisplay ();
 
 	/**
+	 * Changes the value of the widget and keeps it within the defined range.
+	 * Passes the value to its predefined child widgets.
+	 * Emits a value changed event and (if visible) an expose event.
+	 * @param val Value
+	 */
+	virtual void setValue (const double val) override;
+
+	/**
+	 * Sets the lower limit. Forces the value into the new range. Passes the
+	 * min to its predefined child widgets. Emits a value changed event (if
+	 * value changed) and (if visible) an expose event.
+	 * @param min Lower limit
+	 */
+	virtual void setMin (const double min) override;
+
+	/**
+	 * Sets the upper limit. Forces the value into the new range. Passes the
+	 * max to its predefined child widgets. Emits a value changed event (if
+	 * value changed) and (if visible) an expose event.
+	 * @param max Upper limit
+	 */
+	virtual void setMax (const double min) override;
+
+	/**
+	 * Sets the increment steps for the value. Passes the
+	 * increment to its predefined child widgets.
+	 * @param step Increment steps.
+	 */
+	virtual void setStep (const double step);
+
+	/**
 	 * Sets the value output format.
 	 * @valueFormat Format of the output in printf standard for type double.
 	 */

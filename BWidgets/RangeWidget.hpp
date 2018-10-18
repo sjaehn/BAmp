@@ -31,7 +31,7 @@ public:
 	 * changed event (if value changed) and (if visible) an expose event.
 	 * @param min Lower limit
 	 */
-	void setMin (const double min);
+	virtual void setMin (const double min);
 
 /**
 	 * Gets the lower limit.
@@ -44,7 +44,7 @@ public:
 	 * changed event (if value changed) and (if visible) an expose event.
 	 * @param max Upper limit
 	 */
-	void setMax (const double max);
+	virtual void setMax (const double max);
 
 	/**
 	 * Gets the upper limit.
@@ -63,7 +63,7 @@ public:
 	 * 			   display of dependent widgets (dials, sliders, ... ) in the
 	 * 			   opposite direction.
 	 */
-	void setStep (const double step);
+	virtual void setStep (const double step);
 
 	/**
 	 * Gets the increment steps for the value.

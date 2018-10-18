@@ -20,13 +20,14 @@ RangeWidget::~RangeWidget () {}
 
 void RangeWidget::setValue (const double val)
 {
-	double valRounded = val;
+	double valRounded = LIMIT (val, rangeMin, rangeMax);
 	if ((rangeStep != 0.0) && (rangeMax >= rangeMin))
 	{
 		if (rangeStep > 0.0) valRounded = LIMIT (rangeMin + round ((val - rangeMin) / rangeStep) * rangeStep, rangeMin, rangeMax);
 		else valRounded = LIMIT (rangeMax - round ((rangeMax - val) / rangeStep) * rangeStep, rangeMin, rangeMax);
 	}
-	ValueWidget::setValue (valRounded);
+
+	if (value != valRounded) ValueWidget::setValue (valRounded);
 }
 
 void RangeWidget::setMin (const double min)
