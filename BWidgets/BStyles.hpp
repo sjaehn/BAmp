@@ -1,9 +1,10 @@
-/* Copyright (C) 2018 by Sven Jähnichen
+/* BStyles.hpp
+ * Copyright (C) 2018  Sven Jähnichen
  *
- * This program is free software; you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -11,8 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef BSTYLES_HPP_
@@ -77,6 +77,8 @@ private:
 
 const Line blackLine1pt = Line (BColors::black, 1.0);
 const Line whiteLine1pt = Line (BColors::white, 1.0);
+const Line greyLine1pt = Line (BColors::grey, 1.0);
+const Line lightgreyLine1pt = Line (BColors::lightgrey, 1.0);
 const Line noLine = Line (BColors::invisible, 0.0);
 
 
@@ -157,6 +159,8 @@ protected:
 
 const Border blackBorder1pt = Border (blackLine1pt);
 const Border whiteBorder1pt = Border (whiteLine1pt);
+const Border greyBorder1pt = Border (greyLine1pt);
+const Border lightgreyBorder1pt = Border (lightgreyLine1pt);
 const Border noBorder = Border (noLine);
 
 
@@ -227,8 +231,21 @@ const Fill redFill = Fill (BColors::red);
 const Fill greenFill = Fill (BColors::green);
 const Fill blueFill = Fill (BColors::blue);
 const Fill greyFill = Fill (BColors::grey);
+const Fill darkgreyFill = Fill (BColors::darkgrey);
+const Fill grey20Fill = Fill (BColors::grey20);
 const Fill noFill = Fill (BColors::invisible);
 
+typedef enum {
+	TEXT_ALIGN_LEFT,
+	TEXT_ALIGN_CENTER,
+	TEXT_ALIGN_RIGHT,
+} TextAlign;
+
+typedef enum {
+	TEXT_VALIGN_TOP,
+	TEXT_VALIGN_MIDDLE,
+	TEXT_VALIGN_BOTTOM
+} TextVAlign;
 
 /**
  * Class BStyles::Font
@@ -240,7 +257,8 @@ class Font
 {
 public:
 	Font ();
-	Font (const std::string& family, const cairo_font_slant_t slant, const cairo_font_weight_t weight, const double size);
+	Font (const std::string& family, const cairo_font_slant_t slant, const cairo_font_weight_t weight, const double size,
+		  TextAlign align = TEXT_ALIGN_LEFT, TextVAlign valign = TEXT_VALIGN_TOP, double lineSpacing = 1.25);
 
 	/**
 	 * Sets font family of the font style
@@ -279,6 +297,42 @@ public:
 	cairo_font_weight_t getFontWeight () const;
 
 	/**
+	 * Sets the horizonal text alignment of the font style
+	 * @param align Enum of text alignment
+	 */
+	void setTextAlign (const TextAlign align);
+
+	/**
+	 * Gets the horizonal text alignment of the font style
+	 * @return Enum of text alignment
+	 */
+	TextAlign getTextAlign () const;
+
+	/**
+	 * Sets the vertical text alignment of the font style
+	 * @param align Enum of text alignment
+	 */
+	void setTextVAlign (const TextVAlign valign);
+
+	/**
+	 * Gets the vertical text alignment of the font style
+	 * @return Enum of text alignment
+	 */
+	TextVAlign getTextVAlign () const;
+
+	/**
+	 * Sets line spacing of the font style
+	 * @param lineSpacing Line spacing factor
+	 */
+	void setLineSpacing (const double lineSpacing);
+
+	/**
+	 * Gets line spacing of the font style
+	 * @return Line spacing factor
+	 */
+	double getLineSpacing () const;
+
+	/**
 	 * Sets font size of the font style
 	 * @param size Font size as used by Cairo
 	 */
@@ -304,14 +358,16 @@ private:
 	cairo_font_slant_t fontSlant;
 	cairo_font_weight_t fontWeight;
 	double fontSize;
-
+	TextAlign textAlign;
+	TextVAlign textVAlign;
+	double textLineSpacing;
 };
 
 /*
  * End of class BWidgets::Font
  *****************************************************************************/
 
-const Font sans12pt = Font ("Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL, 12.0);;
+const Font sans12pt = Font ("Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL, 12.0);
 
 
 /**

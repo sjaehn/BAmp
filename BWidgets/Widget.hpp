@@ -1,9 +1,10 @@
-/* Copyright (C) 2018 by Sven Jähnichen
+/* Widget.hpp
+ * Copyright (C) 2018  Sven Jähnichen
  *
- * This program is free software; you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -11,12 +12,47 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef BWIDGETS_WIDGET_HPP_
 #define BWIDGETS_WIDGET_HPP_
+
+// Default basic widget settings
+#define BWIDGETS_DEFAULT_BORDER BStyles::noBorder
+#define BWIDGETS_DEFAULT_BACKGROUND BStyles::noFill
+#define BWIDGETS_DEFAULT_WIDTH 200
+#define BWIDGETS_DEFAULT_HEIGHT 200
+#define BWIDGETS_DEFAULT_STATE BColors::NORMAL
+#define BWIDGETS_DEFAULT_FGCOLORS BColors::greens
+#define BWIDGETS_DEFAULT_BGCOLORS BColors::darks
+#define BWIDGETS_DEFAULT_FONT BStyles::sans12pt
+#define BWIDGETS_DEFAULT_ILLUMINATED 0.333
+#define BWIDGETS_DEFAULT_NORMALLIGHTED 0.0
+#define BWIDGETS_DEFAULT_SHADOWED -0.333
+#define BWIDGETS_DEFAULT_DARKENED -0.5
+
+// Default BWidgets::Window settings (Note: use non-transparent backgrounds only)
+#define BWIDGETS_DEFAULT_WINDOW_BACKGROUND BStyles::blackFill
+
+// Default settings for all text containing widgets
+#define BWIDGETS_DEFAULT_TEXT_COLORS BColors::lights
+#define BWIDGETS_DEFAULT_TEXT_ALIGN BStyles::TEXT_ALIGN_LEFT
+#define BWIDGETS_DEFAULT_TEXT_VALIGN BStyles::TEXT_VALIGN_TOP
+
+// Default settings for all menu widgets
+#define BWIDGETS_DEFAULT_MENU_PADDING 10
+#define BWIDGETS_DEFAULT_MENU_BORDER BStyles::greyBorder1pt
+#define BWIDGETS_DEFAULT_MENU_BACKGROUND BStyles::grey20Fill
+
+// BWidgets theme keywords
+#define BWIDGETS_KEYWORD_BORDER "border"
+#define BWIDGETS_KEYWORD_BACKGROUND "background"
+#define BWIDGETS_KEYWORD_FONT "font"
+#define BWIDGETS_KEYWORD_FGCOLORS "fgcolors"
+#define BWIDGETS_KEYWORD_BGCOLORS "bgcolors"
+#define BWIDGETS_KEYWORD_TEXTCOLORS "textcolors"
+
 
 #include <cairo/cairo.h>
 #include "cairoplus.h"
@@ -51,9 +87,23 @@ public:
 	Widget ();
 	Widget (const double x, const double y, const double width, const double height);
 	Widget (const double x, const double y, const double width, const double height, const std::string& name);
-	// TODO Widget (const Widget& that);
-	// TODO Widget& operator= (const Widget& that);
+
+	/**
+	 * Creates a new (orphan) widget and copies the widget properties from a
+	 * source widget. This method doesn't copy any parent or child widgets.
+	 * @param that Source widget
+	 */
+	Widget (const Widget& that);
+
 	virtual ~Widget ();
+
+	/**
+	 * Assignment. Copies the widget properties from a source widget and keeps
+	 * its name and its position within the widget tree. Emits a
+	 * BEvents::ExposeEvent if the widget is visible.
+	 * @param that Source widget
+	 */
+	Widget& operator= (const Widget& that);
 
 	/**
 	 * Makes the widget visible (if its parents are visible too) and emits an
@@ -91,10 +141,17 @@ public:
 	 */
 	void moveTo (const double x, const double y);
 
-	//TODO double getX ();
-	//TODO double getY ();
-	//TODO moveBackwards ();
-	//TODO moveFrontwards ();
+	/**
+	 * Gets the widgets x position
+	 * @return X position
+	 */
+	double getX () const;
+
+	/**
+	 * Gets the widgets y position
+	 * @return Y position
+	 */
+	double getY () const;
 
 	/**
 	 * Gets the widgets x position relative to the position of its main window.
@@ -108,31 +165,91 @@ public:
 	 */
 	double getOriginY ();
 
+	/**
+	 * Pushes this widget backwards (to the background) if it is linked to a
+	 * parent widget. Emits a BEvents::ExposeEvent if the widget is visible.
+	 */
+	void moveBackwards ();
+
+	/**
+	 * Pulls this widget frontwards (to the front) if it is linked to a
+	 * parent widget. Emits a BEvents::ExposeEvent if the widget is visible.
+	 */
+	void moveFrontwards ();
 
 	/**
 	 * Resizes the widget, redraw and emits a BEvents::ExposeEvent if the
 	 * widget is visible.
 	 * @param width New widgets width
 	 */
-	void setWidth (const double width);
+	virtual void setWidth (const double width);
 
-	//TODO double getWidth ();
+	/**
+	 * Gets the width of the widget
+	 * @return Width
+	 */
+	double getWidth () const;
 
 	/**
 	 * Resizes the widget, redraw and emits a BEvents::ExposeEvent if the
 	 * widget is visible.
 	 * @param height New widgets height
 	 */
-	void setHeight (const double height);
+	virtual void setHeight (const double height);
 
-	//TODO double getHeight ();
+	/**
+	 * Gets the height of the widget
+	 * @return Height
+	 */
+	double getHeight () const;
+
+	/**
+	 * Gets the x offset of the widget content. This is distance between the
+	 * outer border and the widget content. It is also the sum of margin,
+	 * border, and padding.
+	 * @return X offset of the widget
+	 */
+	double getXOffset ();
+
+	/**
+	 * Gets the y offset of the widget content. This is distance between the
+	 * outer border and the widget content. It is also the sum of margin,
+	 * border, and padding.
+	 * @return Y offset of the widget
+	 */
+	double getYOffset ();
+
+	/**
+	 * Gets the effective width of the widget content without its borders.
+	 * @return Effective width of the widget
+	 */
+	double getEffectiveWidth ();
+
+	/**
+	 * Gets the effective height of the widget content without its borders.
+	 * @return Effective height of the widget
+	 */
+	double getEffectiveHeight ();
+
+
+	/**
+	 * Sets the widgets state
+	 * @param state Widget state
+	 */
+	void setState (const BColors::State state);
+
+	/**
+	 * Gets the widgets state
+	 * @return Widget state
+	 */
+	BColors::State getState () const;
 
 	/**
 	 * (Re-)Defines the border of the widget. Redraws widget and emits a
 	 * BEvents::ExposeEvent if the widget is visible.
 	 * @param border New widgets border
 	 */
-	void setBorder (const BStyles::Border& border);
+	virtual void setBorder (const BStyles::Border& border);
 
 	/**
 	 * Gets (a pointer to) the border of the widget.
@@ -147,7 +264,18 @@ public:
 	 */
 	void setBackground (const BStyles::Fill& background);
 
-	//TODO BStyles::Fill* getBackground ();
+	/**
+	 * Gets (a pointer to) the background of the widget.
+	 * @return Pointer to BStyles::Fill
+	 */
+	BStyles::Fill* getBackground ();
+
+	/**
+	 * Gets a pointer to the widgets main window.
+	 * @return Pointer to the main window. Returns nullptr if the widget
+	 * isn't connected to a main window.
+	 */
+	Window* getMainWindow () const;
 
 	/**
 	 * Gets a pointer to the widgets parent widget.
@@ -156,8 +284,24 @@ public:
 	 */
 	Widget* getParent () const;
 
-	//TODO bool hasChildren ();
-	//TODO std::vector<Widget*>* getChildren;
+	/**
+	 * Tests whether the widget has children or not.
+	 * @return TRUE if the widget has children, otherwise FALSE
+	 */
+	bool hasChildren () const;
+
+	/**
+	 * Gets the widgets children vector. The vector contains all children of
+	 * the widgets from background to foreground.
+	 * @return Children vector.
+	 */
+	std::vector<Widget*> getChildren () const;
+
+	/**
+	 * Renames the widget.
+	 * @param name New name
+	 */
+	void rename (const std::string& name);
 
 	/**
 	 * Gets the name of the widget
@@ -238,7 +382,7 @@ public:
 	 * BEvents::EventType::CONFIGURE_EVENTs will only be handled by
 	 * BWidget::Window.
 	 */
-	virtual void onConfigure ();
+	virtual void onConfigure (BEvents::ExposeEvent* event);
 
 	/**
 	 * Predefined empty method to handle a BEvents::EventType::EXPOSE_EVENT.
@@ -324,6 +468,7 @@ protected:
 
 	bool fitToArea (double& x, double& y, double& width, double& height);
 
+	long id;
 	double x_, y_, width_, height_;
 	bool visible;
 	bool clickable;
@@ -336,6 +481,7 @@ protected:
 	std::string name_;
 	std::array<std::function<void (BEvents::Event*)>, BEvents::EventType::NO_EVENT> cbfunction;
 	cairo_surface_t* widgetSurface;
+	BColors::State widgetState;
 };
 
 /**
@@ -352,10 +498,13 @@ class Window : public Widget
 {
 public:
 	Window ();
-	Window (const double width, const double height, const std::string& title, PuglNativeWindow nativeWindow);
-	//TODO Window (const Window& that);
-	//TODO Window& operator= (const Window& that);
+	Window (const double width, const double height, const std::string& title, PuglNativeWindow nativeWindow, bool resizable = false);
+
+	Window (const Window& that) = delete;	// Only one window in this version
+
 	~Window ();
+
+	Window& operator= (const Window& that) = delete;	// Only one Window in this version
 
 	/**
 	 * Gets in contact to the host system via Pugl
@@ -395,6 +544,13 @@ public:
 	virtual void onExpose (BEvents::ExposeEvent* event) override;
 
 	/**
+	 * Predefined empty method to handle a BEvents::EventType::CONFIGURE_EVENT.
+	 * BEvents::EventType::CONFIGURE_EVENTs will only be handled by
+	 * BWidget::Window.
+	 */
+	virtual void onConfigure (BEvents::ExposeEvent* event) override;
+
+	/**
 	 * Sets the close flag and thus ends the run method.
 	 */
 	virtual void onClose () override;
@@ -415,8 +571,6 @@ public:
 
 protected:
 
-
-
 	/**
 	 * Communication interface to the host via Pugl. Translates PuglEvents to
 	 * BEvents::Event derived objects.
@@ -436,7 +590,7 @@ protected:
 	/**
 	 * Stores either nullptr or (a pointer to) the widget that emitted the
 	 * BEvents::BUTTON_PRESS_EVENT until a BEvents::BUTTON_RELEASE_EVENT or
-	 * TODO the linked widget is released or destroyed.
+	 * the linked widget is released or destroyed.
 	 */
 	std::array<Widget*, BEvents::InputDevice::NR_OF_BUTTONS> input;
 	std::vector<BEvents::Event*> eventQueue;

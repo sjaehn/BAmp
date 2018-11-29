@@ -1,29 +1,42 @@
+/* Button.cpp
+ * Copyright (C) 2018  Sven Jähnichen
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "Button.hpp"
 
 namespace BWidgets
 {
-Button::Button () : Button (0.0, 0.0, 50.0, 50.0, "button", 0.0) {}
+Button::Button () : Button (0.0, 0.0, BWIDGETS_DEFAULT_BUTTON_WIDTH, BWIDGETS_DEFAULT_BUTTON_HEIGHT, "button", 0.0) {}
 
-Button::Button (const double x, const double y, const double width, const double height, const std::string& name, const double defaultValue) :
-		ValueWidget (x, y, width, height, name, defaultValue)
+Button::Button (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue) :
+		ValueWidget (x, y, width, height, name, defaultValue),
+		bgColors (BWIDGETS_DEFAULT_BGCOLORS)
 {
 	setClickable (true);
 }
 
+Button::Button (const Button& that) : ValueWidget (that), bgColors (that.bgColors) {}
+
 Button:: ~Button () {}
 
-void Button::setButtonColors (const BColors::ColorSet& colors)
+Button& Button::operator= (const Button& that)
 {
-	buttonColors = colors;
-	update ();
-}
-
-BColors::ColorSet* Button::getButtonColors () {return &buttonColors;}
-
-void Button::update ()
-{
-	draw (0, 0, width_, height_);
-	if (isVisible ()) postRedisplay ();
+	bgColors = that.bgColors;
+	ValueWidget::operator= (that);
+	return *this;
 }
 
 void Button::applyTheme (BStyles::Theme& theme) {applyTheme (theme, name_);}
@@ -32,20 +45,30 @@ void Button::applyTheme (BStyles::Theme& theme, const std::string& name)
 {
 	Widget::applyTheme (theme, name);
 
-	void* bcPtr = theme.getStyle(name, "buttoncolors");
-	if (bcPtr)
+	void* bgPtr = theme.getStyle(name, BWIDGETS_KEYWORD_BGCOLORS);
+	if (bgPtr)
 	{
-		buttonColors = *((BColors::ColorSet*) bcPtr);
+		bgColors = *((BColors::ColorSet*) bgPtr);
 		update ();
 	}
 }
 
-void Button::onButtonPressed (BEvents::PointerEvent* event) {setValue (1.0);}
+void Button::onButtonPressed (BEvents::PointerEvent* event)
+{
+	setValue (1.0);
+	Widget::cbfunction[BEvents::EventType::BUTTON_PRESS_EVENT] (event);
+}
 
-void Button::onButtonReleased (BEvents::PointerEvent* event) {setValue (0.0);}
+void Button::onButtonReleased (BEvents::PointerEvent* event)
+{
+	setValue (0.0);
+	Widget::cbfunction[BEvents::EventType::BUTTON_RELEASE_EVENT] (event);
+}
 
 void Button::draw (const double x, const double y, const double width, const double height)
 {
+	if ((!widgetSurface) || (cairo_surface_status (widgetSurface) != CAIRO_STATUS_SUCCESS)) return;
+
 	if ((width_ >= 6) && (height_ >= 6))
 	{
 		// Draw super class widget elements first
@@ -54,68 +77,73 @@ void Button::draw (const double x, const double y, const double width, const dou
 		cairo_t* cr = cairo_create (widgetSurface);
 		if (cairo_status (cr) == CAIRO_STATUS_SUCCESS)
 		{
-			cairo_pattern_t* pat;
-
 			// Limit cairo-drawing area
 			cairo_rectangle (cr, x, y, width, height);
 			cairo_clip (cr);
 
-			BColors::Color bcNormal = *buttonColors.getColor (BColors::NORMAL);
-			BColors::Color bcActive = *buttonColors.getColor (BColors::ACTIVE);
-			BColors::Color bcInactive = *buttonColors.getColor (BColors::INACTIVE);
-			BColors::Color bcOFF = *buttonColors.getColor (BColors::OFF);
+			BColors::Color butColorLo = *bgColors.getColor (getState ()); butColorLo.applyBrightness (BWIDGETS_DEFAULT_NORMALLIGHTED);
+			BColors::Color butColorHi = *bgColors.getColor (getState ()); butColorHi.applyBrightness (BWIDGETS_DEFAULT_ILLUMINATED);
+			BColors::Color butColorMid = *bgColors.getColor (getState ()); butColorMid.applyBrightness ((BWIDGETS_DEFAULT_NORMALLIGHTED));
+			BColors::Color butColorSh = *bgColors.getColor (getState ()); butColorSh.applyBrightness (BWIDGETS_DEFAULT_SHADOWED);
 
-			pat = cairo_pattern_create_linear (0, 0 , width_, height_);
-			cairo_pattern_add_color_stop_rgba (pat, 0.0, bcActive.getRed (), bcActive.getGreen (), bcActive.getBlue (), bcActive.getAlpha ());
-			cairo_pattern_add_color_stop_rgba (pat, 1, bcNormal.getRed (), bcNormal.getGreen (), bcNormal.getBlue (), bcNormal.getAlpha ());
 
-			cairo_set_line_width (cr, 0.5);
+			double xb, yb, wb, hb;
+			double xf, yf, wf, hf;
+
+			cairo_set_line_width (cr, 0.0);
 
 			if (value)
 			{
-				cairo_rectangle (cr, 2.5, 2.5, width_ - 3, height_ - 3);
-				cairo_set_source (cr, pat);
-				cairo_fill (cr);
-
-				cairo_move_to (cr, 2.5, height_ - 0.5);
-				cairo_line_to (cr, 2.5, 2.5);
-				cairo_line_to (cr, width_-0.5, 2.5);
-				cairo_set_source_rgba (cr, bcInactive.getRed (), bcInactive.getGreen (), bcInactive.getGreen (), bcInactive.getAlpha ());
-				cairo_stroke (cr);
-
-				cairo_move_to (cr, width_ - 0.5, 2.5);
-				cairo_line_to (cr, width_ - 0.5, height_ - 0.5);
-				cairo_line_to (cr, 2.5 , height_ - 0.5);
-				cairo_set_source_rgba (cr, bcOFF.getRed (), bcOFF.getGreen (), bcOFF.getGreen (), bcOFF.getAlpha ());
-				cairo_stroke (cr);
-
+				xb = 0.5 + BWIDGETS_DEFAULT_BUTTON_DEPTH;
+				yb = 0.5 + BWIDGETS_DEFAULT_BUTTON_DEPTH;
+				hf = 0.0;
 			}
 			else
 			{
-				cairo_rectangle (cr, 2.5, 2.5, width_ - 3, height_ - 3);
-				cairo_set_source_rgba (cr, bcOFF.getRed (), bcOFF.getGreen (), bcOFF.getBlue (), bcOFF.getAlpha ());
-				cairo_fill_preserve (cr);
-				cairo_stroke (cr);
-
-				cairo_rectangle (cr, 0.5, 0.5, width_ - 3, height_ - 3);
-				cairo_set_source (cr, pat);
-				cairo_fill (cr);
-
-				cairo_move_to (cr, 0.5, height_ - 2.5);
-				cairo_line_to (cr, 0.5, 0.5);
-				cairo_line_to (cr, width_-2.5, 0.5);
-				cairo_set_source_rgba (cr, bcInactive.getRed (), bcInactive.getGreen (), bcInactive.getGreen (), bcInactive.getAlpha ());
-				cairo_stroke (cr);
-
-				cairo_move_to (cr, width_ - 2.5, 0.5);
-				cairo_line_to (cr, width_ - 2.5, height_ - 2.5);
-				cairo_line_to (cr, 0.5 , height_ - 2.5);
-				cairo_set_source_rgba (cr, bcOFF.getRed (), bcOFF.getGreen (), bcOFF.getGreen (), bcOFF.getAlpha ());
-				cairo_stroke (cr);
-
+				xb = 0.5;
+				yb = 0.5;
+				hf = BWIDGETS_DEFAULT_BUTTON_DEPTH;
 			}
 
-			cairo_pattern_destroy (pat);
+			wb = width_ - 1;
+			hb = height_ - 1 - BWIDGETS_DEFAULT_BUTTON_DEPTH;
+			xf = xb;
+			yf = yb + hb;
+			wf = wb;
+
+			// Button top
+			cairo_set_source_rgba (cr, butColorMid.getRed (), butColorMid.getGreen (), butColorMid.getBlue (), butColorMid.getAlpha ());
+			cairo_rectangle (cr, xb, yb, wb, hb);
+			cairo_fill (cr);
+
+
+			// Button front
+			cairo_move_to (cr, xb, yf);
+			cairo_line_to (cr, xb + wb, yf);
+			cairo_line_to (cr, xb + wb, yb);
+			cairo_line_to (cr, xb + wb + hf, yb + hf);
+			cairo_line_to (cr, xb + wb + hf, yf + hf);
+			cairo_line_to (cr, xb + hf, yf + hf);
+			cairo_close_path (cr);
+			cairo_set_source_rgba (cr, butColorHi.getRed (), butColorHi.getGreen (), butColorHi.getBlue (), butColorHi.getAlpha ());
+			cairo_fill (cr);
+
+			// Button edges
+			cairo_set_source_rgba (cr, butColorSh.getRed (), butColorSh.getGreen (), butColorSh.getBlue (), butColorSh.getAlpha ());
+			cairo_set_line_width (cr, 0.2 * BWIDGETS_DEFAULT_BUTTON_DEPTH);
+			cairo_move_to (cr, xb, yb + hb);
+			cairo_line_to (cr, xb, yb);
+			cairo_line_to (cr, xb + wb, yb);
+			cairo_stroke (cr);
+
+			cairo_set_source_rgba (cr, butColorHi.getRed (), butColorHi.getGreen (), butColorHi.getBlue (), butColorHi.getAlpha ());
+			cairo_move_to (cr, xb, yb + hb);
+			cairo_line_to (cr, xb + wb, yb + hb);
+			cairo_line_to (cr, xb + wb, yb);
+			cairo_move_to (cr, xb + wb, yf);
+			cairo_line_to (cr, xb + wb + hf, yf + hf);
+			cairo_stroke (cr);
+
 		}
 		cairo_destroy (cr);
 	}

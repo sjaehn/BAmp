@@ -1,9 +1,10 @@
-/* Copyright (C) 2018 by Sven Jähnichen
+/* BEvents.cpp
+ * Copyright (C) 2018  Sven Jähnichen
  *
- * This program is free software; you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3, or (at your option)
- * any later version.
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -11,8 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "BEvents.hpp"
@@ -37,9 +37,9 @@ EventType Event::getEventType () const {return eventType;}
  * Class BEvents::ExposeEvent
  *****************************************************************************/
 
-ExposeEvent::ExposeEvent () : ExposeEvent ((void*) nullptr, 0, 0, 0, 0) {}
-ExposeEvent::ExposeEvent (void* widget, const double x, const double y, const double width, const double height) :
-		Event (widget, EXPOSE_EVENT), exposeX0 (x), exposeY0 (y), exposeHeight (height), exposeWidth (width) {}
+ExposeEvent::ExposeEvent () : ExposeEvent ((void*) nullptr, NO_EVENT, 0, 0, 0, 0) {}
+ExposeEvent::ExposeEvent (void* widget, const EventType type, const double x, const double y, const double width, const double height) :
+		Event (widget, type), exposeX0 (x), exposeY0 (y), exposeHeight (height), exposeWidth (width) {}
 void ExposeEvent::setX (const double x) {exposeX0 = x;}
 double ExposeEvent::getX () const {return exposeX0;}
 void ExposeEvent::setY (const double y) {exposeY0 = y;}

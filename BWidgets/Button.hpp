@@ -1,7 +1,29 @@
+/* Button.hpp
+ * Copyright (C) 2018  Sven Jähnichen
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #ifndef BUTTON_HPP_
 #define BUTTON_HPP_
 
 #include "ValueWidget.hpp"
+
+#define BWIDGETS_DEFAULT_BUTTON_WIDTH 50.0
+#define BWIDGETS_DEFAULT_BUTTON_HEIGHT 20.0
+#define BWIDGETS_KEYWORD_BUTTONCOLORS "buttoncolors"
+#define BWIDGETS_DEFAULT_BUTTON_DEPTH 1.0
 
 namespace BWidgets
 {
@@ -16,28 +38,25 @@ class Button : public ValueWidget
 {
 public:
 	Button ();
-	Button (const double x, const double y, const double width, const double height, const std::string& name, const double defaultValue);
+	Button (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue = 0.0);
+
+	/**
+	 * Creates a new (orphan) button and copies the button properties from a
+	 * source button. This method doesn't copy any parent or child widgets.
+	 * @param that Source button
+	 */
+	Button (const Button& that);
+
 	~Button ();
 
 	/**
-	 * Sets the colors of the button
-	 * @param colors BColors::ColorSet
+	 * Assignment. Copies the widget properties from a source button and keeps
+	 * its name and its position within the widget tree. Emits a
+	 * BEvents::ExposeEvent if the widget is visible.
+	 * @param that Source button
 	 */
-	void setButtonColors (const BColors::ColorSet& colors);
+	Button& operator= (const Button& that);
 
-	/**
-	 * Gets the colors of the button
-	 * @return BColors::ColorSet
-	 */
-	BColors::ColorSet* getButtonColors ();
-
-	/**
-	 * Calls a redraw of the widget and calls postRedisplay () if the the
-	 * Widget is visible.
-	 * This method should be called if the widgets properties are indirectly
-	 * changed.
-	 */
-	virtual void update () override;
 
 	/**
 	 * Scans theme for widget properties and applies these properties.
@@ -65,7 +84,7 @@ public:
 protected:
 	virtual void draw (const double x, const double y, const double width, const double height) override;
 
-	BColors::ColorSet buttonColors;
+	BColors::ColorSet bgColors;
 };
 
 }
