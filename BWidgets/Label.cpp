@@ -61,8 +61,11 @@ std::string Label::getText () const {return labelText;}
 
 void Label::setTextColors (const BColors::ColorSet& colorset)
 {
-	labelColors = colorset;
-	update ();
+	if (labelColors != colorset)
+	{
+		labelColors = colorset;
+		update ();
+	}
 }
 BColors::ColorSet* Label::getTextColors () {return &labelColors;}
 
@@ -72,6 +75,16 @@ void Label::setFont (const BStyles::Font& font)
 	update ();
 }
 BStyles::Font* Label::getFont () {return &labelFont;}
+
+double Label::getTextWidth (std::string& text)
+{
+	double textwidth = 0.0;
+	cairo_t* cr = cairo_create (widgetSurface);
+	cairo_text_extents_t ext = labelFont.getTextExtents(cr, text.c_str ());
+	textwidth = ext.width;
+	cairo_destroy (cr);
+	return textwidth;
+}
 
 void Label::applyTheme (BStyles::Theme& theme) {applyTheme (theme, name_);}
 
@@ -114,7 +127,6 @@ void Label::draw (const double x, const double y, const double width, const doub
 
 		cairo_text_extents_t ext = labelFont.getTextExtents(cr, labelText);
 		BColors::Color lc = *labelColors.getColor (getState ());
-		cairo_set_source_rgba (cr, lc.getRed (), lc.getGreen (), lc.getBlue (), lc.getAlpha ());
 		cairo_select_font_face (cr, labelFont.getFontFamily ().c_str (), labelFont.getFontSlant (), labelFont.getFontWeight ());
 		cairo_set_font_size (cr, labelFont.getFontSize ());
 
@@ -142,6 +154,7 @@ void Label::draw (const double x, const double y, const double width, const doub
 		default:							y0 = 0;
 		}
 
+		cairo_set_source_rgba (cr, lc.getRed (), lc.getGreen (), lc.getBlue (), lc.getAlpha ());
 		cairo_move_to (cr, xoff + x0, yoff + y0);
 		cairo_show_text (cr, labelText.c_str ());
 	}

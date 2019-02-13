@@ -1,7 +1,7 @@
 BUNDLE = BAmp.lv2
 INSTALL_DIR = /usr/lib/lv2
 CC = g++
-TK = BWidgets/DrawingSurface.cpp BWidgets/DisplayDial.cpp BWidgets/Dial.cpp BWidgets/Knob.cpp BWidgets/RangeWidget.cpp BWidgets/ValueWidget.cpp BWidgets/Label.cpp BWidgets/Widget.cpp BWidgets/BStyles.cpp BWidgets/BColors.cpp BWidgets/BEvents.cpp BWidgets/BValues.cpp BWidgets/cairoplus.c BWidgets/pugl/pugl_x11.c
+TK = BWidgets/DrawingSurface.cpp BWidgets/DisplayDial.cpp BWidgets/Dial.cpp BWidgets/Knob.cpp BWidgets/RangeWidget.cpp BWidgets/ValueWidget.cpp BWidgets/Label.cpp BWidgets/FocusWidget.cpp BWidgets/Window.cpp BWidgets/Widget.cpp BWidgets/BStyles.cpp BWidgets/BColors.cpp BWidgets/BEvents.cpp BWidgets/BValues.cpp BWidgets/cairoplus.c BWidgets/pugl/pugl_x11.c
 
 $(BUNDLE): clean BAmp.so BAmp_GUI.so
 	cp manifest.ttl BAmp.ttl $(BUNDLE)

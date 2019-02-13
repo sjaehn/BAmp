@@ -21,6 +21,7 @@ BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
 		write_function (NULL), controller (NULL), BWidgets::Window (400, 400, "BAmp", parentWindow),
 		dial (160, 160, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
 {
+	dial.setHardChangeable (false);
 	add (dial);
 }
 
