@@ -11,6 +11,7 @@ class BAmp_GUI : public BWidgets::Window
 public:
 	BAmp_GUI (PuglNativeWindow parentWindow);
 	void portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer);
+	virtual void onConfigure (BEvents::ExposeEvent* event) override;
 
 	LV2UI_Write_Function write_function;
 	LV2UI_Controller controller;
@@ -18,8 +19,8 @@ public:
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
-		write_function (NULL), controller (NULL), BWidgets::Window (400, 400, "BAmp", parentWindow),
-		dial (160, 160, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
+		write_function (NULL), controller (NULL), BWidgets::Window (100, 100, "BAmp", parentWindow, true),
+		dial (10, 10, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
 {
 	dial.setHardChangeable (false);
 	add (dial);
@@ -32,6 +33,15 @@ void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t fo
 		float* pval = (float*)buffer;
 		dial.setValue (*pval);
 	}
+}
+
+void BAmp_GUI::onConfigure (BEvents::ExposeEvent* event)
+{
+	Window::onConfigure (event);
+
+	double sz = (width_ > height_ ? height_ : width_) / 100;
+	dial.moveTo (10 * sz, 10 * sz);
+	dial.resize (80 * sz, 80 * sz);
 }
 
 LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin_uri, const char *bundle_path,
@@ -60,7 +70,7 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 	{
 		ui->controller = controller;
 		ui->write_function = write_function;
-		if (resize) resize->ui_resize(resize->handle, 400, 400 );
+		if (resize) resize->ui_resize(resize->handle, 100, 100 );
 
 		PuglNativeWindow nativeWindow = puglGetNativeWindow (ui->getPuglView ());
 		*widget = (LV2UI_Widget) nativeWindow;
