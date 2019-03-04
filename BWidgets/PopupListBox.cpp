@@ -51,6 +51,8 @@ PopupListBox::PopupListBox (const double x, const double y, const double width, 
 		listBoxXOffset (listXOffset), listBoxYOffset (listYOffset), listBoxWidth (listWidth), listBoxHeight (listHeight)
 
 {
+	setScrollable (true);
+
 	itemLabel.setText (listBox.getItem (preselection).string);
 
 	downButton.setCallbackFunction (BEvents::EventType::BUTTON_PRESS_EVENT, PopupListBox::handleDownButtonClicked);
@@ -108,6 +110,21 @@ void PopupListBox::setValue (const double val)
 		setItemText (listBox.getItem (val).string);
 	}
 }
+
+void PopupListBox::moveListBox (const double xOffset, const double yOffset)
+{
+	listBoxXOffset = xOffset;
+	listBoxYOffset = yOffset;
+	if (listBox.isVisible()) update ();
+}
+
+void PopupListBox::resizeListBox (const double width, const double height)
+{
+	listBoxWidth = width;
+	listBoxHeight = height;
+	if (listBox.isVisible()) update ();
+}
+
 void PopupListBox::update ()
 {
 	// Update super widget first
@@ -132,8 +149,8 @@ void PopupListBox::update ()
 		main_->add (listBox);
 	}
 	if ((!main_) && (listBox.getMainWindow())) listBox.getMainWindow()->release (&listBox);
-	if ((listBoxXOffset == 0.0) && (listBoxYOffset == 0.0)) listBox.moveTo (getOriginX () + x0, getOriginY () + y0 + h);
-	else listBox.moveTo (getOriginX () + x0 + listBoxXOffset, getOriginY () + y0 + listBoxYOffset);
+	if ((listBoxXOffset == 0.0) && (listBoxYOffset == 0.0)) listBox.moveTo (getOriginX (), getOriginY () + getHeight ());
+	else listBox.moveTo (getOriginX () + listBoxXOffset, getOriginY () + listBoxYOffset);
 	listBox.setWidth (listBoxWidth);
 	listBox.setHeight (listBoxHeight);
 }
@@ -149,6 +166,13 @@ void PopupListBox::onButtonPressed (BEvents::PointerEvent* event)
 	}
 
 	//Widget::cbfunction[BEvents::EventType::BUTTON_PRESS_EVENT] (event);
+}
+
+void PopupListBox::onWheelScrolled (BEvents::WheelEvent* event)
+{
+	std::vector<BItems::Item>* itemList = listBox.getItemList ();
+	double newNr = LIMIT (listBox.getActive () - event->getDeltaY (), 1, itemList->size ());
+	setValue ((*itemList)[newNr - 1].value);
 }
 
 void PopupListBox::handleDownButtonClicked (BEvents::Event* event)
