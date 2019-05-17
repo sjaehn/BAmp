@@ -12,10 +12,12 @@ public:
 	BAmp_GUI (PuglNativeWindow parentWindow);
 	void portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer);
 	virtual void onConfigure (BEvents::ExposeEvent* event) override;
+	static void valueChangedCallback (BEvents::Event* event);
 
 	LV2UI_Write_Function write_function;
 	LV2UI_Controller controller;
 	BWidgets::DisplayDial dial;
+
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
@@ -24,6 +26,7 @@ BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
 {
 	dial.setHardChangeable (false);
 	add (dial);
+	dial.setCallbackFunction (BEvents::EventType::VALUE_CHANGED_EVENT, BAmp_GUI::valueChangedCallback);
 }
 
 void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)
@@ -42,6 +45,25 @@ void BAmp_GUI::onConfigure (BEvents::ExposeEvent* event)
 	double sz = (width_ > height_ ? height_ : width_) / 100;
 	dial.moveTo (10 * sz, 10 * sz);
 	dial.resize (80 * sz, 80 * sz);
+}
+
+void BAmp_GUI::valueChangedCallback (BEvents::Event* event)
+{
+	if ((event) && (event->getWidget ()))
+	{
+		BWidgets::ValueWidget* widget = (BWidgets::ValueWidget*) event->getWidget ();
+		float value = widget->getValue ();
+
+		if (widget->getMainWindow ())
+		{
+			BAmp_GUI* ui = (BAmp_GUI*) widget->getMainWindow ();
+
+			if (widget == (BWidgets::ValueWidget*) &ui->dial)
+			{
+				ui->write_function(ui->controller, AMP_GAIN, sizeof(float), 0, &value);
+			}
+		}
+	}
 }
 
 LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin_uri, const char *bundle_path,
@@ -124,4 +146,3 @@ LV2_SYMBOL_EXPORT const LV2UI_Descriptor *lv2ui_descriptor(uint32_t index)
 	default:return NULL;
     }
 }
-
