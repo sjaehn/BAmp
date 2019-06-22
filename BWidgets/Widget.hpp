@@ -312,6 +312,14 @@ public:
 	bool hasChildren () const;
 
 	/**
+	 * Tests whether child is on of children of the widget.
+	 * @param child		Pointer to the child widget.
+	 * @return 				TRUE if child is one of the children ofthe widget, otherwise
+	 *								FALSE.
+	 */
+	bool isChild (Widget* child);
+
+	/**
 	 * Gets the widgets children vector. The vector contains all children of
 	 * the widgets from background to foreground.
 	 * @return Children vector.
@@ -413,6 +421,26 @@ public:
 	bool isFocusable () const;
 
 	/**
+	 * Defines whether events emitted by this widget MAY be merged to precursor
+	 * events of the same type (and (optional) the same widget and (optional)
+	 * the same position, depending on the event type) or not.
+	 * This flag is ignored if merging doesn't make sense (e.g., in case of
+	 * BEvents::CLOSE_EVENT).
+	 * @param eventType	BEvents::EventType for which the status is defined
+	 * 		  status 	TRUE if the the events emitted by this widget and
+	 * 					specified by eventType may be merged, otherwise FALSE
+	 */
+	void setMergeable (const BEvents::EventType eventType, const bool status);
+
+	/**
+	 * Gets whether events emitted by this widget MAY be merged to precursor
+	 * events of the same type or not.
+	 * @return	TRUE if the the events emitted by this widget and specified by
+	 * 			eventType may be merged, otherwise FALSE
+	 */
+	bool isMergeable (const BEvents::EventType eventType) const;
+
+	/**
 	 * Calls a redraw of the widget and calls postRedisplay () if the the
 	 * Widget is visible.
 	 * This method should be called if the widgets properties are indirectly
@@ -478,7 +506,22 @@ public:
 
 	/**
 	 * Predefined empty method to handle a
+	 * BEvents::EventType::KEY_PRESS_EVENT.
+	 * @param event Key event
+	 */
+	virtual void onKeyPressed (BEvents::KeyEvent* event);
+
+	/**
+	 * Predefined empty method to handle a
+	 * BEvents::EventType::KEY_RELEASE_EVENT.
+	 * @param event Key event
+	 */
+	virtual void onKeyReleased (BEvents::KeyEvent* event);
+
+	/**
+	 * Predefined empty method to handle a
 	 * BEvents::EventType::BUTTON_PRESS_EVENT.
+	 * @param event Pointer event
 	 */
 	virtual void onButtonPressed (BEvents::PointerEvent* event);
 
@@ -587,6 +630,7 @@ protected:
 	bool draggable;
 	bool scrollable;
 	bool focusable;
+	std::array<bool, BEvents::EventType::NO_EVENT> mergeable;
 	Window* main_;
 	Widget* parent_;
 	std::vector <Widget*> children_;

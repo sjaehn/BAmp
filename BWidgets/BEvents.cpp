@@ -23,9 +23,9 @@ namespace BEvents
  * Class BEvents::Event
  *****************************************************************************/
 
-Event::Event () : Event ((void*) nullptr, NO_EVENT) {}
-Event::Event (void* widget, const EventType type) : eventWidget (widget), eventType (type) {}
-void* Event::getWidget () {return eventWidget;}
+Event::Event () : Event (nullptr, NO_EVENT) {}
+Event::Event (BWidgets::Widget* widget, const EventType type) : eventWidget (widget), eventType (type) {}
+BWidgets::Widget* Event::getWidget () {return eventWidget;}
 EventType Event::getEventType () const {return eventType;}
 
 /*
@@ -37,8 +37,8 @@ EventType Event::getEventType () const {return eventType;}
  * Class BEvents::ExposeEvent
  *****************************************************************************/
 
-ExposeEvent::ExposeEvent () : ExposeEvent ((void*) nullptr, NO_EVENT, 0, 0, 0, 0) {}
-ExposeEvent::ExposeEvent (void* widget, const EventType type, const double x, const double y, const double width, const double height) :
+ExposeEvent::ExposeEvent () : ExposeEvent (nullptr, NO_EVENT, 0, 0, 0, 0) {}
+ExposeEvent::ExposeEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const double width, const double height) :
 		Event (widget, type), exposeX0 (x), exposeY0 (y), exposeHeight (height), exposeWidth (width) {}
 void ExposeEvent::setX (const double x) {exposeX0 = x;}
 double ExposeEvent::getX () const {return exposeX0;}
@@ -53,13 +53,61 @@ double ExposeEvent::getHeight () const {return exposeHeight;}
  * End of class BEvents::ExposeEvent
  *****************************************************************************/
 
+ /*****************************************************************************
+  * Class BEvents::KeyEvent
+  *****************************************************************************/
+
+ KeyEvent::KeyEvent () : KeyEvent (nullptr, NO_EVENT, 0, 0, 0) {}
+ KeyEvent::KeyEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const uint32_t unicode) :
+		Event (widget, type), xpos (x), ypos (y), key (unicode) {}
+ void KeyEvent::setX (const double x) {xpos = x;}
+ double KeyEvent::getX () const {return xpos;}
+ void KeyEvent::setY (const double y) {ypos = y;}
+ double KeyEvent::getY () const {return ypos;}
+ uint32_t KeyEvent::getKey () const {return key;}
+
+ std::string KeyEvent::getKeyUTF8 () const
+ {
+	 // Invalide unicode
+	 if (key > 0x0010ffff) return "";
+
+	 std::string s = "";
+
+	 // 7 bit ASCII: utf-8 = unicode
+	 if (key < 0x80) s += char (key);
+
+	 // 2/3/4(/5/6) byte utf-8
+	 else
+	 {
+		 uint32_t steps = 2;
+		 for (uint32_t i = 3; i <= 6; ++i)
+		 {
+			 if (key >= (uint32_t (2) << (5 * (i - 1)))) steps = i;
+		 }
+
+		 char c = char ((0xFF & (0xFF << (8 - steps))) | (key >> (6 * (steps - 1))));
+		 s += c;
+
+		 for (uint32_t i = steps - 1; i >= 1; --i)
+		 {
+			 char c = char (0x80 | ((key >> (6 * (i - 1))) & 0x3f));
+			 s += c;
+		 }
+	 }
+
+	 return s;
+ }
+
+ /*
+  * End of class BEvents::KeyEvent
+  *****************************************************************************/
 
 /*****************************************************************************
  * Class BEvents::PointerEvent
  *****************************************************************************/
 
-PointerEvent::PointerEvent () : PointerEvent ((void*) nullptr, NO_EVENT, 0, 0, 0, 0, 0, 0, NO_BUTTON) {}
-PointerEvent::PointerEvent (void* widget, const EventType type, const double x, const double y, const double xOrigin, const double yOrigin,
+PointerEvent::PointerEvent () : PointerEvent (nullptr, NO_EVENT, 0, 0, 0, 0, 0, 0, NO_BUTTON) {}
+PointerEvent::PointerEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const double xOrigin, const double yOrigin,
 							const double deltaX, const double deltaY, const InputDevice button) :
 		Event (widget, type), xpos (x), ypos (y), xOrigin (xOrigin), yOrigin (yOrigin), deltaX (deltaX), deltaY (deltaY), buttonNr (button) {}
 void PointerEvent::setX (const double x) {xpos = x;}
@@ -86,8 +134,8 @@ InputDevice PointerEvent::getButton () const {return buttonNr;}
  * Class BEvents::WheelEvent
  *****************************************************************************/
 
-WheelEvent::WheelEvent () : WheelEvent ((void*) nullptr, NO_EVENT, 0, 0, 0, 0) {}
-WheelEvent::WheelEvent (void* widget, const EventType type, const double x, const double y, const double deltaX, const double deltaY) :
+WheelEvent::WheelEvent () : WheelEvent (nullptr, NO_EVENT, 0, 0, 0, 0) {}
+WheelEvent::WheelEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const double deltaX, const double deltaY) :
 		Event (widget, type), xpos (x), ypos (y),deltaX (deltaX), deltaY (deltaY) {}
 void WheelEvent::setX (const double x) {xpos = x;}
 double WheelEvent::getX () const {return xpos;}
@@ -107,8 +155,8 @@ double WheelEvent::getDeltaY () const {return deltaY;}
  * Class BEvents::ValueChangedEvent
  *****************************************************************************/
 
-ValueChangedEvent::ValueChangedEvent () : ValueChangedEvent ((void*) nullptr, 0.0) {}
-ValueChangedEvent::ValueChangedEvent (void* widget, const double val) : Event (widget, VALUE_CHANGED_EVENT), value (val) {}
+ValueChangedEvent::ValueChangedEvent () : ValueChangedEvent (nullptr, 0.0) {}
+ValueChangedEvent::ValueChangedEvent (BWidgets::Widget* widget, const double val) : Event (widget, VALUE_CHANGED_EVENT), value (val) {}
 void ValueChangedEvent::setValue (const double val) {value = val;}
 double ValueChangedEvent::getValue () const {return value;}
 
@@ -120,8 +168,8 @@ double ValueChangedEvent::getValue () const {return value;}
  * Class BEvents::WheelEvent
  *****************************************************************************/
 
-FocusEvent::FocusEvent () : FocusEvent ((void*) nullptr, NO_EVENT, 0, 0) {}
-FocusEvent::FocusEvent (void* widget, const EventType type, const double x, const double y) : Event (widget, type), xpos (x), ypos (y) {}
+FocusEvent::FocusEvent () : FocusEvent (nullptr, NO_EVENT, 0, 0) {}
+FocusEvent::FocusEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y) : Event (widget, type), xpos (x), ypos (y) {}
 void FocusEvent::setX (const double x) {xpos = x;}
 double FocusEvent::getX () const {return xpos;}
 void FocusEvent::setY (const double y) {ypos = y;}

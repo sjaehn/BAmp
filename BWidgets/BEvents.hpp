@@ -18,7 +18,14 @@
 #ifndef BEVENTS_HPP_
 #define BEVENTS_HPP_
 
-#include <stdint.h>
+#include <cstdint>
+#include <string>
+
+
+namespace BWidgets
+{
+class Widget;	// Forward declaration
+}
 
 namespace BEvents
 {
@@ -39,10 +46,12 @@ typedef enum{
 /**
  * Enumeration of event types
  */
-typedef enum {
+enum EventType {
 	CONFIGURE_EVENT,
 	EXPOSE_EVENT,
 	CLOSE_EVENT,
+	KEY_PRESS_EVENT,
+	KEY_RELEASE_EVENT,
 	BUTTON_PRESS_EVENT,
 	BUTTON_RELEASE_EVENT,
 	BUTTON_CLICK_EVENT,
@@ -53,7 +62,35 @@ typedef enum {
 	FOCUS_IN_EVENT,
 	FOCUS_OUT_EVENT,
 	NO_EVENT
-} EventType;
+};
+
+enum KeyCode {
+	KEY_F1 = 0xE000,
+	KEY_F2,
+	KEY_F3,
+	KEY_F4,
+	KEY_F5,
+	KEY_F6,
+	KEY_F7,
+	KEY_F8,
+	KEY_F9,
+	KEY_F10,
+	KEY_F11,
+	KEY_F12,
+	KEY_LEFT,
+	KEY_UP,
+	KEY_RIGHT,
+	KEY_DOWN,
+	KEY_PAGE_UP,
+	KEY_PAGE_DOWN,
+	KEY_HOME,
+	KEY_END,
+	KEY_INSERT,
+	KEY_SHIFT,
+	KEY_CTRL,
+	KEY_ALT,
+	KEY_SUPER
+};
 
 /**
  * Class BEvents::Event
@@ -66,13 +103,13 @@ class Event
 {
 public:
 	Event ();
-	Event (void* widget, const EventType type);
+	Event (BWidgets::Widget* widget, const EventType type);
 
 	/**
 	 * Gets a pointer to the widget which caused the event.
 	 * @return Pointer to the widget
 	 */
-	void* getWidget ();
+	BWidgets::Widget* getWidget ();
 
 	/**
 	 * Gets the type of the event
@@ -81,7 +118,7 @@ public:
 	EventType getEventType () const;
 
 protected:
-	void* eventWidget;
+	BWidgets::Widget* eventWidget;
 	EventType eventType;
 };
 /*
@@ -102,7 +139,7 @@ class ExposeEvent : public Event
 {
 public:
 	ExposeEvent ();
-	ExposeEvent (void* widget, const EventType type, const double x, const double y, const double width, const double heigth);
+	ExposeEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const double width, const double heigth);
 
 	/**
 	 * Redefines the x coordinate of the output region for the expose event
@@ -162,6 +199,57 @@ protected:
  * End of class BEvents::ExposeEvent
  *****************************************************************************/
 
+/**
+ * Class BEvents::KeyEvent
+ *
+ * Key events are emitted by the system if a key is pressed or released.
+ */
+ class KeyEvent : public Event
+ {
+ public:
+	 KeyEvent ();
+	 KeyEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const uint32_t unicode);
+
+	 /**
+	  * Redefines the x coordinate of the key event
+	  * @param x X coordinate relative to the widgets origin
+	  */
+	 void setX (const double x);
+
+	 /**
+	  * Gets the x coordinate of the key event
+	  * @return X coordinate relative to the widgets origin
+	  */
+	 double getX () const;
+
+	 /**
+	  * Redefines the y coordinate of the key event
+	  * @param y y coordinate relative to the widgets origin
+	  */
+	 void setY (const double y);
+
+	 /**
+	  * Gets the y coordinate of the key event
+	  * @return Y coordinate relative to the widgets origin
+	  */
+	 double getY () const;
+
+	 /**
+	  * Gets the key that caused of the key event
+	  * @return Unicode of the key
+	  */
+	 uint32_t getKey () const;
+
+	 std::string getKeyUTF8 () const;
+
+protected:
+	double xpos;
+	double ypos;
+	uint32_t key;
+ };
+ /*
+  * End of class BEvents::KeyEvent
+  *****************************************************************************/
 
 /**
  * Class BEvents::PointerEvent
@@ -177,7 +265,7 @@ class PointerEvent : public Event
 {
 public:
 	PointerEvent ();
-	PointerEvent (void* widget, const EventType type, const double x, const double y, const double xOrigin, const double yOrigin,
+	PointerEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const double xOrigin, const double yOrigin,
 				  const double deltaX, const double deltaY, const InputDevice button);
 
 	/**
@@ -297,7 +385,7 @@ class WheelEvent : public Event
 {
 public:
 	WheelEvent ();
-	WheelEvent (void* widget, const EventType type, const double x, const double y, const double deltaX, const double deltaY);
+	WheelEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const double deltaX, const double deltaY);
 
 	/**
 	 * Redefines the pointers x coordinate
@@ -372,7 +460,7 @@ class ValueChangedEvent : public Event
 {
 public:
 	ValueChangedEvent ();
-	ValueChangedEvent (void* widget, const double val);
+	ValueChangedEvent (BWidgets::Widget* widget, const double val);
 
 	/**
 	 * Redefines the value exposed by the event. This method doesn't change the
@@ -404,7 +492,7 @@ class FocusEvent : public Event
 {
 public:
 	FocusEvent ();
-	FocusEvent (void* widget, const EventType type, const double x, const double y);
+	FocusEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y);
 
 	/**
 	 * Redefines the pointers x coordinate

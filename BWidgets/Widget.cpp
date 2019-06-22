@@ -33,6 +33,11 @@ Widget::Widget(const double x, const double y, const double width, const double 
 		main_ (nullptr), parent_ (nullptr), children_ (), border_ (BWIDGETS_DEFAULT_BORDER), background_ (BWIDGETS_DEFAULT_BACKGROUND),
 		name_ (name), widgetState (BWIDGETS_DEFAULT_STATE)
 {
+	mergeable.fill (false);
+	mergeable[BEvents::EXPOSE_EVENT] = true;
+	mergeable[BEvents::POINTER_MOTION_EVENT] = true;
+	mergeable[BEvents::POINTER_DRAG_EVENT] = true;
+	mergeable[BEvents::WHEEL_SCROLL_EVENT] = true;
 	cbfunction.fill (Widget::defaultCallback);
 	cbfunction[BEvents::EventType::POINTER_DRAG_EVENT] = Widget::dragAndDropCallback;
 	cbfunction[BEvents::EventType::FOCUS_IN_EVENT] = Widget::focusInCallback;
@@ -44,7 +49,7 @@ Widget::Widget(const double x, const double y, const double width, const double 
 Widget::Widget (const Widget& that) :
 		extensionData (that.extensionData), x_ (that.x_), y_ (that.y_), width_ (that.width_), height_ (that.height_),
 		visible (that.visible), clickable (that.clickable), draggable (that.draggable), scrollable (that.scrollable),
-		focusable (that.focusable), focusWidget (nullptr),
+		focusable (that.focusable), focusWidget (nullptr), mergeable (that.mergeable),
 		main_ (nullptr), parent_ (nullptr), children_ (), border_ (that.border_), background_ (that.background_), name_ (that.name_),
 		cbfunction (that.cbfunction), widgetState (that.widgetState)
 {
@@ -54,10 +59,11 @@ Widget::Widget (const Widget& that) :
 
 Widget::~Widget()
 {
-	// Release from parent (and main) if still linked
-	if (parent_) parent_->release (this);
+	// Hide widget first (prevents filling the event stack with superfluous expose
+	// events from released child widgets)
+	hide ();
 
-	//Release children
+	// Release children
 	while (!children_.empty ())
 	{
 		Widget* w = children_.back ();
@@ -66,6 +72,9 @@ Widget::~Widget()
 		// Hard kick out if release failed
 		if (w == children_.back ()) children_.pop_back ();
 	}
+
+	// Release from parent (and main) if still linked
+	if (parent_) parent_->release (this);
 
 	cairo_surface_destroy (widgetSurface);
 }
@@ -83,6 +92,7 @@ Widget& Widget::operator= (const Widget& that)
 	scrollable = that.scrollable;
 	focusable = that.focusable;
 	focusWidget = nullptr;
+	mergeable = that.mergeable;
 	border_ = that.border_;
 	background_ = that.background_;
 	cbfunction = that.cbfunction;
@@ -166,6 +176,8 @@ void Widget::release (Widget* child)
 				}
 			}
 
+			child->main_->purgeEventQueue (child);
+			child->main_->removeKeyGrab (child);
 			child->main_ = nullptr;
 		}
 
@@ -183,6 +195,8 @@ void Widget::release (Widget* child)
 					}
 				}
 
+				w->main_->purgeEventQueue (w);
+				w->main_->removeKeyGrab (w);
 				w->main_ = nullptr;
 			}
 		}
@@ -346,7 +360,11 @@ void Widget::resize (const double width, const double height)
 
 double Widget::getHeight () const {return height_;}
 
-void Widget::setState (const BColors::State state) {widgetState = state;}
+void Widget::setState (const BColors::State state)
+{
+	widgetState = state;
+	update ();
+}
 
 BColors::State Widget::getState () const {return widgetState;}
 
@@ -371,6 +389,17 @@ Window* Widget::getMainWindow () const {return main_;}
 Widget* Widget::getParent () const {return parent_;}
 
 bool Widget::hasChildren () const {return (children_.size () > 0 ? true : false);}
+
+bool Widget::isChild (Widget* child)
+{
+	for (Widget* w : children_)
+	{
+		if (w == child) return true;
+		if ((!w->children_.empty()) && w->isChild (child)) return true;
+	}
+
+	return false;
+}
 
 std::vector<Widget*> Widget::getChildren () const {return children_;}
 
@@ -413,6 +442,10 @@ bool Widget::isScrollable () const {return scrollable;}
 void Widget::setFocusable (const bool status) {focusable = status;}
 
 bool Widget::isFocusable () const {return focusable;}
+
+void Widget::setMergeable (const BEvents::EventType eventType, const bool status) {mergeable[eventType] = status;}
+
+bool Widget::isMergeable (const BEvents::EventType eventType) const {return mergeable[eventType];}
 
 void Widget::update ()
 {
@@ -472,6 +505,8 @@ void Widget::applyTheme (BStyles::Theme& theme, const std::string& name)
 void Widget::onConfigure (BEvents::ExposeEvent* event) {} // Empty, only Windows handle configure events
 void Widget::onExpose (BEvents::ExposeEvent* event) {} // Empty, only Windows handle expose events
 void Widget::onClose () {} // Empty, only Windows handle close events
+void Widget::onKeyPressed (BEvents::KeyEvent* event) {cbfunction[BEvents::EventType::KEY_PRESS_EVENT] (event);}
+void Widget::onKeyReleased (BEvents::KeyEvent* event) {cbfunction[BEvents::EventType::KEY_RELEASE_EVENT] (event);}
 void Widget::onButtonPressed (BEvents::PointerEvent* event) {cbfunction[BEvents::EventType::BUTTON_PRESS_EVENT] (event);}
 void Widget::onButtonReleased (BEvents::PointerEvent* event) {cbfunction[BEvents::EventType::BUTTON_RELEASE_EVENT] (event);}
 void Widget::onButtonClicked (BEvents::PointerEvent* event) {cbfunction[BEvents::EventType::BUTTON_CLICK_EVENT] (event);}
@@ -488,7 +523,7 @@ void Widget::dragAndDropCallback (BEvents::Event* event)
 {
 	if (event && event->getWidget())
 	{
-		Widget* w = (Widget*) (event->getWidget());
+		Widget* w = event->getWidget();
 		BEvents::PointerEvent* pev = (BEvents::PointerEvent*) event;
 
 		w->moveTo (w->x_ + pev->getDeltaX (), w->y_ + pev->getDeltaY ());
@@ -499,7 +534,7 @@ void Widget::focusInCallback (BEvents::Event* event)
 {
 	if (event && event->getWidget())
 	{
-		Widget* w = (Widget*) (event->getWidget());
+		Widget* w = event->getWidget();
 		BEvents::FocusEvent* focusEvent = (BEvents::FocusEvent*) event;
 		if (w->getMainWindow() && w->getFocusWidget())
 		{
@@ -520,7 +555,7 @@ void Widget::focusOutCallback (BEvents::Event* event)
 {
 	if (event && event->getWidget())
 	{
-		Widget* w = (Widget*) (event->getWidget());
+		Widget* w = event->getWidget();
 		BEvents::FocusEvent* focusEvent = (BEvents::FocusEvent*) event;
 		if (w->getFocusWidget() && w->getMainWindow())
 		{

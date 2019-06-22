@@ -8,10 +8,16 @@ Installation
 Clone it from this repository and call
 
 ```
+make
 sudo make install
 ```
 
-from the directory of the clone. For installation into an alternative directory (e.g., /usr/local/lib/lv2), modify line 2 in the makefile.
+from the directory of the clone. For installation into an alternative directory (e.g., /usr/local/lib/lv2), change the variable `INSTALL_DIR` while installing:
+
+```
+sudo make INSTALL_DIR=/usr/local/lib/lv2 install
+```
+
 
 Dependencies: dev versions of lv2, cairo, and X11 (for linux systems)
 
