@@ -9,13 +9,14 @@ Clone it from this repository and call
 
 ```
 make
-sudo make install
+sudo make install PREFIX=/usr
 ```
 
-from the directory of the clone. For installation into an alternative directory (e.g., /usr/local/lib/lv2), change the variable `INSTALL_DIR` while installing:
+from the directory of the clone to install it to the default LV2 dirctory (usr/lib/lv2/).
+For installation into an alternative directory (e.g., /usr/local/lib/lv2), change the variable `PREFIX` while installing:
 
 ```
-sudo make INSTALL_DIR=/usr/local/lib/lv2 install
+sudo make PREFIX=/usr/local install
 ```
 
 
