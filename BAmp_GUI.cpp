@@ -1,7 +1,7 @@
 #include <cmath>
 #include <lv2/lv2plug.in/ns/lv2core/lv2.h>
 #include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
-#include "BWidgets/DisplayDial.hpp"
+#include "BWidgets/DialValue.hpp"
 #include "BAmp.h"
 #include <iostream>
 #include <cstring>
@@ -16,13 +16,13 @@ public:
 
 	LV2UI_Write_Function write_function;
 	LV2UI_Controller controller;
-	BWidgets::DisplayDial dial;
-
+	BWidgets::DialValue dial;
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
-		write_function (NULL), controller (NULL), BWidgets::Window (100, 100, "BAmp", parentWindow, true),
-		dial (10, 10, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
+	BWidgets::Window (100, 100, "BAmp", parentWindow, true),
+	write_function (NULL), controller (NULL),
+	dial (10, 10, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
 {
 	dial.setHardChangeable (false);
 	add (dial);
