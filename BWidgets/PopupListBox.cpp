@@ -61,7 +61,8 @@ PopupListBox::PopupListBox (const double x, const double y, const double width,
 			if (i.getValue() == preselection)
 			{
 				value = i.getValue ();
-				item = i;
+				item.setValue (value);
+				item.cloneWidgetFrom (i.getWidget ());
 				initItem ();
 				if (item.getWidget ()) add (*item.getWidget ());
 				break;
@@ -83,6 +84,7 @@ PopupListBox::PopupListBox (const PopupListBox& that) :
 		listBoxXOffset (that.listBoxXOffset),
 		listBoxYOffset (that.listBoxYOffset), listBoxWidth (that.listBoxWidth), listBoxHeight (that.listBoxHeight)
 {
+	listBox.extensionData = this;
 	initItem ();
 	if (item.getWidget ()) add (*item.getWidget ());
 	add (downButton);
@@ -126,10 +128,12 @@ void PopupListBox::setValue (const double val)
 	if (val != listBox.getValue ()) listBox.setValue (val);
 	if (value != listBox.getValue ())
 	{
-		item = *listBox.getItem (listBox.getValue ());
+		BItems::Item* it = listBox.getItem (listBox.getValue ());
+		item.setValue (it->getValue ());
+		item.cloneWidgetFrom (it->getWidget ());
 		initItem ();
 		if (item.getWidget ()) add (*item.getWidget ());
-		update ();
+		ValueWidget::setValue (listBox.getValue ());
 	}
 }
 
@@ -149,8 +153,24 @@ void PopupListBox::resizeListBox (const double width, const double height)
 
 void PopupListBox::update ()
 {
-	// Update super widget first
-	ItemBox::update ();
+	// Update ItemBox first
+	Widget::update ();
+
+	Widget* widget = item.getWidget ();
+	if (widget)
+	{
+		// Set position of label
+		double x0 = getXOffset ();
+		double y0 = getYOffset ();
+		double w = getEffectiveWidth ();
+		double dw = (w > BWIDGETS_DEFAULT_POPUPLISTBOX_BUTTON_WIDTH ? BWIDGETS_DEFAULT_POPUPLISTBOX_BUTTON_WIDTH : w);
+		double w2 = (w - dw > 0 ? w - dw : 0);
+		double h = getEffectiveHeight ();
+
+		widget->moveTo (x0, y0);
+		widget->setWidth (w2);
+		widget->setHeight (h);
+	}
 
 	// Keep button on top
 	int cs = children_.size ();
@@ -210,12 +230,11 @@ void PopupListBox::initItem ()
 	Widget* w = item.getWidget ();
 	if (w)
 	{
-		w->getBorder ()->setPadding (BWIDGETS_DEFAULT_ITEMBOX_ITEM_PADDING);
 		w->setClickable (false);
 		w->setDraggable (false);
 		w->setScrollable (false);
 		w->setFocusable (false);
-		w->setState (BColors::NORMAL);
+		w->setState (BColors::ACTIVE);
 		w->moveTo (0, 0);
 		w->show ();
 	}
