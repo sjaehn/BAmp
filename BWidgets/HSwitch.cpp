@@ -1,5 +1,5 @@
 /* HSwitch.cpp
- * Copyright (C) 2018  Sven Jähnichen
+ * Copyright (C) 2018, 2019  Sven Jähnichen
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,26 @@ HSwitch::HSwitch () : HSwitch (0.0, 0.0, BWIDGETS_DEFAULT_HSWITCH_WIDTH, BWIDGET
 
 HSwitch::HSwitch (const double  x, const double y, const double width, const double height, const std::string& name,
 				  const double defaultvalue) :
-		HSlider (x, y, width, height, name, defaultvalue, 0.0, 1.0, 1.0) {}
+		HSlider (x, y, width, height, name, defaultvalue, 0.0, 1.0, 1.0), dragged (false) {}
 
 Widget* HSwitch::clone () const {return new HSwitch (*this);}
+
+void HSwitch::onButtonPressed (BEvents::PointerEvent* event) {dragged = false;}
+
+void HSwitch::onButtonReleased (BEvents::PointerEvent* event)
+{
+	if (!dragged)
+	{
+		if (getValue() == getMin ()) setValue (getMax ());
+		else setValue (getMin ());
+	}
+}
+
+void HSwitch::onPointerDragged (BEvents::PointerEvent* event)
+{
+	dragged = true;
+	HScale::onButtonPressed (event);
+}
 
 void HSwitch::updateCoords ()
 {
@@ -33,13 +50,19 @@ void HSwitch::updateCoords ()
 	double h = getEffectiveHeight ();
 
 	knobRadius = (h < w / 2 ? h / 2 : w / 4);
-	scaleX0 = getXOffset ();
-	scaleY0 = getYOffset () + h / 2 - knobRadius;
-	scaleWidth = w;
-	scaleHeight = 2 * knobRadius;
-	scaleXValue = scaleX0 + knobRadius + getRelativeValue () * (scaleWidth - 2 * knobRadius);
-	knobXCenter = scaleXValue + BWIDGETS_DEFAULT_KNOB_DEPTH;
-	knobYCenter = scaleY0 + scaleHeight / 2 + BWIDGETS_DEFAULT_KNOB_DEPTH;
+	scaleArea = BUtilities::RectArea
+	(
+		getXOffset (),
+		getYOffset () + h / 2 - knobRadius,
+		w,
+		2 * knobRadius
+	);
+	scaleXValue = scaleArea.getX() + knobRadius + getRelativeValue () * (scaleArea.getWidth() - 2 * knobRadius);
+	knobPosition = BUtilities::Point
+	(
+		scaleXValue + BWIDGETS_DEFAULT_KNOB_DEPTH,
+		scaleArea.getY() + scaleArea.getHeight() / 2 + BWIDGETS_DEFAULT_KNOB_DEPTH
+	);
 }
 
 }

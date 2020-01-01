@@ -11,7 +11,7 @@ class BAmp_GUI : public BWidgets::Window
 public:
 	BAmp_GUI (PuglNativeWindow parentWindow);
 	void portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer);
-	virtual void onConfigure (BEvents::ExposeEvent* event) override;
+	virtual void onConfigureRequest (BEvents::ExposeEvent* event) override;
 	static void valueChangedCallback (BEvents::Event* event);
 
 	LV2UI_Write_Function write_function;
@@ -38,11 +38,11 @@ void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t fo
 	}
 }
 
-void BAmp_GUI::onConfigure (BEvents::ExposeEvent* event)
+void BAmp_GUI::onConfigureRequest (BEvents::ExposeEvent* event)
 {
-	Window::onConfigure (event);
+	Window::onConfigureRequest (event);
 
-	double sz = (width_ > height_ ? height_ : width_) / 100;
+	double sz = (getWidth() > getHeight() ? getHeight() : getWidth()) / 100;
 	dial.moveTo (10 * sz, 10 * sz);
 	dial.resize (80 * sz, 80 * sz);
 }
