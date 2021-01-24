@@ -16,8 +16,12 @@ TK =	BWidgets/DrawingSurface.cpp \
 	BWidgets/BStyles.cpp \
 	BWidgets/BColors.cpp \
 	BUtilities/to_string.cpp \
-	BWidgets/cairoplus.c \BWidgets/pugl/pugl_x11_cairo.c \
-	BWidgets/pugl/pugl_x11.c
+	BUtilities/stof.cpp \
+	BWidgets/cairoplus.c \
+	BWidgets/pugl/implementation.c \
+	BWidgets/pugl/x11_stub.c \
+	BWidgets/pugl/x11_cairo.c \
+	BWidgets/pugl/x11.c
 
 $(BUNDLE): clean BAmp.so BAmp_GUI.so
 	cp manifest.ttl BAmp.ttl $(BUNDLE)

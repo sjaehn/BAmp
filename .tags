@@ -4,12 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ACTIVE	BWidgets/BColors.hpp	/^	ACTIVE		= 1,$/;"	e	enum:BColors::__anon6
-AMP_GAIN	BAmp.h	/^	AMP_GAIN   = 0,$/;"	e	enum:__anon1
+ACTIVE	BWidgets/BColors.hpp	/^	ACTIVE		= 1,$/;"	e	enum:BColors::__anon5
+AMP_GAIN	BAmp.h	/^	AMP_GAIN   = 0,$/;"	e	enum:__anon34
 AMP_GUI_URI	BAmp.h	5;"	d
-AMP_INPUT	BAmp.h	/^	AMP_INPUT  = 1,$/;"	e	enum:__anon1
+AMP_INPUT	BAmp.h	/^	AMP_INPUT  = 1,$/;"	e	enum:__anon34
 AMP_N_PORTS	BAmp.h	6;"	d
-AMP_OUTPUT	BAmp.h	/^	AMP_OUTPUT = 2$/;"	e	enum:__anon1
+AMP_OUTPUT	BAmp.h	/^	AMP_OUTPUT = 2$/;"	e	enum:__anon34
 AMP_URI	BAmp.h	4;"	d
 Amp	BAmp.cpp	/^Amp::Amp ()$/;"	f	class:Amp
 Amp	BAmp.cpp	/^class Amp {$/;"	c	file:
@@ -280,7 +280,7 @@ Button	BWidgets/Button.cpp	/^Button::Button () : Button (0.0, 0.0, BWIDGETS_DEFA
 Button	BWidgets/Button.cpp	/^Button::Button (const Button& that) : ValueWidget (that), bgColors (that.bgColors) {}$/;"	f	class:BWidgets::Button
 Button	BWidgets/Button.cpp	/^Button::Button (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue) :$/;"	f	class:BWidgets::Button
 Button	BWidgets/Button.hpp	/^class Button : public ValueWidget$/;"	c	namespace:BWidgets
-Button	BWidgets/pugl_cairo_test.c	/^} Button;$/;"	t	typeref:struct:__anon5	file:
+Button	BWidgets/pugl_cairo_test.c	/^} Button;$/;"	t	typeref:struct:__anon1	file:
 ButtonCode	BWidgets/BDevices.hpp	/^enum ButtonCode$/;"	g	namespace:BDevices
 CAIROPLUS_H_	BWidgets/cairoplus.h	19;"	d
 CAIRO_RGBA	BWidgets/BColors.hpp	29;"	d
@@ -384,7 +384,7 @@ HSwitch	BWidgets/HSwitch.cpp	/^HSwitch::HSwitch (const double  x, const double y
 HSwitch	BWidgets/HSwitch.hpp	/^class HSwitch : public HSlider$/;"	c	namespace:BWidgets
 ICON_HPP_	BWidgets/Icon.hpp	19;"	d
 IMAGEICON_HPP_	BWidgets/ImageIcon.hpp	19;"	d
-INACTIVE	BWidgets/BColors.hpp	/^	INACTIVE	= 2,$/;"	e	enum:BColors::__anon6
+INACTIVE	BWidgets/BColors.hpp	/^	INACTIVE	= 2,$/;"	e	enum:BColors::__anon5
 Icon	BWidgets/Icon.cpp	/^Icon::Icon () : Icon (0.0, 0.0, BWIDGETS_DEFAULT_WIDTH, BWIDGETS_DEFAULT_HEIGHT, "icon") {}$/;"	f	class:BWidgets::Icon
 Icon	BWidgets/Icon.cpp	/^Icon::Icon (const Icon& that) : Widget (that)$/;"	f	class:BWidgets::Icon
 Icon	BWidgets/Icon.cpp	/^Icon::Icon (const double x, const double y, const double width, const double height, const std::string& name) :$/;"	f	class:BWidgets::Icon
@@ -437,7 +437,7 @@ KEY_SHIFT	BWidgets/BDevices.hpp	/^	KEY_SHIFT,$/;"	e	enum:BDevices::KeyCode
 KEY_SUPER	BWidgets/BDevices.hpp	/^	KEY_SUPER$/;"	e	enum:BDevices::KeyCode
 KEY_UP	BWidgets/BDevices.hpp	/^	KEY_UP,$/;"	e	enum:BDevices::KeyCode
 KeyCode	BWidgets/BDevices.hpp	/^enum KeyCode {$/;"	g	namespace:BDevices
-KeyCoords	BWidgets/PianoWidget.hpp	/^} KeyCoords;$/;"	t	namespace:BWidgets	typeref:struct:BWidgets::__anon2
+KeyCoords	BWidgets/PianoWidget.hpp	/^} KeyCoords;$/;"	t	namespace:BWidgets	typeref:struct:BWidgets::__anon6
 KeyEvent	BWidgets/BEvents.hpp	/^	KeyEvent () :$/;"	f	class:BEvents::KeyEvent
 KeyEvent	BWidgets/BEvents.hpp	/^	KeyEvent (BWidgets::Widget* widget, const EventType type, const BUtilities::Point& position, const uint32_t unicode) :$/;"	f	class:BEvents::KeyEvent
 KeyEvent	BWidgets/BEvents.hpp	/^	KeyEvent (BWidgets::Widget* widget, const EventType type, const double x, const double y, const uint32_t unicode) :$/;"	f	class:BEvents::KeyEvent
@@ -483,94 +483,94 @@ MouseDevice	BWidgets/BDevices.hpp	/^	MouseDevice () : MouseDevice (NO_BUTTON, BU
 MouseDevice	BWidgets/BDevices.hpp	/^	MouseDevice (const ButtonCode but) : MouseDevice (but, BUtilities::Point ()) {}$/;"	f	class:BDevices::MouseDevice
 MouseDevice	BWidgets/BDevices.hpp	/^	MouseDevice (const ButtonCode but, const BUtilities::Point& pos) :$/;"	f	class:BDevices::MouseDevice
 MouseDevice	BWidgets/BDevices.hpp	/^class MouseDevice$/;"	c	namespace:BDevices
-NORMAL	BWidgets/BColors.hpp	/^	NORMAL		= 0,$/;"	e	enum:BColors::__anon6
+NORMAL	BWidgets/BColors.hpp	/^	NORMAL		= 0,$/;"	e	enum:BColors::__anon5
 NO_BUTTON	BWidgets/BDevices.hpp	/^	NO_BUTTON	= 0,$/;"	e	enum:BDevices::ButtonCode
 NO_EVENT	BWidgets/BEvents.hpp	/^	NO_EVENT$/;"	e	enum:BEvents::EventType
 NR_OF_BUTTONS	BWidgets/BDevices.hpp	/^	NR_OF_BUTTONS	= 4$/;"	e	enum:BDevices::ButtonCode
-OFF	BWidgets/BColors.hpp	/^	OFF		= 3,$/;"	e	enum:BColors::__anon6
+OFF	BWidgets/BColors.hpp	/^	OFF		= 3,$/;"	e	enum:BColors::__anon5
 PI	BWidgets/cairoplus.c	21;"	d	file:
 POINTER_DRAG_EVENT	BWidgets/BEvents.hpp	/^	POINTER_DRAG_EVENT,$/;"	e	enum:BEvents::EventType
 POINTER_MOTION_EVENT	BWidgets/BEvents.hpp	/^	POINTER_MOTION_EVENT,$/;"	e	enum:BEvents::EventType
 PREFIX	makefile	/^PREFIX ?= \/usr\/local$/;"	m
-PUGL_ALPHA_BITS	BWidgets/pugl/pugl.h	/^	PUGL_ALPHA_BITS,            \/**< Number of bits for alpha channel *\/$/;"	e	enum:__anon15
+PUGL_ALPHA_BITS	BWidgets/pugl/pugl.h	/^	PUGL_ALPHA_BITS,            \/**< Number of bits for alpha channel *\/$/;"	e	enum:__anon9
 PUGL_API	BWidgets/pugl/pugl.h	36;"	d
 PUGL_API	BWidgets/pugl/pugl.h	38;"	d
 PUGL_API	BWidgets/pugl/pugl.h	41;"	d
-PUGL_BLUE_BITS	BWidgets/pugl/pugl.h	/^	PUGL_BLUE_BITS,             \/**< Number of bits for blue channel *\/$/;"	e	enum:__anon15
-PUGL_BUTTON_PRESS	BWidgets/pugl/pugl.h	/^	PUGL_BUTTON_PRESS,         \/**< Mouse button press *\/$/;"	e	enum:__anon20
-PUGL_BUTTON_RELEASE	BWidgets/pugl/pugl.h	/^	PUGL_BUTTON_RELEASE,       \/**< Mouse button release *\/$/;"	e	enum:__anon20
-PUGL_CAIRO	BWidgets/pugl/pugl.h	/^	PUGL_CAIRO = 1 << 1   \/**< Cairo (2D) *\/$/;"	e	enum:__anon14
-PUGL_CHAR_BACKSPACE	BWidgets/pugl/pugl.h	/^	PUGL_CHAR_BACKSPACE = 0x08,$/;"	e	enum:__anon17
-PUGL_CHAR_DELETE	BWidgets/pugl/pugl.h	/^	PUGL_CHAR_DELETE    = 0x7F$/;"	e	enum:__anon17
-PUGL_CHAR_ESCAPE	BWidgets/pugl/pugl.h	/^	PUGL_CHAR_ESCAPE    = 0x1B,$/;"	e	enum:__anon17
-PUGL_CLOSE	BWidgets/pugl/pugl.h	/^	PUGL_CLOSE,                \/**< Close view *\/$/;"	e	enum:__anon20
-PUGL_CONFIGURE	BWidgets/pugl/pugl.h	/^	PUGL_CONFIGURE,            \/**< View moved and\/or resized *\/$/;"	e	enum:__anon20
-PUGL_CONTEXT_VERSION_MAJOR	BWidgets/pugl/pugl.h	/^	PUGL_CONTEXT_VERSION_MAJOR, \/**< OpenGL context major version *\/$/;"	e	enum:__anon15
-PUGL_CONTEXT_VERSION_MINOR	BWidgets/pugl/pugl.h	/^	PUGL_CONTEXT_VERSION_MINOR, \/**< OpenGL context minor version *\/$/;"	e	enum:__anon15
-PUGL_CROSSING_GRAB	BWidgets/pugl/pugl.h	/^	PUGL_CROSSING_GRAB,        \/**< Crossing due to a grab. *\/$/;"	e	enum:__anon22
-PUGL_CROSSING_NORMAL	BWidgets/pugl/pugl.h	/^	PUGL_CROSSING_NORMAL,      \/**< Crossing due to pointer motion. *\/$/;"	e	enum:__anon22
-PUGL_CROSSING_UNGRAB	BWidgets/pugl/pugl.h	/^	PUGL_CROSSING_UNGRAB       \/**< Crossing due to a grab release. *\/$/;"	e	enum:__anon22
-PUGL_DEPTH_BITS	BWidgets/pugl/pugl.h	/^	PUGL_DEPTH_BITS,            \/**< Number of bits for depth buffer *\/$/;"	e	enum:__anon15
-PUGL_DONT_CARE	BWidgets/pugl/pugl.h	/^	PUGL_DONT_CARE = -1,  \/**< Use best available value *\/$/;"	e	enum:__anon16
-PUGL_DOUBLE_BUFFER	BWidgets/pugl/pugl.h	/^	PUGL_DOUBLE_BUFFER,         \/**< True if double buffering should be used *\/$/;"	e	enum:__anon15
-PUGL_ENTER_NOTIFY	BWidgets/pugl/pugl.h	/^	PUGL_ENTER_NOTIFY,         \/**< Pointer entered view *\/$/;"	e	enum:__anon20
-PUGL_EXPOSE	BWidgets/pugl/pugl.h	/^	PUGL_EXPOSE,               \/**< View exposed, redraw required *\/$/;"	e	enum:__anon20
-PUGL_FALSE	BWidgets/pugl/pugl.h	/^	PUGL_FALSE     = 0,   \/**< Explicitly false *\/$/;"	e	enum:__anon16
-PUGL_FOCUS_IN	BWidgets/pugl/pugl.h	/^	PUGL_FOCUS_IN,             \/**< Keyboard focus entered view *\/$/;"	e	enum:__anon20
-PUGL_FOCUS_OUT	BWidgets/pugl/pugl.h	/^	PUGL_FOCUS_OUT             \/**< Keyboard focus left view *\/$/;"	e	enum:__anon20
-PUGL_GL	BWidgets/pugl/pugl.h	/^	PUGL_GL    = 1 << 0,  \/**< OpenGL (3D) *\/$/;"	e	enum:__anon14
-PUGL_GREEN_BITS	BWidgets/pugl/pugl.h	/^	PUGL_GREEN_BITS,            \/**< Number of bits for green channel *\/$/;"	e	enum:__anon15
+PUGL_BLUE_BITS	BWidgets/pugl/pugl.h	/^	PUGL_BLUE_BITS,             \/**< Number of bits for blue channel *\/$/;"	e	enum:__anon9
+PUGL_BUTTON_PRESS	BWidgets/pugl/pugl.h	/^	PUGL_BUTTON_PRESS,         \/**< Mouse button press *\/$/;"	e	enum:__anon14
+PUGL_BUTTON_RELEASE	BWidgets/pugl/pugl.h	/^	PUGL_BUTTON_RELEASE,       \/**< Mouse button release *\/$/;"	e	enum:__anon14
+PUGL_CAIRO	BWidgets/pugl/pugl.h	/^	PUGL_CAIRO = 1 << 1   \/**< Cairo (2D) *\/$/;"	e	enum:__anon8
+PUGL_CHAR_BACKSPACE	BWidgets/pugl/pugl.h	/^	PUGL_CHAR_BACKSPACE = 0x08,$/;"	e	enum:__anon11
+PUGL_CHAR_DELETE	BWidgets/pugl/pugl.h	/^	PUGL_CHAR_DELETE    = 0x7F$/;"	e	enum:__anon11
+PUGL_CHAR_ESCAPE	BWidgets/pugl/pugl.h	/^	PUGL_CHAR_ESCAPE    = 0x1B,$/;"	e	enum:__anon11
+PUGL_CLOSE	BWidgets/pugl/pugl.h	/^	PUGL_CLOSE,                \/**< Close view *\/$/;"	e	enum:__anon14
+PUGL_CONFIGURE	BWidgets/pugl/pugl.h	/^	PUGL_CONFIGURE,            \/**< View moved and\/or resized *\/$/;"	e	enum:__anon14
+PUGL_CONTEXT_VERSION_MAJOR	BWidgets/pugl/pugl.h	/^	PUGL_CONTEXT_VERSION_MAJOR, \/**< OpenGL context major version *\/$/;"	e	enum:__anon9
+PUGL_CONTEXT_VERSION_MINOR	BWidgets/pugl/pugl.h	/^	PUGL_CONTEXT_VERSION_MINOR, \/**< OpenGL context minor version *\/$/;"	e	enum:__anon9
+PUGL_CROSSING_GRAB	BWidgets/pugl/pugl.h	/^	PUGL_CROSSING_GRAB,        \/**< Crossing due to a grab. *\/$/;"	e	enum:__anon16
+PUGL_CROSSING_NORMAL	BWidgets/pugl/pugl.h	/^	PUGL_CROSSING_NORMAL,      \/**< Crossing due to pointer motion. *\/$/;"	e	enum:__anon16
+PUGL_CROSSING_UNGRAB	BWidgets/pugl/pugl.h	/^	PUGL_CROSSING_UNGRAB       \/**< Crossing due to a grab release. *\/$/;"	e	enum:__anon16
+PUGL_DEPTH_BITS	BWidgets/pugl/pugl.h	/^	PUGL_DEPTH_BITS,            \/**< Number of bits for depth buffer *\/$/;"	e	enum:__anon9
+PUGL_DONT_CARE	BWidgets/pugl/pugl.h	/^	PUGL_DONT_CARE = -1,  \/**< Use best available value *\/$/;"	e	enum:__anon10
+PUGL_DOUBLE_BUFFER	BWidgets/pugl/pugl.h	/^	PUGL_DOUBLE_BUFFER,         \/**< True if double buffering should be used *\/$/;"	e	enum:__anon9
+PUGL_ENTER_NOTIFY	BWidgets/pugl/pugl.h	/^	PUGL_ENTER_NOTIFY,         \/**< Pointer entered view *\/$/;"	e	enum:__anon14
+PUGL_EXPOSE	BWidgets/pugl/pugl.h	/^	PUGL_EXPOSE,               \/**< View exposed, redraw required *\/$/;"	e	enum:__anon14
+PUGL_FALSE	BWidgets/pugl/pugl.h	/^	PUGL_FALSE     = 0,   \/**< Explicitly false *\/$/;"	e	enum:__anon10
+PUGL_FOCUS_IN	BWidgets/pugl/pugl.h	/^	PUGL_FOCUS_IN,             \/**< Keyboard focus entered view *\/$/;"	e	enum:__anon14
+PUGL_FOCUS_OUT	BWidgets/pugl/pugl.h	/^	PUGL_FOCUS_OUT             \/**< Keyboard focus left view *\/$/;"	e	enum:__anon14
+PUGL_GL	BWidgets/pugl/pugl.h	/^	PUGL_GL    = 1 << 0,  \/**< OpenGL (3D) *\/$/;"	e	enum:__anon8
+PUGL_GREEN_BITS	BWidgets/pugl/pugl.h	/^	PUGL_GREEN_BITS,            \/**< Number of bits for green channel *\/$/;"	e	enum:__anon9
 PUGL_HPP_INCLUDED	BWidgets/pugl/pugl.hpp	22;"	d
 PUGL_H_INCLUDED	BWidgets/pugl/pugl.h	22;"	d
 PUGL_INTERNAL_TYPES_H	BWidgets/pugl/pugl_internal_types.h	22;"	d
-PUGL_IS_SEND_EVENT	BWidgets/pugl/pugl.h	/^	PUGL_IS_SEND_EVENT = 1$/;"	e	enum:__anon21
-PUGL_KEY_ALT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_ALT,$/;"	e	enum:__anon19
-PUGL_KEY_CTRL	BWidgets/pugl/pugl.h	/^	PUGL_KEY_CTRL,$/;"	e	enum:__anon19
-PUGL_KEY_DOWN	BWidgets/pugl/pugl.h	/^	PUGL_KEY_DOWN,$/;"	e	enum:__anon19
-PUGL_KEY_END	BWidgets/pugl/pugl.h	/^	PUGL_KEY_END,$/;"	e	enum:__anon19
-PUGL_KEY_F1	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F1 = 0xE000,$/;"	e	enum:__anon19
-PUGL_KEY_F10	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F10,$/;"	e	enum:__anon19
-PUGL_KEY_F11	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F11,$/;"	e	enum:__anon19
-PUGL_KEY_F12	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F12,$/;"	e	enum:__anon19
-PUGL_KEY_F2	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F2,$/;"	e	enum:__anon19
-PUGL_KEY_F3	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F3,$/;"	e	enum:__anon19
-PUGL_KEY_F4	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F4,$/;"	e	enum:__anon19
-PUGL_KEY_F5	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F5,$/;"	e	enum:__anon19
-PUGL_KEY_F6	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F6,$/;"	e	enum:__anon19
-PUGL_KEY_F7	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F7,$/;"	e	enum:__anon19
-PUGL_KEY_F8	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F8,$/;"	e	enum:__anon19
-PUGL_KEY_F9	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F9,$/;"	e	enum:__anon19
-PUGL_KEY_HOME	BWidgets/pugl/pugl.h	/^	PUGL_KEY_HOME,$/;"	e	enum:__anon19
-PUGL_KEY_INSERT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_INSERT,$/;"	e	enum:__anon19
-PUGL_KEY_LEFT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_LEFT,$/;"	e	enum:__anon19
-PUGL_KEY_PAGE_DOWN	BWidgets/pugl/pugl.h	/^	PUGL_KEY_PAGE_DOWN,$/;"	e	enum:__anon19
-PUGL_KEY_PAGE_UP	BWidgets/pugl/pugl.h	/^	PUGL_KEY_PAGE_UP,$/;"	e	enum:__anon19
-PUGL_KEY_PRESS	BWidgets/pugl/pugl.h	/^	PUGL_KEY_PRESS,            \/**< Key press *\/$/;"	e	enum:__anon20
-PUGL_KEY_RELEASE	BWidgets/pugl/pugl.h	/^	PUGL_KEY_RELEASE,          \/**< Key release *\/$/;"	e	enum:__anon20
-PUGL_KEY_RIGHT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_RIGHT,$/;"	e	enum:__anon19
-PUGL_KEY_SHIFT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_SHIFT,$/;"	e	enum:__anon19
-PUGL_KEY_SUPER	BWidgets/pugl/pugl.h	/^	PUGL_KEY_SUPER$/;"	e	enum:__anon19
-PUGL_KEY_UP	BWidgets/pugl/pugl.h	/^	PUGL_KEY_UP,$/;"	e	enum:__anon19
-PUGL_LEAVE_NOTIFY	BWidgets/pugl/pugl.h	/^	PUGL_LEAVE_NOTIFY,         \/**< Pointer left view *\/$/;"	e	enum:__anon20
+PUGL_IS_SEND_EVENT	BWidgets/pugl/pugl.h	/^	PUGL_IS_SEND_EVENT = 1$/;"	e	enum:__anon15
+PUGL_KEY_ALT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_ALT,$/;"	e	enum:__anon13
+PUGL_KEY_CTRL	BWidgets/pugl/pugl.h	/^	PUGL_KEY_CTRL,$/;"	e	enum:__anon13
+PUGL_KEY_DOWN	BWidgets/pugl/pugl.h	/^	PUGL_KEY_DOWN,$/;"	e	enum:__anon13
+PUGL_KEY_END	BWidgets/pugl/pugl.h	/^	PUGL_KEY_END,$/;"	e	enum:__anon13
+PUGL_KEY_F1	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F1 = 0xE000,$/;"	e	enum:__anon13
+PUGL_KEY_F10	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F10,$/;"	e	enum:__anon13
+PUGL_KEY_F11	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F11,$/;"	e	enum:__anon13
+PUGL_KEY_F12	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F12,$/;"	e	enum:__anon13
+PUGL_KEY_F2	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F2,$/;"	e	enum:__anon13
+PUGL_KEY_F3	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F3,$/;"	e	enum:__anon13
+PUGL_KEY_F4	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F4,$/;"	e	enum:__anon13
+PUGL_KEY_F5	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F5,$/;"	e	enum:__anon13
+PUGL_KEY_F6	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F6,$/;"	e	enum:__anon13
+PUGL_KEY_F7	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F7,$/;"	e	enum:__anon13
+PUGL_KEY_F8	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F8,$/;"	e	enum:__anon13
+PUGL_KEY_F9	BWidgets/pugl/pugl.h	/^	PUGL_KEY_F9,$/;"	e	enum:__anon13
+PUGL_KEY_HOME	BWidgets/pugl/pugl.h	/^	PUGL_KEY_HOME,$/;"	e	enum:__anon13
+PUGL_KEY_INSERT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_INSERT,$/;"	e	enum:__anon13
+PUGL_KEY_LEFT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_LEFT,$/;"	e	enum:__anon13
+PUGL_KEY_PAGE_DOWN	BWidgets/pugl/pugl.h	/^	PUGL_KEY_PAGE_DOWN,$/;"	e	enum:__anon13
+PUGL_KEY_PAGE_UP	BWidgets/pugl/pugl.h	/^	PUGL_KEY_PAGE_UP,$/;"	e	enum:__anon13
+PUGL_KEY_PRESS	BWidgets/pugl/pugl.h	/^	PUGL_KEY_PRESS,            \/**< Key press *\/$/;"	e	enum:__anon14
+PUGL_KEY_RELEASE	BWidgets/pugl/pugl.h	/^	PUGL_KEY_RELEASE,          \/**< Key release *\/$/;"	e	enum:__anon14
+PUGL_KEY_RIGHT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_RIGHT,$/;"	e	enum:__anon13
+PUGL_KEY_SHIFT	BWidgets/pugl/pugl.h	/^	PUGL_KEY_SHIFT,$/;"	e	enum:__anon13
+PUGL_KEY_SUPER	BWidgets/pugl/pugl.h	/^	PUGL_KEY_SUPER$/;"	e	enum:__anon13
+PUGL_KEY_UP	BWidgets/pugl/pugl.h	/^	PUGL_KEY_UP,$/;"	e	enum:__anon13
+PUGL_LEAVE_NOTIFY	BWidgets/pugl/pugl.h	/^	PUGL_LEAVE_NOTIFY,         \/**< Pointer left view *\/$/;"	e	enum:__anon14
 PUGL_LIB_EXPORT	BWidgets/pugl/pugl.h	30;"	d
 PUGL_LIB_EXPORT	BWidgets/pugl/pugl.h	33;"	d
 PUGL_LIB_IMPORT	BWidgets/pugl/pugl.h	29;"	d
 PUGL_LIB_IMPORT	BWidgets/pugl/pugl.h	32;"	d
 PUGL_LOCAL_CLOSE_MSG	BWidgets/pugl/pugl_win.cpp	51;"	d	file:
-PUGL_MOD_ALT	BWidgets/pugl/pugl.h	/^	PUGL_MOD_ALT   = 1 << 2,  \/**< Alt\/Option key *\/$/;"	e	enum:__anon18
-PUGL_MOD_CTRL	BWidgets/pugl/pugl.h	/^	PUGL_MOD_CTRL  = 1 << 1,  \/**< Control key *\/$/;"	e	enum:__anon18
-PUGL_MOD_SHIFT	BWidgets/pugl/pugl.h	/^	PUGL_MOD_SHIFT = 1,       \/**< Shift key *\/$/;"	e	enum:__anon18
-PUGL_MOD_SUPER	BWidgets/pugl/pugl.h	/^	PUGL_MOD_SUPER = 1 << 3   \/**< Mod4\/Command\/Windows key *\/$/;"	e	enum:__anon18
-PUGL_MOTION_NOTIFY	BWidgets/pugl/pugl.h	/^	PUGL_MOTION_NOTIFY,        \/**< Pointer motion *\/$/;"	e	enum:__anon20
-PUGL_NOTHING	BWidgets/pugl/pugl.h	/^	PUGL_NOTHING,              \/**< No event *\/$/;"	e	enum:__anon20
-PUGL_RED_BITS	BWidgets/pugl/pugl.h	/^	PUGL_RED_BITS,              \/**< Number of bits for red channel *\/$/;"	e	enum:__anon15
-PUGL_RESIZABLE	BWidgets/pugl/pugl.h	/^	PUGL_RESIZABLE,             \/**< True if window should be resizable *\/$/;"	e	enum:__anon15
-PUGL_SAMPLES	BWidgets/pugl/pugl.h	/^	PUGL_SAMPLES,               \/**< Number of samples per pixel (AA) *\/$/;"	e	enum:__anon15
-PUGL_SCROLL	BWidgets/pugl/pugl.h	/^	PUGL_SCROLL,               \/**< Scroll *\/$/;"	e	enum:__anon20
-PUGL_STENCIL_BITS	BWidgets/pugl/pugl.h	/^	PUGL_STENCIL_BITS,          \/**< Number of bits for stencil buffer *\/$/;"	e	enum:__anon15
-PUGL_SUCCESS	BWidgets/pugl/pugl.h	/^	PUGL_SUCCESS = 0$/;"	e	enum:__anon13
-PUGL_TRUE	BWidgets/pugl/pugl.h	/^	PUGL_TRUE      = 1    \/**< Explicitly true *\/$/;"	e	enum:__anon16
-PUGL_USE_COMPAT_PROFILE	BWidgets/pugl/pugl.h	/^	PUGL_USE_COMPAT_PROFILE,    \/**< Use compatible (not core) OpenGL profile *\/$/;"	e	enum:__anon15
+PUGL_MOD_ALT	BWidgets/pugl/pugl.h	/^	PUGL_MOD_ALT   = 1 << 2,  \/**< Alt\/Option key *\/$/;"	e	enum:__anon12
+PUGL_MOD_CTRL	BWidgets/pugl/pugl.h	/^	PUGL_MOD_CTRL  = 1 << 1,  \/**< Control key *\/$/;"	e	enum:__anon12
+PUGL_MOD_SHIFT	BWidgets/pugl/pugl.h	/^	PUGL_MOD_SHIFT = 1,       \/**< Shift key *\/$/;"	e	enum:__anon12
+PUGL_MOD_SUPER	BWidgets/pugl/pugl.h	/^	PUGL_MOD_SUPER = 1 << 3   \/**< Mod4\/Command\/Windows key *\/$/;"	e	enum:__anon12
+PUGL_MOTION_NOTIFY	BWidgets/pugl/pugl.h	/^	PUGL_MOTION_NOTIFY,        \/**< Pointer motion *\/$/;"	e	enum:__anon14
+PUGL_NOTHING	BWidgets/pugl/pugl.h	/^	PUGL_NOTHING,              \/**< No event *\/$/;"	e	enum:__anon14
+PUGL_RED_BITS	BWidgets/pugl/pugl.h	/^	PUGL_RED_BITS,              \/**< Number of bits for red channel *\/$/;"	e	enum:__anon9
+PUGL_RESIZABLE	BWidgets/pugl/pugl.h	/^	PUGL_RESIZABLE,             \/**< True if window should be resizable *\/$/;"	e	enum:__anon9
+PUGL_SAMPLES	BWidgets/pugl/pugl.h	/^	PUGL_SAMPLES,               \/**< Number of samples per pixel (AA) *\/$/;"	e	enum:__anon9
+PUGL_SCROLL	BWidgets/pugl/pugl.h	/^	PUGL_SCROLL,               \/**< Scroll *\/$/;"	e	enum:__anon14
+PUGL_STENCIL_BITS	BWidgets/pugl/pugl.h	/^	PUGL_STENCIL_BITS,          \/**< Number of bits for stencil buffer *\/$/;"	e	enum:__anon9
+PUGL_SUCCESS	BWidgets/pugl/pugl.h	/^	PUGL_SUCCESS = 0$/;"	e	enum:__anon7
+PUGL_TRUE	BWidgets/pugl/pugl.h	/^	PUGL_TRUE      = 1    \/**< Explicitly true *\/$/;"	e	enum:__anon10
+PUGL_USE_COMPAT_PROFILE	BWidgets/pugl/pugl.h	/^	PUGL_USE_COMPAT_PROFILE,    \/**< Use compatible (not core) OpenGL profile *\/$/;"	e	enum:__anon9
 PUGL_X11_CAIRO_H	BWidgets/pugl/pugl_x11_cairo.h	18;"	d
 PUGL_X11_GL_H	BWidgets/pugl/pugl_x11_gl.h	18;"	d
 PianoWidget	BWidgets/PianoWidget.cpp	/^PianoWidget::PianoWidget () : PianoWidget (0, 0, 0, 0, "piano", 0, 0) {}$/;"	f	class:BWidgets::PianoWidget
@@ -591,42 +591,42 @@ PopupListBox	BWidgets/PopupListBox.cpp	/^PopupListBox::PopupListBox () :$/;"	f	c
 PopupListBox	BWidgets/PopupListBox.cpp	/^PopupListBox::PopupListBox (const PopupListBox& that) :$/;"	f	class:BWidgets::PopupListBox
 PopupListBox	BWidgets/PopupListBox.cpp	/^PopupListBox::PopupListBox (const double x, const double y, const double width,$/;"	f	class:BWidgets::PopupListBox
 PopupListBox	BWidgets/PopupListBox.hpp	/^class PopupListBox : public ItemBox$/;"	c	namespace:BWidgets
-PortIndex	BAmp.h	/^} PortIndex;$/;"	t	typeref:enum:__anon1
-PuglChar	BWidgets/pugl/pugl.h	/^} PuglChar;$/;"	t	typeref:enum:__anon17
-PuglContextType	BWidgets/pugl/pugl.h	/^} PuglContextType;$/;"	t	typeref:enum:__anon14
-PuglCrossingMode	BWidgets/pugl/pugl.h	/^} PuglCrossingMode;$/;"	t	typeref:enum:__anon22
-PuglDrawContext	BWidgets/pugl/pugl_internal_types.h	/^} PuglDrawContext;$/;"	t	typeref:struct:__anon12
-PuglEvent	BWidgets/pugl/pugl.h	/^} PuglEvent;$/;"	t	typeref:union:__anon33
-PuglEventAny	BWidgets/pugl/pugl.h	/^} PuglEventAny;$/;"	t	typeref:struct:__anon23
-PuglEventButton	BWidgets/pugl/pugl.h	/^} PuglEventButton;$/;"	t	typeref:struct:__anon24
-PuglEventClose	BWidgets/pugl/pugl.h	/^} PuglEventClose;$/;"	t	typeref:struct:__anon27
-PuglEventConfigure	BWidgets/pugl/pugl.h	/^} PuglEventConfigure;$/;"	t	typeref:struct:__anon25
-PuglEventCrossing	BWidgets/pugl/pugl.h	/^} PuglEventCrossing;$/;"	t	typeref:struct:__anon29
-PuglEventExpose	BWidgets/pugl/pugl.h	/^} PuglEventExpose;$/;"	t	typeref:struct:__anon26
-PuglEventFlag	BWidgets/pugl/pugl.h	/^} PuglEventFlag;$/;"	t	typeref:enum:__anon21
-PuglEventFocus	BWidgets/pugl/pugl.h	/^} PuglEventFocus;$/;"	t	typeref:struct:__anon32
+PortIndex	BAmp.h	/^} PortIndex;$/;"	t	typeref:enum:__anon34
+PuglChar	BWidgets/pugl/pugl.h	/^} PuglChar;$/;"	t	typeref:enum:__anon11
+PuglContextType	BWidgets/pugl/pugl.h	/^} PuglContextType;$/;"	t	typeref:enum:__anon8
+PuglCrossingMode	BWidgets/pugl/pugl.h	/^} PuglCrossingMode;$/;"	t	typeref:enum:__anon16
+PuglDrawContext	BWidgets/pugl/pugl_internal_types.h	/^} PuglDrawContext;$/;"	t	typeref:struct:__anon29
+PuglEvent	BWidgets/pugl/pugl.h	/^} PuglEvent;$/;"	t	typeref:union:__anon27
+PuglEventAny	BWidgets/pugl/pugl.h	/^} PuglEventAny;$/;"	t	typeref:struct:__anon17
+PuglEventButton	BWidgets/pugl/pugl.h	/^} PuglEventButton;$/;"	t	typeref:struct:__anon18
+PuglEventClose	BWidgets/pugl/pugl.h	/^} PuglEventClose;$/;"	t	typeref:struct:__anon21
+PuglEventConfigure	BWidgets/pugl/pugl.h	/^} PuglEventConfigure;$/;"	t	typeref:struct:__anon19
+PuglEventCrossing	BWidgets/pugl/pugl.h	/^} PuglEventCrossing;$/;"	t	typeref:struct:__anon23
+PuglEventExpose	BWidgets/pugl/pugl.h	/^} PuglEventExpose;$/;"	t	typeref:struct:__anon20
+PuglEventFlag	BWidgets/pugl/pugl.h	/^} PuglEventFlag;$/;"	t	typeref:enum:__anon15
+PuglEventFocus	BWidgets/pugl/pugl.h	/^} PuglEventFocus;$/;"	t	typeref:struct:__anon26
 PuglEventFunc	BWidgets/pugl/pugl.h	/^typedef void (*PuglEventFunc)(PuglView* view, const PuglEvent* event);$/;"	t
-PuglEventKey	BWidgets/pugl/pugl.h	/^} PuglEventKey;$/;"	t	typeref:struct:__anon28
-PuglEventMotion	BWidgets/pugl/pugl.h	/^} PuglEventMotion;$/;"	t	typeref:struct:__anon30
-PuglEventScroll	BWidgets/pugl/pugl.h	/^} PuglEventScroll;$/;"	t	typeref:struct:__anon31
-PuglEventType	BWidgets/pugl/pugl.h	/^} PuglEventType;$/;"	t	typeref:enum:__anon20
+PuglEventKey	BWidgets/pugl/pugl.h	/^} PuglEventKey;$/;"	t	typeref:struct:__anon22
+PuglEventMotion	BWidgets/pugl/pugl.h	/^} PuglEventMotion;$/;"	t	typeref:struct:__anon24
+PuglEventScroll	BWidgets/pugl/pugl.h	/^} PuglEventScroll;$/;"	t	typeref:struct:__anon25
+PuglEventType	BWidgets/pugl/pugl.h	/^} PuglEventType;$/;"	t	typeref:enum:__anon14
 PuglGlFunc	BWidgets/pugl/pugl.h	/^typedef void (*PuglGlFunc)();$/;"	t
 PuglHandle	BWidgets/pugl/pugl.h	/^typedef void* PuglHandle;$/;"	t
-PuglHints	BWidgets/pugl/pugl_internal_types.h	/^} PuglHints;$/;"	t	typeref:struct:__anon11
+PuglHints	BWidgets/pugl/pugl_internal_types.h	/^} PuglHints;$/;"	t	typeref:struct:__anon28
 PuglInternals	BWidgets/pugl/pugl_internal_types.h	/^typedef struct PuglInternalsImpl PuglInternals;$/;"	t	typeref:struct:PuglInternalsImpl
 PuglInternalsImpl	BWidgets/pugl/pugl_win.cpp	/^struct PuglInternalsImpl {$/;"	s	file:
 PuglInternalsImpl	BWidgets/pugl/pugl_x11.h	/^struct PuglInternalsImpl {$/;"	s
-PuglKey	BWidgets/pugl/pugl.h	/^} PuglKey;$/;"	t	typeref:enum:__anon19
-PuglMod	BWidgets/pugl/pugl.h	/^} PuglMod;$/;"	t	typeref:enum:__anon18
+PuglKey	BWidgets/pugl/pugl.h	/^} PuglKey;$/;"	t	typeref:enum:__anon13
+PuglMod	BWidgets/pugl/pugl.h	/^} PuglMod;$/;"	t	typeref:enum:__anon12
 PuglNativeWindow	BWidgets/pugl/pugl.h	/^typedef intptr_t PuglNativeWindow;$/;"	t
-PuglStatus	BWidgets/pugl/pugl.h	/^} PuglStatus;$/;"	t	typeref:enum:__anon13
+PuglStatus	BWidgets/pugl/pugl.h	/^} PuglStatus;$/;"	t	typeref:enum:__anon7
 PuglSurface	BWidgets/pugl/pugl_internal_types.h	/^typedef void PuglSurface;$/;"	t
 PuglView	BWidgets/pugl/pugl.h	/^typedef struct PuglViewImpl PuglView;$/;"	t	typeref:struct:PuglViewImpl
 PuglViewImpl	BWidgets/pugl/pugl_internal_types.h	/^struct PuglViewImpl {$/;"	s
-PuglWindowHint	BWidgets/pugl/pugl.h	/^} PuglWindowHint;$/;"	t	typeref:enum:__anon15
-PuglWindowHintValue	BWidgets/pugl/pugl.h	/^} PuglWindowHintValue;$/;"	t	typeref:enum:__anon16
-PuglX11CairoSurface	BWidgets/pugl/pugl_x11_cairo.c	/^} PuglX11CairoSurface;$/;"	t	typeref:struct:__anon10	file:
-PuglX11GlSurface	BWidgets/pugl/pugl_x11_gl.c	/^} PuglX11GlSurface;$/;"	t	typeref:struct:__anon34	file:
+PuglWindowHint	BWidgets/pugl/pugl.h	/^} PuglWindowHint;$/;"	t	typeref:enum:__anon9
+PuglWindowHintValue	BWidgets/pugl/pugl.h	/^} PuglWindowHintValue;$/;"	t	typeref:enum:__anon10
+PuglX11CairoSurface	BWidgets/pugl/pugl_x11_cairo.c	/^} PuglX11CairoSurface;$/;"	t	typeref:struct:__anon30	file:
+PuglX11GlSurface	BWidgets/pugl/pugl_x11_gl.c	/^} PuglX11GlSurface;$/;"	t	typeref:struct:__anon31	file:
 RIGHT_BUTTON	BWidgets/BDevices.hpp	/^	RIGHT_BUTTON	= 3,$/;"	e	enum:BDevices::ButtonCode
 RangeWidget	BWidgets/RangeWidget.cpp	/^RangeWidget::RangeWidget () :$/;"	f	class:BWidgets::RangeWidget
 RangeWidget	BWidgets/RangeWidget.cpp	/^RangeWidget::RangeWidget (const RangeWidget& that) :$/;"	f	class:BWidgets::RangeWidget
@@ -640,20 +640,20 @@ RightButton	BWidgets/RightButton.cpp	/^RightButton::RightButton () :$/;"	f	class
 RightButton	BWidgets/RightButton.cpp	/^RightButton::RightButton (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue) :$/;"	f	class:BWidgets::RightButton
 RightButton	BWidgets/RightButton.hpp	/^class RightButton : public Button$/;"	c	namespace:BWidgets
 STYLEPTR	BWidgets/BStyles.hpp	30;"	d
-State	BWidgets/BColors.hpp	/^} State;$/;"	t	namespace:BColors	typeref:enum:BColors::__anon6
+State	BWidgets/BColors.hpp	/^} State;$/;"	t	namespace:BColors	typeref:enum:BColors::__anon5
 StateDisplay	BWidgets/StateDisplay.cpp	/^StateDisplay::StateDisplay () : StateDisplay (0.0, 0.0, 0.0, 0.0, "display") {}$/;"	f	class:BWidgets::StateDisplay
 StateDisplay	BWidgets/StateDisplay.cpp	/^StateDisplay::StateDisplay (const double x, const double y, const double width,$/;"	f	class:BWidgets::StateDisplay
 StateDisplay	BWidgets/StateDisplay.hpp	/^class StateDisplay : public Display$/;"	c	namespace:BWidgets
-Style	BWidgets/BStyles.hpp	/^} Style;$/;"	t	namespace:BStyles	typeref:struct:BStyles::__anon9
+Style	BWidgets/BStyles.hpp	/^} Style;$/;"	t	namespace:BStyles	typeref:struct:BStyles::__anon4
 StyleSet	BWidgets/BStyles.cpp	/^StyleSet::StyleSet () {}$/;"	f	class:BStyles::StyleSet
 StyleSet	BWidgets/BStyles.cpp	/^StyleSet::StyleSet (const std::string& name, const std::vector<Style>& styles) : stylesetName (name), styleVector (styles) {}$/;"	f	class:BStyles::StyleSet
 StyleSet	BWidgets/BStyles.hpp	/^class StyleSet {$/;"	c	namespace:BStyles
-TEXT_ALIGN_CENTER	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_CENTER,$/;"	e	enum:BStyles::__anon7
-TEXT_ALIGN_LEFT	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_LEFT,$/;"	e	enum:BStyles::__anon7
-TEXT_ALIGN_RIGHT	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_RIGHT,$/;"	e	enum:BStyles::__anon7
-TEXT_VALIGN_BOTTOM	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_BOTTOM$/;"	e	enum:BStyles::__anon8
-TEXT_VALIGN_MIDDLE	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_MIDDLE,$/;"	e	enum:BStyles::__anon8
-TEXT_VALIGN_TOP	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_TOP,$/;"	e	enum:BStyles::__anon8
+TEXT_ALIGN_CENTER	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_CENTER,$/;"	e	enum:BStyles::__anon2
+TEXT_ALIGN_LEFT	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_LEFT,$/;"	e	enum:BStyles::__anon2
+TEXT_ALIGN_RIGHT	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_RIGHT,$/;"	e	enum:BStyles::__anon2
+TEXT_VALIGN_BOTTOM	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_BOTTOM$/;"	e	enum:BStyles::__anon3
+TEXT_VALIGN_MIDDLE	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_MIDDLE,$/;"	e	enum:BStyles::__anon3
+TEXT_VALIGN_TOP	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_TOP,$/;"	e	enum:BStyles::__anon3
 TK	makefile	/^TK =	BWidgets\/DrawingSurface.cpp \\$/;"	m
 Text	BWidgets/Text.cpp	/^Text::Text () : Text (0.0, 0.0, 0.0, 0.0, "text", "") {}$/;"	f	class:BWidgets::Text
 Text	BWidgets/Text.cpp	/^Text::Text (const Text& that) : Widget (that)$/;"	f	class:BWidgets::Text
@@ -661,7 +661,7 @@ Text	BWidgets/Text.cpp	/^Text::Text (const double x, const double y, const doubl
 Text	BWidgets/Text.cpp	/^Text::Text (const double x, const double y, const double width, const double height, const std::string& text) :$/;"	f	class:BWidgets::Text
 Text	BWidgets/Text.cpp	/^Text::Text (const std::string& text) : Text (0.0, 0.0, BWIDGETS_DEFAULT_WIDTH, BWIDGETS_DEFAULT_HEIGHT, text, text) {}$/;"	f	class:BWidgets::Text
 Text	BWidgets/Text.hpp	/^class Text : public Widget$/;"	c	namespace:BWidgets
-TextAlign	BWidgets/BStyles.hpp	/^} TextAlign;$/;"	t	namespace:BStyles	typeref:enum:BStyles::__anon7
+TextAlign	BWidgets/BStyles.hpp	/^} TextAlign;$/;"	t	namespace:BStyles	typeref:enum:BStyles::__anon2
 TextButton	BWidgets/TextButton.cpp	/^TextButton::TextButton () :$/;"	f	class:BWidgets::TextButton
 TextButton	BWidgets/TextButton.cpp	/^TextButton::TextButton (const TextButton& that) : Button (that), buttonLabel (that.buttonLabel)$/;"	f	class:BWidgets::TextButton
 TextButton	BWidgets/TextButton.cpp	/^TextButton::TextButton (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue) :$/;"	f	class:BWidgets::TextButton
@@ -672,7 +672,7 @@ TextToggleButton	BWidgets/TextToggleButton.cpp	/^TextToggleButton::TextToggleBut
 TextToggleButton	BWidgets/TextToggleButton.cpp	/^TextToggleButton::TextToggleButton (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue) :$/;"	f	class:BWidgets::TextToggleButton
 TextToggleButton	BWidgets/TextToggleButton.cpp	/^TextToggleButton::TextToggleButton (const double x, const double y, const double width, const double height,$/;"	f	class:BWidgets::TextToggleButton
 TextToggleButton	BWidgets/TextToggleButton.hpp	/^class TextToggleButton : public ToggleButton$/;"	c	namespace:BWidgets
-TextVAlign	BWidgets/BStyles.hpp	/^} TextVAlign;$/;"	t	namespace:BStyles	typeref:enum:BStyles::__anon8
+TextVAlign	BWidgets/BStyles.hpp	/^} TextVAlign;$/;"	t	namespace:BStyles	typeref:enum:BStyles::__anon3
 Theme	BWidgets/BStyles.cpp	/^Theme::Theme () {};$/;"	f	class:BStyles::Theme
 Theme	BWidgets/BStyles.cpp	/^Theme::Theme (const std::vector<StyleSet>& theme): stylesetVector (theme) {};$/;"	f	class:BStyles::Theme
 Theme	BWidgets/BStyles.hpp	/^class Theme$/;"	c	namespace:BStyles
@@ -682,7 +682,7 @@ ToggleButton	BWidgets/ToggleButton.hpp	/^class ToggleButton : public Button$/;"	
 UNSELECTED	BWidgets/BItems.hpp	27;"	d
 UNSELECTED	BWidgets/ChoiceBox.hpp	37;"	d
 UNSELECTED	BWidgets/ItemBox.hpp	32;"	d
-USER_DEFINED	BWidgets/BColors.hpp	/^	USER_DEFINED	= 4$/;"	e	enum:BColors::__anon6
+USER_DEFINED	BWidgets/BColors.hpp	/^	USER_DEFINED	= 4$/;"	e	enum:BColors::__anon5
 UpButton	BWidgets/UpButton.cpp	/^UpButton::UpButton () :$/;"	f	class:BWidgets::UpButton
 UpButton	BWidgets/UpButton.cpp	/^UpButton::UpButton (const double x, const double y, const double width, const double height, const std::string& name, double defaultValue) :$/;"	f	class:BWidgets::UpButton
 UpButton	BWidgets/UpButton.hpp	/^class UpButton : public Button$/;"	c	namespace:BWidgets
@@ -748,10 +748,10 @@ addItem	BWidgets/ChoiceBox.cpp	/^void ChoiceBox::addItem (const BItems::Item& ne
 addItem	BWidgets/ChoiceBox.cpp	/^void ChoiceBox::addItem (const BItems::ItemList& newItems)$/;"	f	class:BWidgets::ChoiceBox
 addStyle	BWidgets/BStyles.cpp	/^void StyleSet::addStyle (const std::string& styleName, void* ptr)$/;"	f	class:BStyles::StyleSet
 addStyle	BWidgets/BStyles.cpp	/^void Theme::addStyle (const std::string& setName, const std::string& styleName, void* ptr)$/;"	f	class:BStyles::Theme
-alpha	BWidgets/cairoplus.h	/^	double alpha;$/;"	m	struct:__anon3
+alpha	BWidgets/cairoplus.h	/^	double alpha;$/;"	m	struct:__anon32
 alpha_	BWidgets/BColors.hpp	/^	double red_, green_, blue_, alpha_;$/;"	m	class:BColors::Color
-alpha_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  alpha_bits;$/;"	m	struct:__anon11
-any	BWidgets/pugl/pugl.h	/^	PuglEventAny       any;        \/**< Valid for all event types. *\/$/;"	m	union:__anon33
+alpha_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  alpha_bits;$/;"	m	struct:__anon28
+any	BWidgets/pugl/pugl.h	/^	PuglEventAny       any;        \/**< Valid for all event types. *\/$/;"	m	union:__anon27
 applyBrightness	BWidgets/BColors.cpp	/^void Color::applyBrightness (const double brightness)$/;"	f	class:BColors::Color
 applyEdit	BWidgets/Label.cpp	/^void Label::applyEdit ()$/;"	f	class:BWidgets::Label
 applyTheme	BWidgets/Button.cpp	/^void Button::applyTheme (BStyles::Theme& theme) {applyTheme (theme, name_);}$/;"	f	class:BWidgets::Button
@@ -808,10 +808,10 @@ blackBorder1pt	BWidgets/BStyles.hpp	/^const Border blackBorder1pt = Border (blac
 blackFill	BWidgets/BStyles.hpp	/^const Fill blackFill = Fill (BColors::black);$/;"	m	namespace:BStyles
 blackLine1pt	BWidgets/BStyles.hpp	/^const Line blackLine1pt = Line (BColors::black, 1.0);$/;"	m	namespace:BStyles
 blue	BWidgets/BColors.hpp	/^const Color blue = Color (0.0, 0.0, 1.0, 1.0);$/;"	m	namespace:BColors
-blue	BWidgets/cairoplus.h	/^	double blue;$/;"	m	struct:__anon3
+blue	BWidgets/cairoplus.h	/^	double blue;$/;"	m	struct:__anon32
 blueFill	BWidgets/BStyles.hpp	/^const Fill blueFill = Fill (BColors::blue);$/;"	m	namespace:BStyles
 blue_	BWidgets/BColors.hpp	/^	double red_, green_, blue_, alpha_;$/;"	m	class:BColors::Color
-blue_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  blue_bits;$/;"	m	struct:__anon11
+blue_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  blue_bits;$/;"	m	struct:__anon28
 blues	BWidgets/BColors.hpp	/^const ColorSet blues = ColorSet ({blue, lightblue, darkblue, black});$/;"	m	namespace:BColors
 borderLine	BWidgets/BStyles.hpp	/^	Line borderLine;$/;"	m	class:BStyles::Border
 borderMargin	BWidgets/BStyles.hpp	/^	double borderMargin;$/;"	m	class:BStyles::Border
@@ -819,8 +819,8 @@ borderPadding	BWidgets/BStyles.hpp	/^	double borderPadding;$/;"	m	class:BStyles:
 borderRadius	BWidgets/BStyles.hpp	/^	double borderRadius;$/;"	m	class:BStyles::Border
 border_	BWidgets/Widget.hpp	/^	BStyles::Border border_;$/;"	m	class:BWidgets::Widget
 button	BWidgets/BDevices.hpp	/^	ButtonCode button;$/;"	m	class:BDevices::MouseDevice
-button	BWidgets/pugl/pugl.h	/^	PuglEventButton    button;     \/**< PUGL_BUTTON_PRESS, PUGL_BUTTON_RELEASE. *\/$/;"	m	union:__anon33
-button	BWidgets/pugl/pugl.h	/^	unsigned      button;      \/**< 1-relative button number. *\/$/;"	m	struct:__anon24
+button	BWidgets/pugl/pugl.h	/^	PuglEventButton    button;     \/**< PUGL_BUTTON_PRESS, PUGL_BUTTON_RELEASE. *\/$/;"	m	union:__anon27
+button	BWidgets/pugl/pugl.h	/^	unsigned      button;      \/**< 1-relative button number. *\/$/;"	m	struct:__anon18
 buttonDraw	BWidgets/pugl_cairo_test.c	/^buttonDraw(cairo_t* cr, const Button* but)$/;"	f	file:
 buttonGrabStack_	BWidgets/Window.hpp	/^	BDevices::DeviceGrabStack<BDevices::MouseDevice> buttonGrabStack_;$/;"	m	class:BWidgets::Window
 buttonLabel	BWidgets/TextButton.hpp	/^	Label buttonLabel;$/;"	m	class:BWidgets::TextButton
@@ -832,15 +832,15 @@ cairo_create_text_fitted	BWidgets/cairoplus.c	/^char* cairo_create_text_fitted (
 cairo_image_surface_clone_from_image_surface	BWidgets/cairoplus.c	/^cairo_surface_t* cairo_image_surface_clone_from_image_surface (cairo_surface_t* sourceSurface)$/;"	f
 cairo_nil_text	BWidgets/cairoplus.c	/^char cairo_nil_text[1] = "";$/;"	v
 cairo_rectangle_rounded	BWidgets/cairoplus.c	/^void cairo_rectangle_rounded (cairo_t* cr, double x, double y, double width, double height, double radius, uint8_t corners)$/;"	f
-cairo_rgba	BWidgets/cairoplus.h	/^} cairo_rgba;$/;"	t	typeref:struct:__anon3
+cairo_rgba	BWidgets/cairoplus.h	/^} cairo_rgba;$/;"	t	typeref:struct:__anon32
 cairo_surface_clear	BWidgets/cairoplus.c	/^void cairo_surface_clear (cairo_surface_t* surface)$/;"	f
-cairo_text_decorations	BWidgets/cairoplus.h	/^} cairo_text_decorations;$/;"	t	typeref:struct:__anon4
+cairo_text_decorations	BWidgets/cairoplus.h	/^} cairo_text_decorations;$/;"	t	typeref:struct:__anon33
 cairo_text_destroy	BWidgets/cairoplus.c	/^void cairo_text_destroy (char* text)$/;"	f
 callIdle	BAmp_GUI.cpp	/^static int callIdle(LV2UI_Handle ui)$/;"	f	file:
 cancelButton	BWidgets/FileChooser.hpp	/^	TextButton cancelButton;$/;"	m	class:BWidgets::FileChooser
 cancelButtonClickedCallback	BWidgets/FileChooser.cpp	/^void FileChooser::cancelButtonClickedCallback (BEvents::Event* event)$/;"	f	class:BWidgets::FileChooser
 cbfunction_	BWidgets/Widget.hpp	/^	std::array<std::function<void (BEvents::Event*)>, BEvents::EventType::NO_EVENT> cbfunction_;$/;"	m	class:BWidgets::Widget
-character	BWidgets/pugl/pugl.h	/^	uint32_t      character;   \/**< Unicode character code, or 0. *\/$/;"	m	struct:__anon28
+character	BWidgets/pugl/pugl.h	/^	uint32_t      character;   \/**< Unicode character code, or 0. *\/$/;"	m	struct:__anon22
 children_	BWidgets/Widget.hpp	/^	std::vector <Widget*> children_;$/;"	m	class:BWidgets::Widget
 cleanup	BAmp.cpp	/^cleanup(LV2_Handle instance)$/;"	f	file:
 cleanup	BAmp_GUI.cpp	/^void cleanup(LV2UI_Handle ui)$/;"	f
@@ -887,28 +887,28 @@ clone	BWidgets/VSwitch.cpp	/^Widget* VSwitch::clone () const {return new VSwitch
 clone	BWidgets/ValueWidget.cpp	/^Widget* ValueWidget::clone () const {return new ValueWidget (*this);}$/;"	f	class:BWidgets::ValueWidget
 clone	BWidgets/Widget.cpp	/^Widget* Widget::clone () const {return new Widget (*this);}$/;"	f	class:BWidgets::Widget
 cloneWidgetFrom	BWidgets/BItems.cpp	/^void Item::cloneWidgetFrom (BWidgets::Widget* widget)$/;"	f	class:BItems::Item
-close	BWidgets/pugl/pugl.h	/^	PuglEventClose     close;      \/**< PUGL_CLOSE. *\/$/;"	m	union:__anon33
+close	BWidgets/pugl/pugl.h	/^	PuglEventClose     close;      \/**< PUGL_CLOSE. *\/$/;"	m	union:__anon27
 cobj	BWidgets/pugl/pugl.hpp	/^	PuglView* cobj() { return _view; }$/;"	f	class:pugl::View
 colors	BWidgets/BColors.hpp	/^	std::vector<Color> colors;$/;"	m	class:BColors::ColorSet
 compare	BWidgets/BColors.cpp	/^int Color::compare (const Color& that) const$/;"	f	class:BColors::Color
 compare	BWidgets/BColors.cpp	/^int ColorSet::compare (const ColorSet& that) const {return (colors == that.colors ? 0 : 1);}$/;"	f	class:BColors::ColorSet
-configure	BWidgets/pugl/pugl.h	/^	PuglEventConfigure configure;  \/**< PUGL_CONFIGURE. *\/$/;"	m	union:__anon33
-configure	BWidgets/pugl/pugl_internal_types.h	/^	int (*configure)(PuglView*);$/;"	m	struct:__anon12
+configure	BWidgets/pugl/pugl.h	/^	PuglEventConfigure configure;  \/**< PUGL_CONFIGURE. *\/$/;"	m	union:__anon27
+configure	BWidgets/pugl/pugl_internal_types.h	/^	int (*configure)(PuglView*);$/;"	m	struct:__anon29
 connect_port	BAmp.cpp	/^connect_port(LV2_Handle instance, uint32_t port, void* data)$/;"	f	file:
 connect_port	BAmp.cpp	/^void Amp::connect_port (uint32_t portnr, float* data)$/;"	f	class:Amp
 contains	BUtilities/RectArea.hpp	/^	bool contains (const Point& p) const$/;"	f	class:BUtilities::RectArea
 contains	BWidgets/BDevices.hpp	/^	bool contains (BWidgets::Widget* widget)$/;"	f	class:BDevices::DeviceGrabStack
 contains	BWidgets/BDevices.hpp	/^	bool contains (const T& device) const$/;"	f	class:BDevices::DeviceGrab
-context_version_major	BWidgets/pugl/pugl_internal_types.h	/^	int  context_version_major;$/;"	m	struct:__anon11
-context_version_minor	BWidgets/pugl/pugl_internal_types.h	/^	int  context_version_minor;$/;"	m	struct:__anon11
+context_version_major	BWidgets/pugl/pugl_internal_types.h	/^	int  context_version_major;$/;"	m	struct:__anon28
+context_version_minor	BWidgets/pugl/pugl_internal_types.h	/^	int  context_version_minor;$/;"	m	struct:__anon28
 controller	BAmp_GUI.cpp	/^	LV2UI_Controller controller;$/;"	m	class:BAmp_GUI	file:
-count	BWidgets/pugl/pugl.h	/^	int           count;       \/**< Number of expose events to follow. *\/$/;"	m	struct:__anon26
-cr	BWidgets/pugl/pugl_x11_cairo.c	/^	cairo_t*         cr;$/;"	m	struct:__anon10	file:
-create	BWidgets/pugl/pugl_internal_types.h	/^	int (*create)(PuglView*);$/;"	m	struct:__anon12
+count	BWidgets/pugl/pugl.h	/^	int           count;       \/**< Number of expose events to follow. *\/$/;"	m	struct:__anon20
+cr	BWidgets/pugl/pugl_x11_cairo.c	/^	cairo_t*         cr;$/;"	m	struct:__anon30	file:
+create	BWidgets/pugl/pugl_internal_types.h	/^	int (*create)(PuglView*);$/;"	m	struct:__anon29
 createWindow	BWidgets/pugl/pugl.hpp	/^	virtual void createWindow(const char* title) {$/;"	f	class:pugl::View
-crossing	BWidgets/pugl/pugl.h	/^	PuglEventCrossing  crossing;   \/**< PUGL_ENTER_NOTIFY, PUGL_LEAVE_NOTIFY. *\/$/;"	m	union:__anon33
+crossing	BWidgets/pugl/pugl.h	/^	PuglEventCrossing  crossing;   \/**< PUGL_ENTER_NOTIFY, PUGL_LEAVE_NOTIFY. *\/$/;"	m	union:__anon27
 ctx	BWidgets/pugl/pugl_x11.h	/^	PuglDrawContext ctx;$/;"	m	struct:PuglInternalsImpl
-ctx	BWidgets/pugl/pugl_x11_gl.c	/^	GLXContext  ctx;$/;"	m	struct:__anon34	file:
+ctx	BWidgets/pugl/pugl_x11_gl.c	/^	GLXContext  ctx;$/;"	m	struct:__anon31	file:
 ctx_type	BWidgets/pugl/pugl_internal_types.h	/^	PuglContextType  ctx_type;$/;"	m	struct:PuglViewImpl
 cursorFrom	BWidgets/Label.hpp	/^	size_t cursorFrom;$/;"	m	class:BWidgets::Label
 cursorTo	BWidgets/Label.hpp	/^	size_t cursorTo;$/;"	m	class:BWidgets::Label
@@ -927,9 +927,9 @@ defaultCallback	BWidgets/Widget.cpp	/^void Widget::defaultCallback (BEvents::Eve
 deleteInternal	BWidgets/BItems.cpp	/^void Item::deleteInternal ()$/;"	f	class:BItems::Item
 delta	BWidgets/BEvents.hpp	/^	BUtilities::Point delta;$/;"	m	class:BEvents::WheelEvent
 delta	BWidgets/BEvents.hpp	/^	BUtilities::Point point, origin, delta;$/;"	m	class:BEvents::PointerEvent
-depth_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  depth_bits;$/;"	m	struct:__anon11
+depth_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  depth_bits;$/;"	m	struct:__anon28
 descriptor	BAmp.cpp	/^static const LV2_Descriptor descriptor = {$/;"	v	file:
-destroy	BWidgets/pugl/pugl_internal_types.h	/^	int (*destroy)(PuglView*);$/;"	m	struct:__anon12
+destroy	BWidgets/pugl/pugl_internal_types.h	/^	int (*destroy)(PuglView*);$/;"	m	struct:__anon29
 devices_	BWidgets/BDevices.hpp	/^	std::set<T> devices_;$/;"	m	class:BDevices::DeviceGrab
 dial	BAmp_GUI.cpp	/^	BWidgets::DialValue dial;$/;"	m	class:BAmp_GUI	file:
 dialCenter	BWidgets/Dial.hpp	/^	BUtilities::Point dialCenter;$/;"	m	class:BWidgets::Dial
@@ -941,8 +941,8 @@ display	BWidgets/pugl/pugl_x11.h	/^	Display*        display;$/;"	m	struct:PuglIn
 displayArea	BWidgets/HSliderValue.hpp	/^	BUtilities::RectArea displayArea;$/;"	m	class:BWidgets::HSliderValue
 displayArea	BWidgets/VSliderValue.hpp	/^	BUtilities::RectArea displayArea;$/;"	m	class:BWidgets::VSliderValue
 dot	BWidgets/Dial.hpp	/^	DrawingSurface dot;$/;"	m	class:BWidgets::Dial
-double_buffer	BWidgets/pugl/pugl_internal_types.h	/^	bool double_buffer;$/;"	m	struct:__anon11
-double_buffered	BWidgets/pugl/pugl_x11_gl.c	/^	int         double_buffered;$/;"	m	struct:__anon34	file:
+double_buffer	BWidgets/pugl/pugl_internal_types.h	/^	bool double_buffer;$/;"	m	struct:__anon28
+double_buffered	BWidgets/pugl/pugl_x11_gl.c	/^	int         double_buffered;$/;"	m	struct:__anon31	file:
 downButton	BWidgets/ChoiceBox.hpp	/^	DownButton downButton;$/;"	m	class:BWidgets::ChoiceBox
 downButton	BWidgets/PopupListBox.hpp	/^	DownButton downButton;$/;"	m	class:BWidgets::PopupListBox
 dragAndDropCallback	BWidgets/Widget.cpp	/^void Widget::dragAndDropCallback (BEvents::Event* event)$/;"	f	class:BWidgets::Widget
@@ -968,27 +968,27 @@ draw	BWidgets/VScale.cpp	/^void VScale::draw (const BUtilities::RectArea& area)$
 draw	BWidgets/Widget.cpp	/^void Widget::draw (const BUtilities::RectArea& area)$/;"	f	class:BWidgets::Widget
 drawDot	BWidgets/Dial.cpp	/^void Dial::drawDot ()$/;"	f	class:BWidgets::Dial
 drawingSurface	BWidgets/DrawingSurface.hpp	/^	cairo_surface_t* drawingSurface;$/;"	m	class:BWidgets::DrawingSurface
-dx	BWidgets/pugl/pugl.h	/^	double        dx;          \/**< Scroll X distance in lines. *\/$/;"	m	struct:__anon31
-dx1	BWidgets/PianoWidget.hpp	/^	double dx1;$/;"	m	struct:BWidgets::__anon2
-dx2	BWidgets/PianoWidget.hpp	/^	double dx2;$/;"	m	struct:BWidgets::__anon2
-dy	BWidgets/pugl/pugl.h	/^	double        dy;          \/**< Scroll Y distance in lines. *\/$/;"	m	struct:__anon31
+dx	BWidgets/pugl/pugl.h	/^	double        dx;          \/**< Scroll X distance in lines. *\/$/;"	m	struct:__anon25
+dx1	BWidgets/PianoWidget.hpp	/^	double dx1;$/;"	m	struct:BWidgets::__anon6
+dx2	BWidgets/PianoWidget.hpp	/^	double dx2;$/;"	m	struct:BWidgets::__anon6
+dy	BWidgets/pugl/pugl.h	/^	double        dy;          \/**< Scroll Y distance in lines. *\/$/;"	m	struct:__anon25
 editMode	BWidgets/Label.hpp	/^	bool editMode;$/;"	m	class:BWidgets::Label
 editable	BWidgets/Label.hpp	/^	bool editable;$/;"	m	class:BWidgets::Label
 endMidiKey	BWidgets/PianoWidget.hpp	/^	int endMidiKey;$/;"	m	class:BWidgets::PianoWidget
-enter	BWidgets/pugl/pugl_internal_types.h	/^	int (*enter)(PuglView*);$/;"	m	struct:__anon12
+enter	BWidgets/pugl/pugl_internal_types.h	/^	int (*enter)(PuglView*);$/;"	m	struct:__anon29
 enterDir	BWidgets/FileChooser.cpp	/^void FileChooser::enterDir ()$/;"	f	class:BWidgets::FileChooser
 entered	BWidgets/pugl_cairo_test.c	/^static bool entered = false;$/;"	v	file:
 eventFunc	BWidgets/pugl/pugl_internal_types.h	/^	PuglEventFunc    eventFunc;$/;"	m	struct:PuglViewImpl
 eventQueue_	BWidgets/Window.hpp	/^	std::deque<BEvents::Event*> eventQueue_;		\/\/ TODO: std::list ?$/;"	m	class:BWidgets::Window
 eventType	BWidgets/BEvents.hpp	/^	EventType eventType;$/;"	m	class:BEvents::Event
 eventWidget	BWidgets/BEvents.hpp	/^	BWidgets::Widget* eventWidget;$/;"	m	class:BEvents::Event
-expose	BWidgets/pugl/pugl.h	/^	PuglEventExpose    expose;     \/**< PUGL_EXPOSE. *\/$/;"	m	union:__anon33
+expose	BWidgets/pugl/pugl.h	/^	PuglEventExpose    expose;     \/**< PUGL_EXPOSE. *\/$/;"	m	union:__anon27
 exposeArea	BWidgets/BEvents.hpp	/^	BUtilities::RectArea exposeArea;$/;"	m	class:BEvents::ExposeEvent
 extend	BUtilities/RectArea.hpp	/^	void extend (const RectArea& ra)$/;"	f	class:BUtilities::RectArea
 extensionData	BAmp_GUI.cpp	/^static const void* extensionData(const char* uri)$/;"	f	file:
 extension_data	BAmp.cpp	/^extension_data(const char* uri)$/;"	f	file:
-family	BWidgets/cairoplus.h	/^	char family[64];$/;"	m	struct:__anon4
-fb_config	BWidgets/pugl/pugl_x11_gl.c	/^	GLXFBConfig fb_config;$/;"	m	struct:__anon34	file:
+family	BWidgets/cairoplus.h	/^	char family[64];$/;"	m	struct:__anon33
+fb_config	BWidgets/pugl/pugl_x11_gl.c	/^	GLXFBConfig fb_config;$/;"	m	struct:__anon31	file:
 fgColors	BWidgets/Dial.hpp	/^	BColors::ColorSet fgColors;$/;"	m	class:BWidgets::Dial
 fgColors	BWidgets/HScale.hpp	/^	BColors::ColorSet fgColors;$/;"	m	class:BWidgets::HScale
 fgColors	BWidgets/VScale.hpp	/^	BColors::ColorSet fgColors;$/;"	m	class:BWidgets::VScale
@@ -1003,23 +1003,23 @@ fillSurface	BWidgets/BStyles.hpp	/^	cairo_surface_t* fillSurface;$/;"	m	class:BS
 filter	BWidgets/Display.cpp	/^bool Display::filter (Widget* widget) {return true;}$/;"	f	class:BWidgets::Display
 filter	BWidgets/StateDisplay.cpp	/^bool StateDisplay::filter (Widget* widget) {return (getState () == widget->getState ());}$/;"	f	class:BWidgets::StateDisplay
 filter	BWidgets/Widget.cpp	/^bool Widget::filter (Widget* widget) {return true;}$/;"	f	class:BWidgets::Widget
-filter	BWidgets/pugl/pugl.h	/^	bool          filter;      \/**< True if part of a multi-key sequence. *\/$/;"	m	struct:__anon28
+filter	BWidgets/pugl/pugl.h	/^	bool          filter;      \/**< True if part of a multi-key sequence. *\/$/;"	m	struct:__anon22
 filterFont	BWidgets/FileChooser.hpp	/^	BStyles::Font filterFont;$/;"	m	class:BWidgets::FileChooser
 filterPopupListBox	BWidgets/FileChooser.hpp	/^	PopupListBox filterPopupListBox;$/;"	m	class:BWidgets::FileChooser
 filterPopupListBoxClickedCallback	BWidgets/FileChooser.cpp	/^void FileChooser::filterPopupListBoxClickedCallback (BEvents::Event* event)$/;"	f	class:BWidgets::FileChooser
 filters	BWidgets/FileChooser.hpp	/^	std::vector<FileFilter> filters;$/;"	m	class:BWidgets::FileChooser
-flags	BWidgets/pugl/pugl.h	/^	uint32_t         flags;    \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon29
-flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon23
+flags	BWidgets/pugl/pugl.h	/^	uint32_t         flags;    \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon23
+flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon17
+flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon18
+flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon19
+flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon20
+flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon21
+flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon22
 flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon24
 flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon25
 flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon26
-flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon27
-flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon28
-flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon30
-flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon31
-flags	BWidgets/pugl/pugl.h	/^	uint32_t      flags;       \/**< Bitwise OR of PuglEventFlag values. *\/$/;"	m	struct:__anon32
-focus	BWidgets/pugl/pugl.h	/^	PuglEventFocus     focus;      \/**< PUGL_FOCUS_IN, PUGL_FOCUS_OUT. *\/$/;"	m	union:__anon33
-focus	BWidgets/pugl/pugl.h	/^	bool          focus;       \/**< True iff this is the focused window. *\/$/;"	m	struct:__anon30
+focus	BWidgets/pugl/pugl.h	/^	PuglEventFocus     focus;      \/**< PUGL_FOCUS_IN, PUGL_FOCUS_OUT. *\/$/;"	m	union:__anon27
+focus	BWidgets/pugl/pugl.h	/^	bool          focus;       \/**< True iff this is the focused window. *\/$/;"	m	struct:__anon24
 focusInCallback	BWidgets/Widget.cpp	/^void Widget::focusInCallback (BEvents::Event* event) {}$/;"	f	class:BWidgets::Widget
 focusInMs	BWidgets/Focusable.hpp	/^        std::chrono::milliseconds focusInMs;$/;"	m	class:BWidgets::Focusable
 focusLabel	BWidgets/Dial.hpp	/^	Label focusLabel;$/;"	m	class:BWidgets::Dial
@@ -1090,7 +1090,7 @@ getFontSlant	BWidgets/BStyles.cpp	/^cairo_font_slant_t Font::getFontSlant () con
 getFontWeight	BWidgets/BStyles.cpp	/^cairo_font_weight_t Font::getFontWeight () const {return fontWeight;}$/;"	f	class:BStyles::Font
 getGrab	BWidgets/BDevices.hpp	/^	DeviceGrab<T>* getGrab (const T& device)$/;"	f	class:BDevices::DeviceGrabStack
 getGreen	BWidgets/BColors.cpp	/^double Color::getGreen() const {return green_;}$/;"	f	class:BColors::Color
-getHandle	BWidgets/pugl/pugl_internal_types.h	/^	void* (*getHandle)(PuglView*);$/;"	m	struct:__anon12
+getHandle	BWidgets/pugl/pugl_internal_types.h	/^	void* (*getHandle)(PuglView*);$/;"	m	struct:__anon29
 getHeight	BUtilities/RectArea.hpp	/^	double getHeight () const {return (p2.y - p1.y);}$/;"	f	class:BUtilities::RectArea
 getHeight	BWidgets/Widget.cpp	/^double Widget::getHeight () const {return area_.getHeight ();}$/;"	f	class:BWidgets::Widget
 getIconSurface	BWidgets/Icon.cpp	/^cairo_surface_t* Icon::getIconSurface (BColors::State state) const$/;"	f	class:BWidgets::Icon
@@ -1176,13 +1176,13 @@ getX	BUtilities/RectArea.hpp	/^	double getX () const {return p1.x;}$/;"	f	class:
 getXOffset	BWidgets/Widget.cpp	/^double Widget::getXOffset () {return border_.getMargin () + border_.getLine()->getWidth() + border_.getPadding ();}$/;"	f	class:BWidgets::Widget
 getY	BUtilities/RectArea.hpp	/^	double getY () const {return p1.y;}$/;"	f	class:BUtilities::RectArea
 getYOffset	BWidgets/Widget.cpp	/^double Widget::getYOffset () {return border_.getMargin () + border_.getLine()->getWidth() + border_.getPadding ();}$/;"	f	class:BWidgets::Widget
-grab	BWidgets/pugl/pugl.h	/^	bool          grab;        \/**< True iff this is a grab\/ungrab event. *\/$/;"	m	struct:__anon32
+grab	BWidgets/pugl/pugl.h	/^	bool          grab;        \/**< True iff this is a grab\/ungrab event. *\/$/;"	m	struct:__anon26
 grabFocus	BWidgets/pugl/pugl.hpp	/^	virtual void       grabFocus()                  { puglGrabFocus(_view); }$/;"	f	class:pugl::View
 green	BWidgets/BColors.hpp	/^const Color green = Color (0.0, 1.0, 0.0, 1.0);$/;"	m	namespace:BColors
-green	BWidgets/cairoplus.h	/^	double green;$/;"	m	struct:__anon3
+green	BWidgets/cairoplus.h	/^	double green;$/;"	m	struct:__anon32
 greenFill	BWidgets/BStyles.hpp	/^const Fill greenFill = Fill (BColors::green);$/;"	m	namespace:BStyles
 green_	BWidgets/BColors.hpp	/^	double red_, green_, blue_, alpha_;$/;"	m	class:BColors::Color
-green_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  green_bits;$/;"	m	struct:__anon11
+green_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  green_bits;$/;"	m	struct:__anon28
 greens	BWidgets/BColors.hpp	/^const ColorSet greens = ColorSet ({green, lightgreen, darkgreen, black});$/;"	m	namespace:BColors
 grey	BWidgets/BColors.hpp	/^const Color grey = Color (0.5, 0.5, 0.5, 1.0);$/;"	m	namespace:BColors
 grey20	BWidgets/BColors.hpp	/^const Color grey20 = Color (0.2, 0.2, 0.2, 1.0);$/;"	m	namespace:BColors
@@ -1195,7 +1195,7 @@ greyFill	BWidgets/BStyles.hpp	/^const Fill greyFill = Fill (BColors::grey);$/;"	
 greyLine1pt	BWidgets/BStyles.hpp	/^const Line greyLine1pt = Line (BColors::grey, 1.0);$/;"	m	namespace:BStyles
 greys	BWidgets/BColors.hpp	/^const ColorSet greys = ColorSet ({grey, lightgrey, darkgrey, black});$/;"	m	namespace:BColors
 guiDescriptor	BAmp_GUI.cpp	/^const LV2UI_Descriptor guiDescriptor = {$/;"	v
-h	BWidgets/pugl_cairo_test.c	/^	int         h;$/;"	m	struct:__anon5	file:
+h	BWidgets/pugl_cairo_test.c	/^	int         h;$/;"	m	struct:__anon1	file:
 handle	BWidgets/pugl/pugl_internal_types.h	/^	PuglHandle       handle;$/;"	m	struct:PuglViewImpl
 handleButtonClicked	BWidgets/ChoiceBox.cpp	/^void ChoiceBox::handleButtonClicked (BEvents::Event* event)$/;"	f	class:BWidgets::ChoiceBox
 handleButtonClicked	BWidgets/ListBox.cpp	/^void ListBox::handleButtonClicked (BEvents::Event* event)$/;"	f	class:BWidgets::ListBox
@@ -1207,8 +1207,8 @@ handleValueChanged	BWidgets/PopupListBox.cpp	/^void PopupListBox::handleValueCha
 hardChangeable	BWidgets/ValueWidget.hpp	/^	bool hardChangeable;$/;"	m	class:BWidgets::ValueWidget
 hasChildren	BWidgets/Widget.cpp	/^bool Widget::hasChildren () const {return (children_.size () > 0 ? true : false);}$/;"	f	class:BWidgets::Widget
 hdc	BWidgets/pugl/pugl_win.cpp	/^	HDC      hdc;$/;"	m	struct:PuglInternalsImpl	file:
-height	BWidgets/pugl/pugl.h	/^	double        height;      \/**< Height of exposed region. *\/$/;"	m	struct:__anon26
-height	BWidgets/pugl/pugl.h	/^	double        height;      \/**< New height. *\/$/;"	m	struct:__anon25
+height	BWidgets/pugl/pugl.h	/^	double        height;      \/**< Height of exposed region. *\/$/;"	m	struct:__anon20
+height	BWidgets/pugl/pugl.h	/^	double        height;      \/**< New height. *\/$/;"	m	struct:__anon19
 height	BWidgets/pugl/pugl_internal_types.h	/^	int       height;$/;"	m	struct:PuglViewImpl
 hglrc	BWidgets/pugl/pugl_win.cpp	/^	HGLRC    hglrc;$/;"	m	struct:PuglInternalsImpl	file:
 hide	BWidgets/Widget.cpp	/^void Widget::hide ()$/;"	f	class:BWidgets::Widget
@@ -1256,16 +1256,16 @@ isScrollable	BWidgets/Widget.cpp	/^bool isScrollable (Widget* widget) {return wi
 isVisible	BWidgets/Widget.cpp	/^bool Widget::isVisible()$/;"	f	class:BWidgets::Widget
 isVisible	BWidgets/Widget.cpp	/^bool isVisible (Widget* widget) {return widget->isVisible();}$/;"	f	namespace:BWidgets
 isYResizable	BWidgets/Text.cpp	/^bool Text::isYResizable () const {return yResizable;}$/;"	f	class:BWidgets::Text
-is_hint	BWidgets/pugl/pugl.h	/^	bool          is_hint;     \/**< True iff this event is a motion hint. *\/$/;"	m	struct:__anon30
+is_hint	BWidgets/pugl/pugl.h	/^	bool          is_hint;     \/**< True iff this event is a motion hint. *\/$/;"	m	struct:__anon24
 item	BWidgets/ItemBox.hpp	/^	BItems::Item item;$/;"	m	class:BWidgets::ItemBox
 items	BWidgets/ChoiceBox.hpp	/^	BItems::ItemList items;$/;"	m	class:BWidgets::ChoiceBox
 key	BWidgets/BEvents.hpp	/^	uint32_t key;$/;"	m	class:BEvents::KeyEvent
-key	BWidgets/pugl/pugl.h	/^	PuglEventKey       key;        \/**< PUGL_KEY_PRESS, PUGL_KEY_RELEASE. *\/$/;"	m	union:__anon33
+key	BWidgets/pugl/pugl.h	/^	PuglEventKey       key;        \/**< PUGL_KEY_PRESS, PUGL_KEY_RELEASE. *\/$/;"	m	union:__anon27
 keyCoords	BWidgets/PianoWidget.hpp	/^const std::array<KeyCoords, 12> keyCoords=$/;"	m	namespace:BWidgets
 keyGrabStack_	BWidgets/Window.hpp	/^	BDevices::DeviceGrabStack<uint32_t> keyGrabStack_;$/;"	m	class:BWidgets::Window
 keySymToSpecial	BWidgets/pugl/pugl_win.cpp	/^keySymToSpecial(int sym)$/;"	f	file:
 keySymToSpecial	BWidgets/pugl/pugl_x11.c	/^keySymToSpecial(KeySym sym)$/;"	f	file:
-keycode	BWidgets/pugl/pugl.h	/^	unsigned      keycode;     \/**< Raw key code. *\/$/;"	m	struct:__anon28
+keycode	BWidgets/pugl/pugl.h	/^	unsigned      keycode;     \/**< Raw key code. *\/$/;"	m	struct:__anon22
 knob	BWidgets/Dial.hpp	/^	Knob knob;$/;"	m	class:BWidgets::Dial
 knob	BWidgets/HSlider.hpp	/^	Knob knob;$/;"	m	class:BWidgets::HSlider
 knob	BWidgets/VSlider.hpp	/^	Knob knob;$/;"	m	class:BWidgets::VSlider
@@ -1274,11 +1274,11 @@ knobPosition	BWidgets/HSlider.hpp	/^	BUtilities::Point knobPosition;$/;"	m	class
 knobPosition	BWidgets/VSlider.hpp	/^	BUtilities::Point knobPosition;$/;"	m	class:BWidgets::VSlider
 knobRadius	BWidgets/HSlider.hpp	/^	double knobRadius;$/;"	m	class:BWidgets::HSlider
 knobRadius	BWidgets/VSlider.hpp	/^	double knobRadius;$/;"	m	class:BWidgets::VSlider
-label	BWidgets/pugl_cairo_test.c	/^	const char* label;$/;"	m	struct:__anon5	file:
+label	BWidgets/pugl_cairo_test.c	/^	const char* label;$/;"	m	struct:__anon1	file:
 labelColors	BWidgets/Label.hpp	/^	BColors::ColorSet labelColors;$/;"	m	class:BWidgets::Label
 labelFont	BWidgets/Label.hpp	/^	BStyles::Font labelFont;$/;"	m	class:BWidgets::Label
 labelText	BWidgets/Label.hpp	/^	std::string labelText;$/;"	m	class:BWidgets::Label
-leave	BWidgets/pugl/pugl_internal_types.h	/^	int (*leave)(PuglView*, bool);$/;"	m	struct:__anon12
+leave	BWidgets/pugl/pugl_internal_types.h	/^	int (*leave)(PuglView*, bool);$/;"	m	struct:__anon29
 lightblue	BWidgets/BColors.hpp	/^const Color lightblue = Color (0.5, 0.5, 1.0, 1.0);$/;"	m	namespace:BColors
 lightgreen	BWidgets/BColors.hpp	/^const Color lightgreen = Color (0.5, 1.0, 0.5, 1.0);$/;"	m	namespace:BColors
 lightgrey	BWidgets/BColors.hpp	/^const Color lightgrey = Color (0.75, 0.75, 0.75, 1.0);$/;"	m	namespace:BColors
@@ -1309,14 +1309,14 @@ min_aspect_x	BWidgets/pugl/pugl_internal_types.h	/^	int       min_aspect_x;$/;"	
 min_aspect_y	BWidgets/pugl/pugl_internal_types.h	/^	int       min_aspect_y;$/;"	m	struct:PuglViewImpl
 min_height	BWidgets/pugl/pugl_internal_types.h	/^	int       min_height;$/;"	m	struct:PuglViewImpl
 min_width	BWidgets/pugl/pugl_internal_types.h	/^	int       min_width;$/;"	m	struct:PuglViewImpl
-mode	BWidgets/pugl/pugl.h	/^	PuglCrossingMode mode;     \/**< Reason for crossing. *\/$/;"	m	struct:__anon29
-motion	BWidgets/pugl/pugl.h	/^	PuglEventMotion    motion;     \/**< PUGL_MOTION_NOTIFY. *\/$/;"	m	union:__anon33
+mode	BWidgets/pugl/pugl.h	/^	PuglCrossingMode mode;     \/**< Reason for crossing. *\/$/;"	m	struct:__anon23
+motion	BWidgets/pugl/pugl.h	/^	PuglEventMotion    motion;     \/**< PUGL_MOTION_NOTIFY. *\/$/;"	m	union:__anon27
 moveListBox	BWidgets/PopupListBox.cpp	/^void PopupListBox::moveListBox (const BUtilities::Point& offset)$/;"	f	class:BWidgets::PopupListBox
 moveTo	BUtilities/RectArea.hpp	/^	void moveTo (const Point& position)$/;"	f	class:BUtilities::RectArea
 moveTo	BUtilities/RectArea.hpp	/^	void moveTo (const double x, const double y) {return moveTo (Point (x, y));}$/;"	f	class:BUtilities::RectArea
 moveTo	BWidgets/Widget.cpp	/^void Widget::moveTo (const BUtilities::Point& position)$/;"	f	class:BWidgets::Widget
 moveTo	BWidgets/Widget.cpp	/^void Widget::moveTo (const double x, const double y) {moveTo (BUtilities::Point (x, y));}$/;"	f	class:BWidgets::Widget
-name	BWidgets/BStyles.hpp	/^	std::string name;$/;"	m	struct:BStyles::__anon9
+name	BWidgets/BStyles.hpp	/^	std::string name;$/;"	m	struct:BStyles::__anon4
 name	BWidgets/FileChooser.hpp	/^	std::string name;$/;"	m	struct:BWidgets::FileFilter
 name_	BWidgets/Widget.hpp	/^	std::string name_;$/;"	m	class:BWidgets::Widget
 nativeWindow_	BWidgets/Window.hpp	/^	PuglNativeWindow nativeWindow_;$/;"	m	class:BWidgets::Window
@@ -1661,7 +1661,7 @@ postRedisplay	BWidgets/Widget.cpp	/^void Widget::postRedisplay (const BUtilities
 postRedisplay	BWidgets/pugl/pugl.hpp	/^	virtual void       postRedisplay()              { puglPostRedisplay(_view); }$/;"	f	class:pugl::View
 postValueChanged	BWidgets/ValueWidget.cpp	/^void ValueWidget::postValueChanged ()$/;"	f	class:BWidgets::ValueWidget
 pressKeys	BWidgets/PianoWidget.cpp	/^void PianoWidget::pressKeys (std::vector<bool>& keys)$/;"	f	class:BWidgets::PianoWidget
-pressed	BWidgets/pugl_cairo_test.c	/^	bool        pressed;$/;"	m	struct:__anon5	file:
+pressed	BWidgets/pugl_cairo_test.c	/^	bool        pressed;$/;"	m	struct:__anon1	file:
 pressedKeys	BWidgets/PianoWidget.hpp	/^	std::vector<bool> pressedKeys;$/;"	m	class:BWidgets::PianoWidget
 processEvents	BWidgets/pugl/pugl.hpp	/^	virtual PuglStatus processEvents()              { return puglProcessEvents(_view); }$/;"	f	class:pugl::View
 pugl	BWidgets/pugl/pugl.hpp	/^namespace pugl {$/;"	n
@@ -1743,10 +1743,10 @@ rangeMax	BWidgets/RangeWidget.hpp	/^	double rangeMax;$/;"	m	class:BWidgets::Rang
 rangeMin	BWidgets/RangeWidget.hpp	/^	double rangeMin;$/;"	m	class:BWidgets::RangeWidget
 rangeStep	BWidgets/RangeWidget.hpp	/^	double rangeStep;$/;"	m	class:BWidgets::RangeWidget
 red	BWidgets/BColors.hpp	/^const Color red = Color (1.0, 0.0, 0.0, 1.0);$/;"	m	namespace:BColors
-red	BWidgets/cairoplus.h	/^	double red;$/;"	m	struct:__anon3
+red	BWidgets/cairoplus.h	/^	double red;$/;"	m	struct:__anon32
 redFill	BWidgets/BStyles.hpp	/^const Fill redFill = Fill (BColors::red);$/;"	m	namespace:BStyles
 red_	BWidgets/BColors.hpp	/^	double red_, green_, blue_, alpha_;$/;"	m	class:BColors::Color
-red_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  red_bits;$/;"	m	struct:__anon11
+red_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  red_bits;$/;"	m	struct:__anon28
 redirectPostValueChanged	BWidgets/MessageBox.cpp	/^void MessageBox::redirectPostValueChanged (BEvents::Event* event)$/;"	f	class:BWidgets::MessageBox
 redisplay	BWidgets/Widget.cpp	/^void Widget::redisplay (cairo_surface_t* surface, const BUtilities::RectArea& area)$/;"	f	class:BWidgets::Widget
 redisplay	BWidgets/Widget.cpp	/^void Widget::redisplay (cairo_surface_t* surface, const BUtilities::RectArea& outerArea, const BUtilities::RectArea& area)$/;"	f	class:BWidgets::Widget
@@ -1765,7 +1765,7 @@ removeStyle	BWidgets/BStyles.cpp	/^void StyleSet::removeStyle (const std::string
 removeStyle	BWidgets/BStyles.cpp	/^void Theme::removeStyle (const std::string& setName, const std::string& styleName)$/;"	f	class:BStyles::Theme
 rename	BWidgets/Widget.cpp	/^void Widget::rename (const std::string& name) {name_ = name;}$/;"	f	class:BWidgets::Widget
 requestWidget	BWidgets/BEvents.hpp	/^ 	BWidgets::Widget* requestWidget;$/;"	m	class:BEvents::WidgetEvent
-resizable	BWidgets/pugl/pugl_internal_types.h	/^	bool resizable;$/;"	m	struct:__anon11
+resizable	BWidgets/pugl/pugl_internal_types.h	/^	bool resizable;$/;"	m	struct:__anon28
 resize	BUtilities/RectArea.hpp	/^	void resize (const Point& extends) {p2 = p1 + extends;}$/;"	f	class:BUtilities::RectArea
 resize	BUtilities/RectArea.hpp	/^	void resize (const double width, const double height) {return resize (Point (width, height));}$/;"	f	class:BUtilities::RectArea
 resize	BWidgets/DrawingSurface.cpp	/^void DrawingSurface::resize () {} \/\/ Do not auto resize$/;"	f	class:BWidgets::DrawingSurface
@@ -1789,7 +1789,7 @@ resize	BWidgets/TextToggleButton.cpp	/^void TextToggleButton::resize (const doub
 resize	BWidgets/Widget.cpp	/^void Widget::resize ()$/;"	f	class:BWidgets::Widget
 resize	BWidgets/Widget.cpp	/^void Widget::resize (const BUtilities::Point extends)$/;"	f	class:BWidgets::Widget
 resize	BWidgets/Widget.cpp	/^void Widget::resize (const double width, const double height) {Widget::resize (BUtilities::Point (width, height));}$/;"	f	class:BWidgets::Widget
-resize	BWidgets/pugl/pugl_internal_types.h	/^	int (*resize)(PuglView*, int, int);$/;"	m	struct:__anon12
+resize	BWidgets/pugl/pugl_internal_types.h	/^	int (*resize)(PuglView*, int, int);$/;"	m	struct:__anon29
 resizeItem	BWidgets/ChoiceBox.cpp	/^void ChoiceBox::resizeItem (const double value, const BUtilities::Point& extends)$/;"	f	class:BWidgets::ChoiceBox
 resizeItems	BWidgets/ChoiceBox.cpp	/^void ChoiceBox::resizeItems (const BUtilities::Point& extends)$/;"	f	class:BWidgets::ChoiceBox
 resizeListBox	BWidgets/PopupListBox.cpp	/^void PopupListBox::resizeListBox (const BUtilities::Point& extends)$/;"	f	class:BWidgets::PopupListBox
@@ -1799,7 +1799,7 @@ roundedBox	BWidgets/pugl_cairo_test.c	/^roundedBox(cairo_t* cr, double x, double
 run	BAmp.cpp	/^run(LV2_Handle instance, uint32_t n_samples)$/;"	f	file:
 run	BAmp.cpp	/^void Amp::run (uint32_t n_samples)$/;"	f	class:Amp
 run	BWidgets/Window.cpp	/^void Window::run ()$/;"	f	class:BWidgets::Window
-samples	BWidgets/pugl/pugl_internal_types.h	/^	int  samples;$/;"	m	struct:__anon11
+samples	BWidgets/pugl/pugl_internal_types.h	/^	int  samples;$/;"	m	struct:__anon28
 sans12pt	BWidgets/BStyles.hpp	/^const Font sans12pt = Font ("Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL, 12.0);$/;"	m	namespace:BStyles
 scaleArea	BWidgets/HScale.hpp	/^	BUtilities::RectArea scaleArea;$/;"	m	class:BWidgets::HScale
 scaleArea	BWidgets/VScale.hpp	/^	BUtilities::RectArea scaleArea;$/;"	m	class:BWidgets::VScale
@@ -1807,7 +1807,7 @@ scaleXValue	BWidgets/HScale.hpp	/^	double scaleXValue;$/;"	m	class:BWidgets::HSc
 scaleYValue	BWidgets/VScale.hpp	/^	double scaleYValue;$/;"	m	class:BWidgets::VScale
 scheduleDraw_	BWidgets/Widget.hpp	/^	bool scheduleDraw_;$/;"	m	class:BWidgets::Widget
 screen	BWidgets/pugl/pugl_x11.h	/^	int             screen;$/;"	m	struct:PuglInternalsImpl
-scroll	BWidgets/pugl/pugl.h	/^	PuglEventScroll    scroll;     \/**< PUGL_SCROLL. *\/$/;"	m	union:__anon33
+scroll	BWidgets/pugl/pugl.h	/^	PuglEventScroll    scroll;     \/**< PUGL_SCROLL. *\/$/;"	m	union:__anon27
 scrollable_	BWidgets/Widget.hpp	/^	bool scrollable_;$/;"	m	class:BWidgets::Widget
 set	BUtilities/Any.hpp	/^        template <class T> void set (const T& t)$/;"	f	class:BUtilities::Any
 setAlpha	BWidgets/BColors.cpp	/^void Color::setAlpha (const double alpha)$/;"	f	class:BColors::Color
@@ -1909,24 +1909,24 @@ setWidth	BWidgets/Widget.cpp	/^void Widget::setWidth (const double width)$/;"	f	
 setYResizable	BWidgets/Text.cpp	/^void Text::setYResizable (const bool resizable) {yResizable = resizable;}$/;"	f	class:BWidgets::Text
 show	BWidgets/Widget.cpp	/^void Widget::show ()$/;"	f	class:BWidgets::Widget
 showWindow	BWidgets/pugl/pugl.hpp	/^	virtual void             showWindow()      { puglShowWindow(_view); }$/;"	f	class:pugl::View
-size	BWidgets/cairoplus.h	/^	double size;$/;"	m	struct:__anon4
-slant	BWidgets/cairoplus.h	/^	cairo_font_slant_t slant;$/;"	m	struct:__anon4
+size	BWidgets/cairoplus.h	/^	double size;$/;"	m	struct:__anon33
+slant	BWidgets/cairoplus.h	/^	cairo_font_slant_t slant;$/;"	m	struct:__anon33
 softValue	BWidgets/ValueWidget.hpp	/^	double softValue;$/;"	m	class:BWidgets::ValueWidget
-special	BWidgets/pugl/pugl.h	/^	PuglKey       special;     \/**< Special key, or 0. *\/$/;"	m	struct:__anon28
+special	BWidgets/pugl/pugl.h	/^	PuglKey       special;     \/**< Special key, or 0. *\/$/;"	m	struct:__anon22
 stack_	BWidgets/BDevices.hpp	/^	std::list<DeviceGrab<T>> stack_;$/;"	m	class:BDevices::DeviceGrabStack
 startMidiKey	BWidgets/PianoWidget.hpp	/^	int startMidiKey;$/;"	m	class:BWidgets::PianoWidget
-state	BWidgets/pugl/pugl.h	/^	unsigned         state;    \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon29
+state	BWidgets/pugl/pugl.h	/^	unsigned         state;    \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon23
+state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon18
+state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon22
 state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon24
-state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon28
-state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon30
-state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon31
-stencil_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  stencil_bits;$/;"	m	struct:__anon11
-stylePtr	BWidgets/BStyles.hpp	/^	void* stylePtr;$/;"	m	struct:BStyles::__anon9
+state	BWidgets/pugl/pugl.h	/^	unsigned      state;       \/**< Bitwise OR of PuglMod flags. *\/$/;"	m	struct:__anon25
+stencil_bits	BWidgets/pugl/pugl_internal_types.h	/^	int  stencil_bits;$/;"	m	struct:__anon28
+stylePtr	BWidgets/BStyles.hpp	/^	void* stylePtr;$/;"	m	struct:BStyles::__anon4
 styleVector	BWidgets/BStyles.hpp	/^	std::vector<Style> styleVector;$/;"	m	class:BStyles::StyleSet
 stylesetName	BWidgets/BStyles.hpp	/^	std::string stylesetName;$/;"	m	class:BStyles::StyleSet
 stylesetVector	BWidgets/BStyles.hpp	/^	std::vector<StyleSet> stylesetVector;$/;"	m	class:BStyles::Theme
 surface	BWidgets/pugl/pugl_x11.h	/^	PuglSurface*    surface;$/;"	m	struct:PuglInternalsImpl
-surface	BWidgets/pugl/pugl_x11_cairo.c	/^	cairo_surface_t* surface;$/;"	m	struct:__anon10	file:
+surface	BWidgets/pugl/pugl_x11_cairo.c	/^	cairo_surface_t* surface;$/;"	m	struct:__anon30	file:
 textAlign	BWidgets/BStyles.hpp	/^	TextAlign textAlign;$/;"	m	class:BStyles::Font
 textBox	BWidgets/MessageBox.hpp	/^	Text textBox;$/;"	m	class:BWidgets::MessageBox
 textColors	BWidgets/Text.hpp	/^	BColors::ColorSet textColors;$/;"	m	class:BWidgets::Text
@@ -1936,11 +1936,11 @@ textString	BWidgets/Text.hpp	/^	std::string textString;$/;"	m	class:BWidgets::Te
 textVAlign	BWidgets/BStyles.hpp	/^	TextVAlign textVAlign;$/;"	m	class:BStyles::Font
 that	BWidgets/Window.hpp	/^	Window (const Window& that) = delete;			\/\/ Only one window in this version$/;"	m	class:BWidgets::Window
 that	BWidgets/Window.hpp	/^	Window& operator= (const Window& that) = delete;	\/\/ Only one Window in this version$/;"	m	class:BWidgets::Window
-time	BWidgets/pugl/pugl.h	/^	uint32_t         time;     \/**< Time in milliseconds. *\/$/;"	m	struct:__anon29
+time	BWidgets/pugl/pugl.h	/^	uint32_t         time;     \/**< Time in milliseconds. *\/$/;"	m	struct:__anon23
+time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon18
+time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon22
 time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon24
-time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon28
-time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon30
-time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon31
+time	BWidgets/pugl/pugl.h	/^	uint32_t      time;        \/**< Time in milliseconds. *\/$/;"	m	struct:__anon25
 time_	BWidgets/BDevices.hpp	/^	std::chrono::steady_clock::time_point time_;$/;"	m	class:BDevices::MouseDevice
 titleBox	BWidgets/MessageBox.hpp	/^	Text titleBox;$/;"	m	class:BWidgets::MessageBox
 title_	BWidgets/Window.hpp	/^	std::string title_;$/;"	m	class:BWidgets::Window
@@ -1956,17 +1956,17 @@ translateMessageParamsToEvent	BWidgets/pugl/pugl_win.cpp	/^translateMessageParam
 translateModifiers	BWidgets/pugl/pugl_x11.c	/^translateModifiers(unsigned xstate)$/;"	f	file:
 translatePuglEvent	BWidgets/Window.cpp	/^void Window::translatePuglEvent (PuglView* view, const PuglEvent* puglEvent)$/;"	f	class:BWidgets::Window
 translateTimeEvent	BWidgets/Window.cpp	/^void Window::translateTimeEvent ()$/;"	f	class:BWidgets::Window
-type	BWidgets/pugl/pugl.h	/^	PuglEventType      type;       \/**< Event type. *\/$/;"	m	union:__anon33
-type	BWidgets/pugl/pugl.h	/^	PuglEventType    type;     \/**< PUGL_ENTER_NOTIFY or PUGL_LEAVE_NOTIFY. *\/$/;"	m	struct:__anon29
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< Event type. *\/$/;"	m	struct:__anon23
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_BUTTON_PRESS or PUGL_BUTTON_RELEASE. *\/$/;"	m	struct:__anon24
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_CLOSE. *\/$/;"	m	struct:__anon27
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_CONFIGURE. *\/$/;"	m	struct:__anon25
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_EXPOSE. *\/$/;"	m	struct:__anon26
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_FOCUS_IN or PUGL_FOCUS_OUT. *\/$/;"	m	struct:__anon32
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_KEY_PRESS or PUGL_KEY_RELEASE. *\/$/;"	m	struct:__anon28
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_MOTION_NOTIFY. *\/$/;"	m	struct:__anon30
-type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_SCROLL. *\/$/;"	m	struct:__anon31
+type	BWidgets/pugl/pugl.h	/^	PuglEventType      type;       \/**< Event type. *\/$/;"	m	union:__anon27
+type	BWidgets/pugl/pugl.h	/^	PuglEventType    type;     \/**< PUGL_ENTER_NOTIFY or PUGL_LEAVE_NOTIFY. *\/$/;"	m	struct:__anon23
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< Event type. *\/$/;"	m	struct:__anon17
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_BUTTON_PRESS or PUGL_BUTTON_RELEASE. *\/$/;"	m	struct:__anon18
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_CLOSE. *\/$/;"	m	struct:__anon21
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_CONFIGURE. *\/$/;"	m	struct:__anon19
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_EXPOSE. *\/$/;"	m	struct:__anon20
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_FOCUS_IN or PUGL_FOCUS_OUT. *\/$/;"	m	struct:__anon26
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_KEY_PRESS or PUGL_KEY_RELEASE. *\/$/;"	m	struct:__anon22
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_MOTION_NOTIFY. *\/$/;"	m	struct:__anon24
+type	BWidgets/pugl/pugl.h	/^	PuglEventType type;        \/**< PUGL_SCROLL. *\/$/;"	m	struct:__anon25
 u32labelText	BWidgets/Label.hpp	/^	std::u32string u32labelText;$/;"	m	class:BWidgets::Label
 unfocus	BWidgets/Window.cpp	/^void Window::unfocus ()$/;"	f	class:BWidgets::Window
 upButton	BWidgets/ChoiceBox.hpp	/^	UpButton upButton;$/;"	m	class:BWidgets::ChoiceBox
@@ -1996,9 +1996,9 @@ updateCoords	BWidgets/VSliderValue.cpp	/^void VSliderValue::updateCoords ()$/;"	
 updateCoords	BWidgets/VSwitch.cpp	/^void VSwitch::updateCoords ()$/;"	f	class:BWidgets::VSwitch
 updateItems	BWidgets/ChoiceBox.cpp	/^void ChoiceBox::updateItems ()$/;"	f	class:BWidgets::ChoiceBox
 updateItems	BWidgets/ListBox.cpp	/^void ListBox::updateItems ()$/;"	f	class:BWidgets::ListBox
-use_compat_profile	BWidgets/pugl/pugl_internal_types.h	/^	bool use_compat_profile;$/;"	m	struct:__anon11
+use_compat_profile	BWidgets/pugl/pugl_internal_types.h	/^	bool use_compat_profile;$/;"	m	struct:__anon28
 utf16_to_code_point	BWidgets/pugl/pugl_win.cpp	/^utf16_to_code_point(const wchar_t* input, size_t input_size)$/;"	f	file:
-utf8	BWidgets/pugl/pugl.h	/^	uint8_t       utf8[8];     \/**< UTF-8 string. *\/$/;"	m	struct:__anon28
+utf8	BWidgets/pugl/pugl.h	/^	uint8_t       utf8[8];     \/**< UTF-8 string. *\/$/;"	m	struct:__anon22
 valFormat	BWidgets/DialValue.hpp	/^	std::string valFormat;$/;"	m	class:BWidgets::DialValue
 valFormat	BWidgets/HSliderValue.hpp	/^	std::string valFormat;$/;"	m	class:BWidgets::HSliderValue
 valFormat	BWidgets/VSliderValue.hpp	/^	std::string valFormat;$/;"	m	class:BWidgets::VSliderValue
@@ -2010,75 +2010,75 @@ valueDisplay	BWidgets/DialValue.hpp	/^	Label valueDisplay;$/;"	m	class:BWidgets:
 valueDisplay	BWidgets/HSliderValue.hpp	/^	Label valueDisplay;$/;"	m	class:BWidgets::HSliderValue
 valueDisplay	BWidgets/VSliderValue.hpp	/^	Label valueDisplay;$/;"	m	class:BWidgets::VSliderValue
 vi	BWidgets/pugl/pugl_x11.h	/^	XVisualInfo*    vi;$/;"	m	struct:PuglInternalsImpl
-view	BWidgets/pugl/pugl.h	/^	PuglView*        view;     \/**< View that received this event. *\/$/;"	m	struct:__anon29
-view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon23
+view	BWidgets/pugl/pugl.h	/^	PuglView*        view;     \/**< View that received this event. *\/$/;"	m	struct:__anon23
+view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon17
+view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon18
+view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon19
+view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon20
+view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon21
+view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon22
 view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon24
 view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon25
 view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon26
-view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon27
-view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon28
-view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon30
-view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon31
-view	BWidgets/pugl/pugl.h	/^	PuglView*     view;        \/**< View that received this event. *\/$/;"	m	struct:__anon32
 view_	BWidgets/Window.hpp	/^	PuglView* view_;$/;"	m	class:BWidgets::Window
 visible	BWidgets/pugl/pugl_internal_types.h	/^	bool      visible;$/;"	m	struct:PuglViewImpl
 visible_	BWidgets/Widget.hpp	/^	bool visible_;$/;"	m	class:BWidgets::Widget
-w	BWidgets/pugl_cairo_test.c	/^	int         w;$/;"	m	struct:__anon5	file:
+w	BWidgets/pugl_cairo_test.c	/^	int         w;$/;"	m	struct:__anon1	file:
 waitForEvent	BWidgets/pugl/pugl.hpp	/^	virtual PuglStatus waitForEvent()               { return puglWaitForEvent(_view); }$/;"	f	class:pugl::View
 wc	BWidgets/pugl/pugl_win.cpp	/^	WNDCLASS wc;$/;"	m	struct:PuglInternalsImpl	file:
 wcharBufToEvent	BWidgets/pugl/pugl_win.cpp	/^wcharBufToEvent(wchar_t* buf, int n, PuglEvent* event)$/;"	f	file:
-weight	BWidgets/cairoplus.h	/^	cairo_font_weight_t weight;$/;"	m	struct:__anon4
+weight	BWidgets/cairoplus.h	/^	cairo_font_weight_t weight;$/;"	m	struct:__anon33
 white	BWidgets/BColors.hpp	/^const Color white = Color (1.0, 1.0, 1.0, 1.0);$/;"	m	namespace:BColors
 whiteBgColors	BWidgets/HPianoRoll.hpp	/^	BColors::ColorSet whiteBgColors;$/;"	m	class:BWidgets::HPianoRoll
 whiteBorder1pt	BWidgets/BStyles.hpp	/^const Border whiteBorder1pt = Border (whiteLine1pt);$/;"	m	namespace:BStyles
 whiteFill	BWidgets/BStyles.hpp	/^const Fill whiteFill = Fill (BColors::white);$/;"	m	namespace:BStyles
-whiteKey	BWidgets/PianoWidget.hpp	/^	bool whiteKey;$/;"	m	struct:BWidgets::__anon2
+whiteKey	BWidgets/PianoWidget.hpp	/^	bool whiteKey;$/;"	m	struct:BWidgets::__anon6
 whiteLine1pt	BWidgets/BStyles.hpp	/^const Line whiteLine1pt = Line (BColors::white, 1.0);$/;"	m	namespace:BStyles
 whites	BWidgets/BColors.hpp	/^const ColorSet whites = ColorSet ({lightgrey, white, grey, black});$/;"	m	namespace:BColors
 widget	BWidgets/BItems.hpp	/^        BWidgets::Widget* widget;$/;"	m	class:BItems::Item
 widgetState_	BWidgets/Widget.hpp	/^	BColors::State widgetState_;$/;"	m	class:BWidgets::Widget
 widgetSurface_	BWidgets/Widget.hpp	/^	cairo_surface_t* widgetSurface_;$/;"	m	class:BWidgets::Widget
 widget_	BWidgets/BDevices.hpp	/^	BWidgets::Widget* widget_;$/;"	m	class:BDevices::DeviceGrab
-width	BWidgets/PianoWidget.hpp	/^	double width;$/;"	m	struct:BWidgets::__anon2
-width	BWidgets/pugl/pugl.h	/^	double        width;       \/**< New width. *\/$/;"	m	struct:__anon25
-width	BWidgets/pugl/pugl.h	/^	double        width;       \/**< Width of exposed region. *\/$/;"	m	struct:__anon26
+width	BWidgets/PianoWidget.hpp	/^	double width;$/;"	m	struct:BWidgets::__anon6
+width	BWidgets/pugl/pugl.h	/^	double        width;       \/**< New width. *\/$/;"	m	struct:__anon19
+width	BWidgets/pugl/pugl.h	/^	double        width;       \/**< Width of exposed region. *\/$/;"	m	struct:__anon20
 width	BWidgets/pugl/pugl_internal_types.h	/^	int       width;$/;"	m	struct:PuglViewImpl
 win	BWidgets/pugl/pugl_x11.h	/^	Window          win;$/;"	m	struct:PuglInternalsImpl
 windowClass	BWidgets/pugl/pugl_internal_types.h	/^	char*            windowClass;$/;"	m	struct:PuglViewImpl
 wndProc	BWidgets/pugl/pugl_win.cpp	/^wndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)$/;"	f
 write_function	BAmp_GUI.cpp	/^	LV2UI_Write_Function write_function;$/;"	m	class:BAmp_GUI	file:
 x	BUtilities/Point.hpp	/^	double x, y;$/;"	m	struct:BUtilities::Point
-x	BWidgets/PianoWidget.hpp	/^	double x;$/;"	m	struct:BWidgets::__anon2
-x	BWidgets/pugl/pugl.h	/^	double           x;        \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon29
-x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< New parent-relative X coordinate. *\/$/;"	m	struct:__anon25
+x	BWidgets/PianoWidget.hpp	/^	double x;$/;"	m	struct:BWidgets::__anon6
+x	BWidgets/pugl/pugl.h	/^	double           x;        \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon23
+x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< New parent-relative X coordinate. *\/$/;"	m	struct:__anon19
+x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon18
+x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon20
+x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon22
 x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon24
-x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon26
-x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon28
-x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon30
-x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon31
-x	BWidgets/pugl_cairo_test.c	/^	int         x;$/;"	m	struct:__anon5	file:
-x_root	BWidgets/pugl/pugl.h	/^	double           x_root;   \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon29
+x	BWidgets/pugl/pugl.h	/^	double        x;           \/**< View-relative X coordinate. *\/$/;"	m	struct:__anon25
+x	BWidgets/pugl_cairo_test.c	/^	int         x;$/;"	m	struct:__anon1	file:
+x_root	BWidgets/pugl/pugl.h	/^	double           x_root;   \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon23
+x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon18
+x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon22
 x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon24
-x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon28
-x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon30
-x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon31
+x_root	BWidgets/pugl/pugl.h	/^	double        x_root;      \/**< Root-relative X coordinate. *\/$/;"	m	struct:__anon25
 xic	BWidgets/pugl/pugl_x11.h	/^	XIC             xic;$/;"	m	struct:PuglInternalsImpl
 xim	BWidgets/pugl/pugl_x11.h	/^	XIM             xim;$/;"	m	struct:PuglInternalsImpl
 y	BUtilities/Point.hpp	/^	double x, y;$/;"	m	struct:BUtilities::Point
-y	BWidgets/pugl/pugl.h	/^	double           y;        \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon29
-y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< New parent-relative Y coordinate. *\/$/;"	m	struct:__anon25
+y	BWidgets/pugl/pugl.h	/^	double           y;        \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon23
+y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< New parent-relative Y coordinate. *\/$/;"	m	struct:__anon19
+y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon18
+y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon20
+y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon22
 y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon24
-y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon26
-y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon28
-y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon30
-y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon31
-y	BWidgets/pugl_cairo_test.c	/^	int         y;$/;"	m	struct:__anon5	file:
+y	BWidgets/pugl/pugl.h	/^	double        y;           \/**< View-relative Y coordinate. *\/$/;"	m	struct:__anon25
+y	BWidgets/pugl_cairo_test.c	/^	int         y;$/;"	m	struct:__anon1	file:
 yResizable	BWidgets/Text.hpp	/^	bool yResizable;$/;"	m	class:BWidgets::Text
-y_root	BWidgets/pugl/pugl.h	/^	double           y_root;   \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon29
+y_root	BWidgets/pugl/pugl.h	/^	double           y_root;   \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon23
+y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon18
+y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon22
 y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon24
-y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon28
-y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon30
-y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon31
+y_root	BWidgets/pugl/pugl.h	/^	double        y_root;      \/**< Root-relative Y coordinate. *\/$/;"	m	struct:__anon25
 yellow	BWidgets/BColors.hpp	/^const Color yellow = Color (1.0, 1.0, 0.0, 1.0);$/;"	m	namespace:BColors
 ~Any	BUtilities/Any.hpp	/^        ~Any () {if (dataptr) delete dataptr;}$/;"	f	class:BUtilities::Any
 ~Button	BWidgets/Button.cpp	/^Button:: ~Button () {}$/;"	f	class:BWidgets::Button

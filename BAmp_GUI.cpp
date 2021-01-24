@@ -20,7 +20,7 @@ public:
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
-	BWidgets::Window (100, 100, "BAmp", parentWindow, true),
+	BWidgets::Window (100, 100, "BAmp", parentWindow, true, PUGL_MODULE, 0),
 	write_function (NULL), controller (NULL),
 	dial (10, 10, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
 {
