@@ -8,12 +8,15 @@
         ui:binary <BAmp_GUI.so> ;
         lv2:extensionData ui:idleInterface , ui:resize ;
 	lv2:optionalFeature ui:resize ;
-        ui:requiredFeature ui:makeResident .
+        lv2:requiredFeature ui:idleInterface .
 
 <https://www.jahnichen.de/plugins/lv2/BAmp> a lv2:Plugin ;
+  a lv2:Plugin, lv2:AmplifierPlugin, doap:Project;
   doap:name "B.Amplifier";
   doap:license <http://usefulinc.com/doap/licenses/gpl> ;
   lv2:binary <BAmp.so> ;
+  lv2:microVersion 1 ;
+  lv2:minorVersion 0 ;
   ui:ui <https://www.jahnichen.de/plugins/lv2/BAmp#GUI> ;
   lv2:optionalFeature lv2:hardRTCapable ;
   lv2:port [
