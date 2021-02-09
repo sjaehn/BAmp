@@ -9,7 +9,7 @@
 class BAmp_GUI : public BWidgets::Window
 {
 public:
-	BAmp_GUI (PuglNativeWindow parentWindow);
+	BAmp_GUI (PuglNativeView parentWindow);
 	void portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer);
 	virtual void onConfigureRequest (BEvents::ExposeEvent* event) override;
 	static void valueChangedCallback (BEvents::Event* event);
@@ -19,7 +19,7 @@ public:
 	BWidgets::DialValue dial;
 };
 
-BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :
+BAmp_GUI::BAmp_GUI (PuglNativeView parentWindow) :
 	BWidgets::Window (100, 100, "BAmp", parentWindow, true, PUGL_MODULE, 0),
 	write_function (NULL), controller (NULL),
 	dial (10, 10, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
@@ -70,7 +70,7 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 						  LV2UI_Write_Function write_function, LV2UI_Controller controller, LV2UI_Widget *widget,
 						  const LV2_Feature *const *features)
 {
-	PuglNativeWindow parentWindow = 0;
+	PuglNativeView parentWindow = 0;
 	LV2UI_Resize* resize = NULL;
 
 	if (strcmp(plugin_uri, AMP_URI) != 0)
@@ -81,7 +81,7 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 
 	for (int i = 0; features[i]; ++i)
 	{
-		if (!strcmp(features[i]->URI, LV2_UI__parent)) parentWindow = (PuglNativeWindow) features[i]->data;
+		if (!strcmp(features[i]->URI, LV2_UI__parent)) parentWindow = (PuglNativeView) features[i]->data;
 		else if (!strcmp(features[i]->URI, LV2_UI__resize)) resize = (LV2UI_Resize*)features[i]->data;
 	}
 	if (parentWindow == 0) std::cerr << "BAmp_GUI: No parent window.\n";
@@ -94,7 +94,7 @@ LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin
 		ui->write_function = write_function;
 		if (resize) resize->ui_resize(resize->handle, 100, 100 );
 
-		PuglNativeWindow nativeWindow = puglGetNativeWindow (ui->getPuglView ());
+		PuglNativeView nativeWindow = puglGetNativeWindow (ui->getPuglView ());
 		*widget = (LV2UI_Widget) nativeWindow;
 	}
 	else std::cerr << "BAmp_GUI: Couldn't instantiate.\n";
@@ -128,8 +128,8 @@ static int callResize (LV2UI_Handle ui, int width, int height)
 	return 0;
 }
 
-static const LV2UI_Idle_Interface idle = {.idle = callIdle };
-static const LV2UI_Resize resize = {.ui_resize = callResize} ;
+static const LV2UI_Idle_Interface idle = {callIdle};
+static const LV2UI_Resize resize = {nullptr, callResize} ;
 
 static const void* extensionData(const char* uri)
 {
