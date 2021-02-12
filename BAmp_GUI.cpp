@@ -139,7 +139,7 @@ static const void* extensionData(const char* uri)
 }
 
 
-const LV2UI_Descriptor guiDescriptor = {
+static const LV2UI_Descriptor guiDescriptor = {
 		AMP_GUI_URI,
 		instantiate,
 		cleanup,
