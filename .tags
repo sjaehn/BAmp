@@ -17,7 +17,7 @@ Any	BUtilities/Any.hpp	/^        Any () {}$/;"	f	class:BUtilities::Any
 Any	BUtilities/Any.hpp	/^        Any (const Any& that) : dataTypeHash (that.dataTypeHash)$/;"	f	class:BUtilities::Any
 Any	BUtilities/Any.hpp	/^class Any$/;"	c	namespace:BUtilities
 BAMP_H_	BAmp.h	2;"	d
-BAmp_GUI	BAmp_GUI.cpp	/^BAmp_GUI::BAmp_GUI (PuglNativeWindow parentWindow) :$/;"	f	class:BAmp_GUI
+BAmp_GUI	BAmp_GUI.cpp	/^BAmp_GUI::BAmp_GUI (PuglNativeView parentWindow) :$/;"	f	class:BAmp_GUI
 BAmp_GUI	BAmp_GUI.cpp	/^class BAmp_GUI : public BWidgets::Window$/;"	c	file:
 BCOLORS_HPP_	BWidgets/BColors.hpp	19;"	d
 BColors	BWidgets/BColors.cpp	/^namespace BColors$/;"	n	file:
@@ -293,6 +293,7 @@ Button	BWidgets/pugl_cairo_test.c	/^} Button;$/;"	t	typeref:struct:__anon1	file:
 ButtonCode	BWidgets/BDevices.hpp	/^enum ButtonCode$/;"	g	namespace:BDevices
 CAIROPLUS_H_	BWidgets/cairoplus.h	19;"	d
 CAIRO_RGBA	BWidgets/BColors.hpp	29;"	d
+CC	makefile	/^CC ?= gcc$/;"	m
 CLIPBOARD	BWidgets/pugl/x11.h	/^  Atom CLIPBOARD;$/;"	m	struct:__anon7
 CLOSE_REQUEST_EVENT	BWidgets/BEvents.hpp	/^	CLOSE_REQUEST_EVENT,$/;"	e	enum:BEvents::EventType
 CONFIGURE_REQUEST_EVENT	BWidgets/BEvents.hpp	/^	CONFIGURE_REQUEST_EVENT,$/;"	e	enum:BEvents::EventType
@@ -311,7 +312,7 @@ ColorSet	BWidgets/BColors.cpp	/^ColorSet::ColorSet (const std::vector<Color> vec
 ColorSet	BWidgets/BColors.hpp	/^class ColorSet$/;"	c	namespace:BColors
 DB_CO	BAmp.cpp	6;"	d	file:
 DRAWINGSURFACE_HPP_	BWidgets/DrawingSurface.hpp	19;"	d
-DSPFLAGS	makefile	/^DSPFLAGS = -shared -fPIC -DPIC `pkg-config --cflags --libs lv2`$/;"	m
+DSPFLAGS	makefile	/^DSPFLAGS = `pkg-config --cflags --libs lv2`$/;"	m
 Data	BUtilities/Any.hpp	/^                Data (const T& t) : data (t) {}$/;"	f	struct:BUtilities::Any::Data
 Data	BUtilities/Any.hpp	/^        template <class T> struct Data : Envelope$/;"	s	class:BUtilities::Any
 DeviceGrab	BWidgets/BDevices.hpp	/^	DeviceGrab () : DeviceGrab (nullptr, std::set<T> {}) {}$/;"	f	class:BDevices::DeviceGrab
@@ -371,7 +372,8 @@ Focusable	BWidgets/Focusable.hpp	/^class Focusable$/;"	c	namespace:BWidgets
 Font	BWidgets/BStyles.cpp	/^Font::Font () : Font ("Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL, 12.0) {}$/;"	f	class:BStyles::Font
 Font	BWidgets/BStyles.cpp	/^Font::Font (const std::string& family, const cairo_font_slant_t slant, const cairo_font_weight_t weight, const double size,$/;"	f	class:BStyles::Font
 Font	BWidgets/BStyles.hpp	/^class Font$/;"	c	namespace:BStyles
-GUIFLAGS	makefile	/^GUIFLAGS = -shared -DPUGL_HAVE_CAIRO -fPIC -DPIC `pkg-config --cflags --libs lv2 x11 cairo`$/;"	m
+GUICFLAGS	makefile	/^GUICFLAGS = `pkg-config --cflags lv2 x11 cairo`$/;"	m
+GUILFLAGS	makefile	/^GUILFLAGS = `pkg-config --libs lv2 x11 cairo`$/;"	m
 GWLP_USERDATA	BWidgets/pugl/win.c	44;"	d	file:
 HPianoRoll	BWidgets/HPianoRoll.cpp	/^HPianoRoll::HPianoRoll () : HPianoRoll (0, 0, 0, 0, "piano", 0, 0) {}$/;"	f	class:BWidgets::HPianoRoll
 HPianoRoll	BWidgets/HPianoRoll.cpp	/^HPianoRoll::HPianoRoll (const double x, const double y, const double width, const double height, const std::string& name) :$/;"	f	class:BWidgets::HPianoRoll
@@ -799,7 +801,8 @@ TEXT_ALIGN_RIGHT	BWidgets/BStyles.hpp	/^	TEXT_ALIGN_RIGHT,$/;"	e	enum:BStyles::_
 TEXT_VALIGN_BOTTOM	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_BOTTOM$/;"	e	enum:BStyles::__anon3
 TEXT_VALIGN_MIDDLE	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_MIDDLE,$/;"	e	enum:BStyles::__anon3
 TEXT_VALIGN_TOP	BWidgets/BStyles.hpp	/^	TEXT_VALIGN_TOP,$/;"	e	enum:BStyles::__anon3
-TK	makefile	/^TK =	BWidgets\/DrawingSurface.cpp \\$/;"	m
+TKC	makefile	/^TKC =	BWidgets\/cairoplus.c \\$/;"	m
+TKCXX	makefile	/^TKCXX =	BWidgets\/DrawingSurface.cpp \\$/;"	m
 Text	BWidgets/Text.cpp	/^Text::Text () : Text (0.0, 0.0, 0.0, 0.0, "text", "") {}$/;"	f	class:BWidgets::Text
 Text	BWidgets/Text.cpp	/^Text::Text (const Text& that) : Widget (that)$/;"	f	class:BWidgets::Text
 Text	BWidgets/Text.cpp	/^Text::Text (const double x, const double y, const double width, const double height, const std::string& name, const std::string& text, bool resizable) :$/;"	f	class:BWidgets::Text
@@ -904,8 +907,8 @@ WidgetEvent	BWidgets/BEvents.hpp	/^ 	WidgetEvent () :$/;"	f	class:BEvents::Widge
 WidgetEvent	BWidgets/BEvents.hpp	/^ 	WidgetEvent (BWidgets::Widget* eventWidget, BWidgets::Widget* requestWidget, const EventType type) :$/;"	f	class:BEvents::WidgetEvent
 WidgetEvent	BWidgets/BEvents.hpp	/^ class WidgetEvent : public Event$/;"	c	namespace:BEvents
 WidgetStacking	BWidgets/Widget.hpp	/^enum WidgetStacking$/;"	g	namespace:BWidgets
-Window	BWidgets/Window.cpp	/^Window::Window () : Window (BWIDGETS_DEFAULT_WIDTH, BWIDGETS_DEFAULT_HEIGHT, "window", 0.0) {}$/;"	f	class:BWidgets::Window
-Window	BWidgets/Window.cpp	/^Window::Window (const double width, const double height, const std::string& title, PuglNativeWindow nativeWindow, bool resizable,$/;"	f	class:BWidgets::Window
+Window	BWidgets/Window.cpp	/^Window::Window () : Window (BWIDGETS_DEFAULT_WIDTH, BWIDGETS_DEFAULT_HEIGHT, "window", 0) {}$/;"	f	class:BWidgets::Window
+Window	BWidgets/Window.cpp	/^Window::Window (const double width, const double height, const std::string& title, PuglNativeView nativeWindow, bool resizable,$/;"	f	class:BWidgets::Window
 Window	BWidgets/Window.hpp	/^class Window : public Widget$/;"	c	namespace:BWidgets
 WmClientStateMessageAction	BWidgets/pugl/x11.c	/^enum WmClientStateMessageAction {$/;"	g	file:
 _POSIX_C_SOURCE	BWidgets/pugl/x11.c	19;"	d	file:
@@ -1019,6 +1022,7 @@ cairo_surface_clear	BWidgets/cairoplus.c	/^void cairo_surface_clear (cairo_surfa
 cairo_text_decorations	BWidgets/cairoplus.h	/^} cairo_text_decorations;$/;"	t	typeref:struct:__anon43
 cairo_text_destroy	BWidgets/cairoplus.c	/^void cairo_text_destroy (char* text)$/;"	f
 callIdle	BAmp_GUI.cpp	/^static int callIdle(LV2UI_Handle ui)$/;"	f	file:
+callResize	BAmp_GUI.cpp	/^static int callResize (LV2UI_Handle ui, int width, int height)$/;"	f	file:
 cancelButton	BWidgets/FileChooser.hpp	/^	TextButton cancelButton;$/;"	m	class:BWidgets::FileChooser
 cancelButtonClickedCallback	BWidgets/FileChooser.cpp	/^void FileChooser::cancelButtonClickedCallback (BEvents::Event* event)$/;"	f	class:BWidgets::FileChooser
 cbfunction_	BWidgets/Widget.hpp	/^	std::array<std::function<void (BEvents::Event*)>, BEvents::EventType::NO_EVENT> cbfunction_;$/;"	m	class:BWidgets::Widget
@@ -1026,7 +1030,7 @@ character	BWidgets/pugl/pugl/pugl.h	/^  uint32_t       character; \/\/\/< Unicod
 children_	BWidgets/Widget.hpp	/^	std::vector <Widget*> children_;$/;"	m	class:BWidgets::Widget
 className	BWidgets/pugl/types.h	/^  char*               className;$/;"	m	struct:PuglWorldImpl
 cleanup	BAmp.cpp	/^cleanup(LV2_Handle instance)$/;"	f	file:
-cleanup	BAmp_GUI.cpp	/^void cleanup(LV2UI_Handle ui)$/;"	f
+cleanup	BAmp_GUI.cpp	/^static void cleanup(LV2UI_Handle ui)$/;"	f	file:
 clickable_	BWidgets/Widget.hpp	/^	bool clickable_;$/;"	m	class:BWidgets::Widget
 client	BWidgets/pugl/pugl/pugl.h	/^  PuglEventClient    client;    \/\/\/< #PUGL_CLIENT$/;"	m	union:__anon34
 clipboard	BWidgets/pugl/types.h	/^  PuglBlob           clipboard;$/;"	m	struct:PuglViewImpl
@@ -1402,7 +1406,7 @@ greyBorder1pt	BWidgets/BStyles.hpp	/^const Border greyBorder1pt = Border (greyLi
 greyFill	BWidgets/BStyles.hpp	/^const Fill greyFill = Fill (BColors::grey);$/;"	m	namespace:BStyles
 greyLine1pt	BWidgets/BStyles.hpp	/^const Line greyLine1pt = Line (BColors::grey, 1.0);$/;"	m	namespace:BStyles
 greys	BWidgets/BColors.hpp	/^const ColorSet greys = ColorSet ({grey, lightgrey, darkgrey, black});$/;"	m	namespace:BColors
-guiDescriptor	BAmp_GUI.cpp	/^const LV2UI_Descriptor guiDescriptor = {$/;"	v
+guiDescriptor	BAmp_GUI.cpp	/^static const LV2UI_Descriptor guiDescriptor = {$/;"	v	file:
 h	BWidgets/pugl_cairo_test.c	/^	int         h;$/;"	m	struct:__anon1	file:
 handle	BWidgets/pugl/types.h	/^  PuglHandle         handle;$/;"	m	struct:PuglViewImpl
 handle	BWidgets/pugl/types.h	/^  PuglWorldHandle     handle;$/;"	m	struct:PuglWorldImpl
@@ -1433,7 +1437,7 @@ hwnd	BWidgets/pugl/win_gl.c	/^  HWND hwnd;$/;"	m	struct:__anon14	file:
 iconSurface	BWidgets/Icon.hpp	/^	std::vector<cairo_surface_t*> iconSurface;$/;"	m	class:BWidgets::Icon
 id	BWidgets/pugl/pugl/pugl.h	/^  uintptr_t      id;    \/\/\/< Timer ID$/;"	m	struct:__anon33
 id	BWidgets/pugl/x11.h	/^  uintptr_t id;$/;"	m	struct:__anon8
-idle	BAmp_GUI.cpp	/^static const LV2UI_Idle_Interface idle = { callIdle };$/;"	v	file:
+idle	BAmp_GUI.cpp	/^static const LV2UI_Idle_Interface idle = {callIdle};$/;"	v	file:
 ignoreKeyEvent	BWidgets/pugl/win.c	/^ignoreKeyEvent(PuglView* view, LPARAM lParam)$/;"	f	file:
 impl	BWidgets/pugl/types.h	/^  PuglInternals*     impl;$/;"	m	struct:PuglViewImpl
 impl	BWidgets/pugl/types.h	/^  PuglWorldInternals* impl;$/;"	m	struct:PuglWorldImpl
@@ -1444,7 +1448,7 @@ initKeyEvent	BWidgets/pugl/win.c	/^initKeyEvent(PuglEventKey* event,$/;"	f	file:
 initMouseEvent	BWidgets/pugl/win.c	/^initMouseEvent(PuglEvent* event,$/;"	f	file:
 initScrollEvent	BWidgets/pugl/win.c	/^initScrollEvent(PuglEvent* event, PuglView* view, LPARAM lParam)$/;"	f	file:
 instantiate	BAmp.cpp	/^instantiate(const LV2_Descriptor* descriptor, double rate,$/;"	f	file:
-instantiate	BAmp_GUI.cpp	/^LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin_uri, const char *bundle_path,$/;"	f
+instantiate	BAmp_GUI.cpp	/^static LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char *plugin_uri, const char *bundle_path,$/;"	f	file:
 internal	BWidgets/BItems.hpp	/^        BWidgets::Widget* internal;$/;"	m	class:BItems::Item
 intersect	BUtilities/RectArea.hpp	/^	void intersect (const RectArea& ra)$/;"	f	class:BUtilities::RectArea
 invisible	BWidgets/BColors.hpp	/^const Color invisible = Color (0.0, 0.0, 0.0, 0.0);$/;"	m	namespace:BColors
@@ -1542,7 +1546,7 @@ moveTo	BWidgets/Widget.cpp	/^void Widget::moveTo (const double x, const double y
 name	BWidgets/BStyles.hpp	/^	std::string name;$/;"	m	struct:BStyles::__anon4
 name	BWidgets/FileChooser.hpp	/^	std::string name;$/;"	m	struct:BWidgets::FileFilter
 name_	BWidgets/Widget.hpp	/^	std::string name_;$/;"	m	class:BWidgets::Widget
-nativeWindow_	BWidgets/Window.hpp	/^	PuglNativeWindow nativeWindow_;$/;"	m	class:BWidgets::Window
+nativeWindow_	BWidgets/Window.hpp	/^	PuglNativeView nativeWindow_;$/;"	m	class:BWidgets::Window
 noBorder	BWidgets/BStyles.hpp	/^const Border noBorder = Border (noLine);$/;"	m	namespace:BStyles
 noColor	BWidgets/BColors.hpp	/^	Color noColor = invisible;$/;"	m	class:BColors::ColorSet
 noFill	BWidgets/BStyles.hpp	/^const Fill noFill = Fill (BColors::invisible);$/;"	m	namespace:BStyles
@@ -1880,8 +1884,8 @@ point	BWidgets/BEvents.hpp	/^	BUtilities::Point point;$/;"	m	class:BEvents::KeyE
 point	BWidgets/BEvents.hpp	/^	BUtilities::Point point;$/;"	m	class:BEvents::WheelEvent
 pointer_	BWidgets/Window.hpp	/^	BUtilities::Point pointer_;$/;"	m	class:BWidgets::Window
 port	BAmp.cpp	/^	std::array<float*, AMP_N_PORTS> port;$/;"	m	class:Amp	file:
+portEvent	BAmp_GUI.cpp	/^static void portEvent(LV2UI_Handle ui, uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)$/;"	f	file:
 portEvent	BAmp_GUI.cpp	/^void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)$/;"	f	class:BAmp_GUI
-portEvent	BAmp_GUI.cpp	/^void portEvent(LV2UI_Handle ui, uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)$/;"	f
 position	BWidgets/BDevices.hpp	/^	BUtilities::Point position;$/;"	m	class:BDevices::MouseDevice
 postCloseRequest	BWidgets/Widget.cpp	/^void Widget::postCloseRequest () {postCloseRequest (main_);}$/;"	f	class:BWidgets::Widget
 postCloseRequest	BWidgets/Widget.cpp	/^void Widget::postCloseRequest (Widget* handle)$/;"	f	class:BWidgets::Widget
@@ -2113,6 +2117,7 @@ removeStyle	BWidgets/BStyles.cpp	/^void StyleSet::removeStyle (const std::string
 removeStyle	BWidgets/BStyles.cpp	/^void Theme::removeStyle (const std::string& setName, const std::string& styleName)$/;"	f	class:BStyles::Theme
 rename	BWidgets/Widget.cpp	/^void Widget::rename (const std::string& name) {name_ = name;}$/;"	f	class:BWidgets::Widget
 requestWidget	BWidgets/BEvents.hpp	/^ 	BWidgets::Widget* requestWidget;$/;"	m	class:BEvents::WidgetEvent
+resize	BAmp_GUI.cpp	/^static const LV2UI_Resize resize = {nullptr, callResize} ;$/;"	v	file:
 resize	BUtilities/RectArea.hpp	/^	void resize (const Point& extends) {p2 = p1 + extends;}$/;"	f	class:BUtilities::RectArea
 resize	BUtilities/RectArea.hpp	/^	void resize (const double width, const double height) {resize (Point (width, height));}$/;"	f	class:BUtilities::RectArea
 resize	BWidgets/DrawingSurface.cpp	/^void DrawingSurface::resize () {} \/\/ Do not auto resize$/;"	f	class:BWidgets::DrawingSurface
