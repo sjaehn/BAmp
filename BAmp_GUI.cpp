@@ -41,13 +41,12 @@ void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t fo
 
 void BAmp_GUI::onConfigureRequest (BEvents::Event* event)
 {
-	BEvents::ExposeEvent* ev = dynamic_cast<BEvents::ExposeEvent*>(event);
-    if (!ev) return;
-    Window* w = dynamic_cast<Window*>(ev->getWidget());
-    if (!w) return;
+	Window::onConfigureRequest (event);
 
-	double sz = (ev->getArea().getWidth() > ev->getArea().getHeight() ? ev->getArea().getHeight() : ev->getArea().getWidth()) / 100;
-	setZoom (sz);
+	double sz = (getWidth() > getHeight() ? getHeight() : getWidth()) / 100;
+	dial.label.setFont(BStyles::Font("Sans", CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL, 12.0 * sz));
+	dial.moveTo (10 * sz, 10 * sz);
+	dial.resize (80 * sz, 80 * sz);
 }
 
 void BAmp_GUI::valueChangedCallback (BEvents::Event* event)
