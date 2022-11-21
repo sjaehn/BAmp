@@ -1,7 +1,8 @@
 #include <cmath>
 #include <lv2/lv2plug.in/ns/lv2core/lv2.h>
 #include <lv2/lv2plug.in/ns/extensions/ui/ui.h>
-#include "BWidgets/DialValue.hpp"
+#include "BWidgets/BEvents/ExposeEvent.hpp"
+#include "BWidgets/BWidgets/ValueDial.hpp"
 #include "BAmp.h"
 #include <iostream>
 #include <cstring>
@@ -11,22 +12,22 @@ class BAmp_GUI : public BWidgets::Window
 public:
 	BAmp_GUI (PuglNativeView parentWindow);
 	void portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer);
-	virtual void onConfigureRequest (BEvents::ExposeEvent* event) override;
+	virtual void onConfigureRequest (BEvents::Event* event) override;
 	static void valueChangedCallback (BEvents::Event* event);
 
 	LV2UI_Write_Function write_function;
 	LV2UI_Controller controller;
-	BWidgets::DialValue dial;
+	BWidgets::ValueDial dial;
 };
 
 BAmp_GUI::BAmp_GUI (PuglNativeView parentWindow) :
-	BWidgets::Window (100, 100, "BAmp", parentWindow, true, PUGL_MODULE, 0),
+	BWidgets::Window (100, 100, parentWindow, BUtilities::Urid::urid(AMP_GUI_URI), "B.Amp", true, PUGL_MODULE, 0),
 	write_function (NULL), controller (NULL),
-	dial (10, 10, 80, 80, "dial", 0.0, -90.0, 24.0, 0.0, "%3.1f")
+	dial (10, 10, 80, 80, 0.0, -90.0, 24.0, 0.0)
 {
-	dial.setHardChangeable (false);
-	add (dial);
-	dial.setCallbackFunction (BEvents::EventType::VALUE_CHANGED_EVENT, BAmp_GUI::valueChangedCallback);
+	dial.setClickable (false);
+	add (&dial);
+	dial.setCallbackFunction (BEvents::Event::VALUE_CHANGED_EVENT, BAmp_GUI::valueChangedCallback);
 }
 
 void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)
@@ -38,7 +39,7 @@ void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t fo
 	}
 }
 
-void BAmp_GUI::onConfigureRequest (BEvents::ExposeEvent* event)
+void BAmp_GUI::onConfigureRequest (BEvents::Event* event)
 {
 	Window::onConfigureRequest (event);
 
@@ -51,14 +52,17 @@ void BAmp_GUI::valueChangedCallback (BEvents::Event* event)
 {
 	if ((event) && (event->getWidget ()))
 	{
-		BWidgets::ValueWidget* widget = (BWidgets::ValueWidget*) event->getWidget ();
-		float value = widget->getValue ();
+		BWidgets::Widget* widget = event->getWidget ();
+		if (!widget) return;
+		BWidgets::ValueableTyped<double>* vd = dynamic_cast<BWidgets::ValueableTyped<double>*>(widget);
+		if (!vd) return;
+		float value = vd->getValue ();
 
 		if (widget->getMainWindow ())
 		{
 			BAmp_GUI* ui = (BAmp_GUI*) widget->getMainWindow ();
 
-			if (widget == (BWidgets::ValueWidget*) &ui->dial)
+			if (widget == (BWidgets::Widget*) &ui->dial)
 			{
 				ui->write_function(ui->controller, AMP_GAIN, sizeof(float), 0, &value);
 			}
@@ -123,7 +127,7 @@ static int callIdle(LV2UI_Handle ui)
 static int callResize (LV2UI_Handle ui, int width, int height)
 {
 	BAmp_GUI* self = (BAmp_GUI*) ui;
-	BEvents::ExposeEvent* ev = new BEvents::ExposeEvent (self, self, BEvents::CONFIGURE_REQUEST_EVENT, self->getPosition().x, self->getPosition().y, width, height);
+	BEvents::ExposeEvent* ev = new BEvents::ExposeEvent (self, self, BEvents::Event::CONFIGURE_REQUEST_EVENT, self->getPosition().x, self->getPosition().y, width, height);
 	self->addEventToQueue (ev);
 	return 0;
 }

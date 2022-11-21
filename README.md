@@ -5,7 +5,12 @@ Basic testing plugin for using BWidgets for LV2. See also eg-amp (https://github
 Installation
 ------------
 
-Clone it from this repository and call
+Clone it from this repository including its submodules
+```
+git clone --recurse-submodules https://github.com/sjaehn/BAmp
+```
+
+and call
 
 ```
 make

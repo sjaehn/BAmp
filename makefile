@@ -15,25 +15,17 @@ DSPFLAGS = `pkg-config --cflags --libs lv2`
 GUICFLAGS = `pkg-config --cflags lv2 x11 cairo`
 GUILFLAGS = `pkg-config --libs lv2 x11 cairo`
 
-TKCXX =	BWidgets/DrawingSurface.cpp \
-	BWidgets/DialValue.cpp \
-	BWidgets/Dial.cpp \
-	BWidgets/Knob.cpp \
-	BWidgets/RangeWidget.cpp \
-	BWidgets/ValueWidget.cpp \
-	BWidgets/Label.cpp \
-	BWidgets/Window.cpp \
-	BWidgets/Widget.cpp \
-	BWidgets/BStyles.cpp \
-	BWidgets/BColors.cpp \
-	BUtilities/to_string.cpp \
-	BUtilities/stof.cpp
+TKCXX =	BWidgets/BWidgets/Window.cpp \
+	BWidgets/BWidgets/Widget.cpp \
+	BWidgets/BWidgets/Supports/Closeable.cpp \
+	BWidgets/BWidgets/Supports/Messagable.cpp \
+	BWidgets/BUtilities/Urid.cpp
 
-TKC =	BWidgets/cairoplus.c \
-	BWidgets/pugl/implementation.c \
-	BWidgets/pugl/x11_stub.c \
-	BWidgets/pugl/x11_cairo.c \
-	BWidgets/pugl/x11.c
+TKC = BWidgets/BWidgets/pugl/implementation.c \
+	BWidgets/BWidgets/pugl/x11_stub.c \
+	BWidgets/BWidgets/pugl/x11_cairo.c \
+	BWidgets/BWidgets/pugl/x11.c \
+	BWidgets/BUtilities/cairoplus.c
 
 $(BUNDLE): clean BAmp.so BAmp_GUI.so
 	cp manifest.ttl BAmp.ttl $(BUNDLE)
