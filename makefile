@@ -12,7 +12,7 @@ LDFLAGS += -shared
 PUGLFLAGS += -DPUGL_HAVE_CAIRO
 
 DSPFLAGS = `pkg-config --cflags --libs lv2`
-GUICFLAGS = `pkg-config --cflags lv2 x11 cairo`
+GUICFLAGS = `pkg-config --cflags lv2 x11 cairo` -DPUGL_API="__attribute__((visibility(\"hidden\")))"
 GUILFLAGS = `pkg-config --libs lv2 x11 cairo`
 
 TKCXX =	BWidgets/BWidgets/Window.cpp \
