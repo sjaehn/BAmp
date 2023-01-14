@@ -27,7 +27,7 @@ BAmp_GUI::BAmp_GUI (PuglNativeView parentWindow) :
 {
 	dial.setClickable (false);
 	add (&dial);
-	dial.setCallbackFunction (BEvents::Event::VALUE_CHANGED_EVENT, BAmp_GUI::valueChangedCallback);
+	dial.setCallbackFunction (BEvents::Event::EventType::valueChangedEvent, BAmp_GUI::valueChangedCallback);
 }
 
 void BAmp_GUI::portEvent (uint32_t port_index, uint32_t buffer_size, uint32_t format, const void* buffer)
@@ -128,7 +128,7 @@ static int callIdle(LV2UI_Handle ui)
 static int callResize (LV2UI_Handle ui, int width, int height)
 {
 	BAmp_GUI* self = (BAmp_GUI*) ui;
-	BEvents::ExposeEvent* ev = new BEvents::ExposeEvent (self, self, BEvents::Event::CONFIGURE_REQUEST_EVENT, self->getPosition().x, self->getPosition().y, width, height);
+	BEvents::ExposeEvent* ev = new BEvents::ExposeEvent (self, self, BEvents::Event::EventType::configureRequestEvent, self->getPosition().x, self->getPosition().y, width, height);
 	self->addEventToQueue (ev);
 	return 0;
 }
