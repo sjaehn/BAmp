@@ -99,7 +99,7 @@ static LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char 
 		ui->write_function = write_function;
 		if (resize) resize->ui_resize(resize->handle, 100, 100 );
 
-		PuglNativeView nativeWindow = puglGetNativeWindow (ui->getPuglView ());
+		PuglNativeView nativeWindow = puglGetNativeView (ui->getPuglView ());
 		*widget = (LV2UI_Widget) nativeWindow;
 	}
 	else std::cerr << "BAmp_GUI: Couldn't instantiate.\n";
