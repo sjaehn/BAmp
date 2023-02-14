@@ -1,3 +1,5 @@
+SHELL = /bin/sh
+
 BUNDLE = BAmp.lv2
 PREFIX ?= /usr/local
 LV2DIR ?= $(PREFIX)/lib/lv2
@@ -6,50 +8,43 @@ CC ?= gcc
 CXX ?= g++
 
 CPPFLAGS += -DPIC
-CFLAGS += -std=c99 -fvisibility=hidden -fPIC
+CFLAGS += -fvisibility=hidden -fPIC
 CXXFLAGS += -std=c++11 -fvisibility=hidden -fPIC
-LDFLAGS += -shared
-PUGLFLAGS += -DPUGL_HAVE_CAIRO
+LDFLAGS += -L$(CURDIR)/BWidgets/build -shared -pthread
 
-DSPFLAGS = `pkg-config --cflags --libs lv2`
-GUICFLAGS = `pkg-config --cflags lv2 x11 cairo` -DPUGL_API="__attribute__((visibility(\"hidden\")))"
-GUILFLAGS = `pkg-config --libs lv2 x11 cairo`
-
-TKCXX =	BWidgets/BWidgets/Window.cpp \
-	BWidgets/BWidgets/Widget.cpp \
-	BWidgets/BWidgets/Supports/Closeable.cpp \
-	BWidgets/BWidgets/Supports/Messagable.cpp \
-	BWidgets/BUtilities/Urid.cpp
-
-TKC = BWidgets/BWidgets/pugl/implementation.c \
-	BWidgets/BWidgets/pugl/x11_stub.c \
-	BWidgets/BWidgets/pugl/x11_cairo.c \
-	BWidgets/BWidgets/pugl/x11.c \
-	BWidgets/BUtilities/cairoplus.c
+DSPCFLAGS = `pkg-config --cflags --libs lv2`
+GUICFLAGS = -I$(CURDIR)/BWidgets/include `pkg-config --cflags lv2 x11 cairo`
+DSPLIBS = -lm `pkg-config --libs --static lv2`
+GUILIBS = -lm -lcairoplus -lpugl `pkg-config --libs --static lv2 x11 cairo`
 
 $(BUNDLE): clean BAmp.so BAmp_GUI.so
 	cp manifest.ttl BAmp.ttl $(BUNDLE)
 
 all: $(BUNDLE)
 
-BAmp.so: ./BAmp.cpp
+BAmp.so: BAmp.cpp 
 	mkdir -p $(BUNDLE)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $(DSPFLAGS) $< -o $(BUNDLE)/$@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) $(DSPCFLAGS) $< $(DSPLIBS) -o $(BUNDLE)/$@
 
-BAmp_GUI.so: ./BAmp_GUI.cpp
+BAmp_GUI.so: BAmp_GUI.cpp BWidgets/build
 	mkdir -p $(BUNDLE)
 	mkdir -p $(BUNDLE)/tmp
-	cd $(BUNDLE)/tmp; $(CC) $(CPPFLAGS) $(PUGLFLAGS) $(CFLAGS) $(GUICFLAGS) $(addprefix ../../, $(TKC)) -c
-	cd $(BUNDLE)/tmp; $(CXX) $(CPPFLAGS) $(PUGLFLAGS) $(CXXFLAGS) $(GUICFLAGS) $(addprefix ../../, $< $(TKCXX)) -c
-	$(CXX) $(CPPFLAGS) $(PUGLFLAGS) $(CXXFLAGS) $(LDFLAGS) $(GUICFLAGS) -Wl,--start-group $(GUILFLAGS) $(BUNDLE)/tmp/*.o -Wl,--end-group -o $(BUNDLE)/$@
+	cd $(BUNDLE)/tmp; $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GUICFLAGS) $(addprefix $(CURDIR)/, $<) -c
+	$(CXX) $(CPPFLAGS) $(LDFLAGS) -Wl,--start-group BWidgets/build/libbwidgetscore/*.o $(BUNDLE)/tmp/*.o $(GUILIBS) -Wl,--end-group -o $(BUNDLE)/$@
 	rm -rf $(BUNDLE)/tmp
+
+BWidgets/build:
+	cd BWidgets ; $(MAKE) cairoplus CFLAGS+=-fvisibility=hidden
+	cd BWidgets ; $(MAKE) pugl CPPFLAGS+="-DPIC -DPUGL_API=\"__attribute__((visibility(\\\"hidden\\\")))\"" CFLAGS+=-fvisibility=hidden
+	cd BWidgets ; $(MAKE) bwidgets CXXFLAGS+=-fvisibility=hidden 
 
 install:
 	mkdir -p $(DESTDIR)$(LV2DIR)
 	rm -rf $(DESTDIR)$(LV2DIR)/$(BUNDLE)
 	cp -R $(BUNDLE) $(DESTDIR)$(LV2DIR)
 
-.PHONY: all
+.PHONY: all install clean
 
 clean:
 	rm -rf $(BUNDLE)
+	cd BWidgets ; $(MAKE) clean

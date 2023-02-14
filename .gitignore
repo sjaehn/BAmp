@@ -1,4 +1,4 @@
-/.cproject
-/.project
-/.settings/language.settings.xml
-/BAmp.lv2/**
+BAmp.lv2/**
+BWidgets/build/**
+BWidgets/include/**
+.clangd
