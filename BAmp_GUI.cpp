@@ -4,6 +4,7 @@
 #include "BWidgets/BEvents/ExposeEvent.hpp"
 #include "BWidgets/BWidgets/ValueDial.hpp"
 #include "BAmp.h"
+#include "pugl/pugl.h"
 #include <iostream>
 #include <cstring>
 
@@ -76,7 +77,6 @@ static LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char 
 						  const LV2_Feature *const *features)
 {
 	PuglNativeView parentWindow = 0;
-	LV2UI_Resize* resize = NULL;
 
 	if (strcmp(plugin_uri, AMP_URI) != 0)
 	{
@@ -87,7 +87,6 @@ static LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char 
 	for (int i = 0; features[i]; ++i)
 	{
 		if (!strcmp(features[i]->URI, LV2_UI__parent)) parentWindow = (PuglNativeView) features[i]->data;
-		else if (!strcmp(features[i]->URI, LV2_UI__resize)) resize = (LV2UI_Resize*)features[i]->data;
 	}
 	if (parentWindow == 0) std::cerr << "BAmp_GUI: No parent window.\n";
 
@@ -97,7 +96,6 @@ static LV2UI_Handle instantiate (const LV2UI_Descriptor *descriptor, const char 
 	{
 		ui->controller = controller;
 		ui->write_function = write_function;
-		if (resize) resize->ui_resize(resize->handle, 100, 100 );
 
 		PuglNativeView nativeWindow = puglGetNativeView (ui->getPuglView ());
 		*widget = (LV2UI_Widget) nativeWindow;
@@ -125,21 +123,11 @@ static int callIdle(LV2UI_Handle ui)
 	return 0;
 }
 
-static int callResize (LV2UI_Handle ui, int width, int height)
-{
-	BAmp_GUI* self = (BAmp_GUI*) ui;
-	BEvents::ExposeEvent* ev = new BEvents::ExposeEvent (self, self, BEvents::Event::EventType::configureRequestEvent, self->getPosition().x, self->getPosition().y, width, height);
-	self->addEventToQueue (ev);
-	return 0;
-}
-
 static const LV2UI_Idle_Interface idle = {callIdle};
-static const LV2UI_Resize resize = {nullptr, callResize} ;
 
 static const void* extensionData(const char* uri)
 {
 	if (!strcmp(uri, LV2_UI__idleInterface)) return &idle;
-	else if(!strcmp(uri, LV2_UI__resize)) return &resize;
 	else return NULL;
 }
 
