@@ -9,13 +9,13 @@ CXX ?= g++
 
 CPPFLAGS += -DPIC
 CFLAGS += -fvisibility=hidden -fPIC
-CXXFLAGS += -std=c++11 -fvisibility=hidden -fPIC
+CXXFLAGS += -std=c++17 -fvisibility=hidden -fPIC
 LDFLAGS += -L$(CURDIR)/BWidgets/build -shared -pthread
 
 DSPCFLAGS = `pkg-config --cflags --libs lv2`
 GUICFLAGS = -I$(CURDIR)/BWidgets/include `pkg-config --cflags lv2 x11 cairo`
-DSPLIBS = -lm `pkg-config --libs --static lv2`
-GUILIBS = -lm -lcairoplus -lpugl `pkg-config --libs --static lv2 x11 cairo`
+DSPLIBS += -Wl,-Bstatic -lm `$(PKG_CONFIG) --libs --static lv2` -Wl,-Bdynamic
+GUILIBS += -Wl,-Bstatic -lbwidgetscore -lcairoplus -lpugl -lm -Wl,-Bdynamic `$(PKG_CONFIG) --libs lv2 cairo x11`
 
 $(BUNDLE): clean BAmp.so BAmp_GUI.so
 	cp manifest.ttl BAmp.ttl $(BUNDLE)
@@ -30,7 +30,7 @@ BAmp_GUI.so: BAmp_GUI.cpp BWidgets/build
 	mkdir -p $(BUNDLE)
 	mkdir -p $(BUNDLE)/tmp
 	cd $(BUNDLE)/tmp; $(CXX) $(CPPFLAGS) $(CXXFLAGS) $(GUICFLAGS) $(addprefix $(CURDIR)/, $<) -c
-	$(CXX) $(CPPFLAGS) $(LDFLAGS) -Wl,--start-group BWidgets/build/libbwidgetscore/*.o $(BUNDLE)/tmp/*.o $(GUILIBS) -Wl,--end-group -o $(BUNDLE)/$@
+	$(CXX) $(CPPFLAGS) $(LDFLAGS) $(BUNDLE)/tmp/*.o $(GUILIBS) -o $(BUNDLE)/$@
 	rm -rf $(BUNDLE)/tmp
 
 BWidgets/build:
